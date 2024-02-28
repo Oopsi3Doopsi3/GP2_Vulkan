@@ -1,0 +1,39 @@
+# ninja log v5
+12	804	7308347004961498	_deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.obj	f593512ccf7c6f24
+59	191	7308346999088753	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/shader.frag.spv	862bca306e1c9115
+59	191	7308346999088753	Project/shaders/shader.frag.spv	862bca306e1c9115
+52	757	7308347004715492	_deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.obj	504a09fb9c0c1bd5
+25	999	7308348017660298	Project/CMakeFiles/VulkanLab01.dir/labwork/Week03.cpp.obj	d52d93e78104b5c
+65	195	7308346999132230	Project/shaders/shader.vert.spv	7cdd7adcbedb2420
+65	195	7308346999132230	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/shader.vert.spv	7cdd7adcbedb2420
+22	764	7308347004549768	_deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.obj	c325466e99678828
+40	782	7308347004645038	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_thread.c.obj	6cd94a67bfdb5f9c
+44	775	7308347004735546	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_window.c.obj	b8645e71033426da
+9	789	7308347004780936	_deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.obj	a10f4592bc9385b6
+48	795	7308347004790957	_deps/glfw-build/src/CMakeFiles/glfw.dir/wgl_context.c.obj	b6ec7ab2e598b263
+795	1920	7308347016387251	Project/CMakeFiles/VulkanLab01.dir/vulkanbase/VulkanUtil.cpp.obj	7b8f2f2f9b6d3369
+36	801	7308347004886264	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_time.c.obj	44534c79b89017d7
+26	801	7308347004946420	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_init.c.obj	63b992bf5be7e88a
+15	802	7308347004936394	_deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.obj	eee47e2032206cd1
+5	803	7308347004926381	_deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.obj	716d7fd32e0d6d0a
+56	806	7308347005021803	_deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.obj	c6478b5f35454c12
+18	804	7308347004971680	_deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.obj	d90113313e8fc4
+33	805	7308347005001745	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_monitor.c.obj	8a3689d077866087
+29	806	7308347005031824	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_joystick.c.obj	a9092147a62479eb
+807	881	7308347005946383	_deps/glfw-build/src/glfw3.lib	ec9d71e5e960979d
+15	982	7308348017487613	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	89c18d9d067e43bb
+22	968	7308348017341525	Project/CMakeFiles/VulkanLab01.dir/labwork/Week02.cpp.obj	8af8e05b11b9c14d
+19	973	7308348017410775	Project/CMakeFiles/VulkanLab01.dir/labwork/Week01.cpp.obj	dd95d9d3256b4b37
+790	1919	7308347016358524	Project/CMakeFiles/VulkanLab01.dir/GP2Shader.cpp.obj	e77c8a6041ebf711
+28	1015	7308348017823498	Project/CMakeFiles/VulkanLab01.dir/labwork/Week04.cpp.obj	be73f86000a874ce
+31	1023	7308348017915564	Project/CMakeFiles/VulkanLab01.dir/labwork/Week05.cpp.obj	92d71a9a77e7faa4
+34	1051	7308348018194329	Project/CMakeFiles/VulkanLab01.dir/labwork/Week06.cpp.obj	e642ee3abdb11634
+1051	1200	7308348019352992	Project/VulkanLab01.exe	4ffb9223bf7e5a27
+21	917	7308351052161869	Project/CMakeFiles/VulkanLab01.dir/labwork/Week01.cpp.obj	dd95d9d3256b4b37
+17	918	7308351052172046	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	89c18d9d067e43bb
+25	947	7308351052471829	Project/CMakeFiles/VulkanLab01.dir/labwork/Week02.cpp.obj	8af8e05b11b9c14d
+28	955	7308351052531973	Project/CMakeFiles/VulkanLab01.dir/labwork/Week03.cpp.obj	d52d93e78104b5c
+31	972	7308351052712579	Project/CMakeFiles/VulkanLab01.dir/labwork/Week04.cpp.obj	be73f86000a874ce
+34	975	7308351052752685	Project/CMakeFiles/VulkanLab01.dir/labwork/Week05.cpp.obj	92d71a9a77e7faa4
+37	994	7308351052938263	Project/CMakeFiles/VulkanLab01.dir/labwork/Week06.cpp.obj	e642ee3abdb11634
+994	1192	7308351054526066	Project/VulkanLab01.exe	4ffb9223bf7e5a27

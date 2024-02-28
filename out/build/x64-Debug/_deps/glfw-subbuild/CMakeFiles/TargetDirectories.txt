@@ -1,0 +1,3 @@
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/glfw-populate.dir
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/edit_cache.dir
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/rebuild_cache.dir
