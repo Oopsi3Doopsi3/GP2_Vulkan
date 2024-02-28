@@ -163,6 +163,7 @@ private:
 	// Week 03
 	// Renderpass concept
 	// Graphics pipeline
+	//Test
 
 	std::vector<VkFramebuffer> swapChainFramebuffers;
 	VkPipelineLayout pipelineLayout;
