@@ -8,5 +8,5 @@ void VulkanBase::initWindow() {
 }
 
 void VulkanBase::drawScene() {
-	vkCmdDraw(commandBuffer, static_cast<uint32_t>(vertices.size()), 1, 0, 0);
+	vkCmdDraw(m_CommandBuffer.GetCommandBuffer(), static_cast<uint32_t>(vertices.size()), 1, 0, 0);
 }

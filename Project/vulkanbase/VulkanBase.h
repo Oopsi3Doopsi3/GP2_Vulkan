@@ -20,6 +20,8 @@
 
 #include "GP2Shader.h"
 #include "Vertex.h"
+#include "GP2CommandPool.h"
+#include "GP2CommandBuffer.h"
 
 const std::vector<const char*> validationLayers = {
 	"VK_LAYER_KHRONOS_validation"
@@ -74,9 +76,9 @@ private:
 		createGraphicsPipeline();
 		createFrameBuffers();
 		// week 02
-		createCommandPool();
+		m_CommandPool.CreateCommandPool(findQueueFamilies(physicalDevice), device);
 		createVertexBuffer();
-		createCommandBuffer();
+		m_CommandBuffer.SetCommandBuffer(m_CommandPool.CreateCommandBuffer(device));
 
 		// week 06
 		createSyncObjects();
@@ -96,7 +98,8 @@ private:
 		vkDestroySemaphore(device, imageAvailableSemaphore, nullptr);
 		vkDestroyFence(device, inFlightFence, nullptr);
 
-		vkDestroyCommandPool(device, commandPool, nullptr);
+		m_CommandPool.DestroyCommandPool(device);
+
 		for (auto framebuffer : swapChainFramebuffers) {
 			vkDestroyFramebuffer(device, framebuffer, nullptr);
 		}
@@ -140,6 +143,10 @@ private:
 		"shaders/shader.frag.spv"
 	};
 
+	GP2CommandPool m_CommandPool{};
+
+	GP2CommandBuffer m_CommandBuffer{};
+
 	// Week 01: 
 	// Actual window
 	// simple fragment + vertex shader creation functions
@@ -155,15 +162,10 @@ private:
 	// Queue families
 	// CommandBuffer concept
 
-	VkCommandPool commandPool;
-	VkCommandBuffer commandBuffer;
-
 	QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
+	void RecordCommandBuffer(uint32_t imageIndex);
 
 	void drawFrame(uint32_t imageIndex);
-	void createCommandBuffer();
-	void createCommandPool();
-	void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
 
 	const std::vector<Vertex> vertices = {
 	{{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},

@@ -4,7 +4,7 @@
 #include <string>
 #include <array>
 
-class GP2Shader
+class GP2Shader final
 {
 public:
 	GP2Shader(
@@ -38,6 +38,6 @@ private:
 
 	std::vector<VkPipelineShaderStageCreateInfo> m_ShaderStages;
 
-	VkVertexInputBindingDescription m_BindingDescription;
-	std::array<VkVertexInputAttributeDescription, 2> m_AttributeDescriptions;
+	VkVertexInputBindingDescription m_BindingDescription{};
+	std::array<VkVertexInputAttributeDescription, 2> m_AttributeDescriptions{};
 };
