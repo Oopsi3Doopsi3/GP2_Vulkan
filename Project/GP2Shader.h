@@ -2,6 +2,7 @@
 #include <vulkan/vulkan_core.h>
 #include <vector>
 #include <string>
+#include <array>
 
 class GP2Shader
 {
@@ -36,4 +37,7 @@ private:
 	std::string m_FragmentShaderFile;
 
 	std::vector<VkPipelineShaderStageCreateInfo> m_ShaderStages;
+
+	VkVertexInputBindingDescription m_BindingDescription;
+	std::array<VkVertexInputAttributeDescription, 2> m_AttributeDescriptions;
 };

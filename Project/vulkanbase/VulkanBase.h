@@ -19,6 +19,7 @@
 #include <algorithm>
 
 #include "GP2Shader.h"
+#include "Vertex.h"
 
 const std::vector<const char*> validationLayers = {
 	"VK_LAYER_KHRONOS_validation"
@@ -74,6 +75,7 @@ private:
 		createFrameBuffers();
 		// week 02
 		createCommandPool();
+		createVertexBuffer();
 		createCommandBuffer();
 
 		// week 06
@@ -98,6 +100,9 @@ private:
 		for (auto framebuffer : swapChainFramebuffers) {
 			vkDestroyFramebuffer(device, framebuffer, nullptr);
 		}
+
+		vkDestroyBuffer(device, vertexBuffer, nullptr);
+		vkFreeMemory(device, vertexBufferMemory, nullptr);
 
 		vkDestroyPipeline(device, graphicsPipeline, nullptr);
 		vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
@@ -160,10 +165,21 @@ private:
 	void createCommandPool();
 	void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
 
+	const std::vector<Vertex> vertices = {
+	{{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+	{{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
+	{{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
+	};
+
+	VkBuffer vertexBuffer;
+	VkDeviceMemory vertexBufferMemory;
+
+	void createVertexBuffer();
+	uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
+
 	// Week 03
 	// Renderpass concept
 	// Graphics pipeline
-	//Test
 
 	std::vector<VkFramebuffer> swapChainFramebuffers;
 	VkPipelineLayout pipelineLayout;

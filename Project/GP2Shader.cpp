@@ -1,4 +1,6 @@
 #include "GP2Shader.h"
+
+#include "Vertex.h"
 #include "vulkanbase/VulkanUtil.h"
 
 void GP2Shader::Initialize(const VkDevice& vkDevice)
@@ -47,8 +49,14 @@ VkPipelineVertexInputStateCreateInfo GP2Shader::CreateVertexInputStateInfo()
 {
 	VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
 	vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-	vertexInputInfo.vertexBindingDescriptionCount = 0;
-	vertexInputInfo.vertexAttributeDescriptionCount = 0;
+
+	m_BindingDescription = Vertex::GetBindingDescription();
+	m_AttributeDescriptions = Vertex::GetAttributeDescriptions();
+	vertexInputInfo.vertexBindingDescriptionCount = 1;
+	vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(m_AttributeDescriptions.size());
+	vertexInputInfo.pVertexBindingDescriptions = &m_BindingDescription;
+	vertexInputInfo.pVertexAttributeDescriptions = m_AttributeDescriptions.data();
+
 	return vertexInputInfo;
 }
 
