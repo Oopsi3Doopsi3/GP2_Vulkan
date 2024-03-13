@@ -1,29 +1,14 @@
 # ninja log v5
 2	54	7308336828752926	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	3f4247a6ae78d836
-9	206	0	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	94445ad41e6cc25b
-9	206	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	94445ad41e6cc25b
-207	264	7320607119715472	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	b6cabdbabd185d72
-2	54	7308336828752926	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	3f4247a6ae78d836
-55	7628	7308336904511896	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	3d202998a52cbb56
-207	264	7320607119715472	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	b6cabdbabd185d72
-492	559	7320607122667265	CMakeFiles/glfw-populate-complete	8a187a883da31771
-264	323	7320607120306677	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	5b23c71e9d44b56e
-55	7628	7308336904511896	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	3d202998a52cbb56
-264	323	7320607120306677	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	5b23c71e9d44b56e
-323	378	7320607120861149	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	fe23cc90540f7833
-323	378	7320607120861149	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	fe23cc90540f7833
-378	440	7320607121462853	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	1dcd650f7c00d43b
-378	440	7320607121462853	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	1dcd650f7c00d43b
-440	492	7320607122010392	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	cddbe83c08c807c6
-440	492	7320607122010392	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	cddbe83c08c807c6
-492	559	7320607122667265	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	8a187a883da31771
-492	559	7320607122667265	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	8a187a883da31771
-492	559	7320607122667265	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	8a187a883da31771
 6	108	0	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	94445ad41e6cc25b
 6	108	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	94445ad41e6cc25b
 109	152	7320624415726894	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	b6cabdbabd185d72
-109	152	7320624415726894	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	b6cabdbabd185d72
+2	54	7308336828752926	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	3f4247a6ae78d836
+55	7628	7308336904511896	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	3d202998a52cbb56
+319	379	7320624418002219	CMakeFiles/glfw-populate-complete	8a187a883da31771
 152	194	7320624416160379	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	5b23c71e9d44b56e
+109	152	7320624415726894	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	b6cabdbabd185d72
+55	7628	7308336904511896	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	3d202998a52cbb56
 152	194	7320624416160379	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	5b23c71e9d44b56e
 194	237	7320624416590823	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	fe23cc90540f7833
 194	237	7320624416590823	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	fe23cc90540f7833
@@ -31,7 +16,22 @@
 237	277	7320624416990537	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	1dcd650f7c00d43b
 277	319	7320624417401591	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	cddbe83c08c807c6
 277	319	7320624417401591	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	cddbe83c08c807c6
-319	379	7320624418002219	CMakeFiles/glfw-populate-complete	8a187a883da31771
 319	379	7320624418002219	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	8a187a883da31771
 319	379	7320624418002219	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	8a187a883da31771
 319	379	7320624418002219	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	8a187a883da31771
+7	125	0	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	94445ad41e6cc25b
+7	125	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	94445ad41e6cc25b
+125	169	7320642179455052	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	b6cabdbabd185d72
+125	169	7320642179455052	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	b6cabdbabd185d72
+169	211	7320642179864457	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	5b23c71e9d44b56e
+169	211	7320642179864457	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	5b23c71e9d44b56e
+211	253	7320642180302342	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	fe23cc90540f7833
+211	253	7320642180302342	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	fe23cc90540f7833
+254	300	7320642180762227	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	1dcd650f7c00d43b
+254	300	7320642180762227	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	1dcd650f7c00d43b
+300	342	7320642181187018	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	cddbe83c08c807c6
+300	342	7320642181187018	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	cddbe83c08c807c6
+342	404	7320642181801812	CMakeFiles/glfw-populate-complete	8a187a883da31771
+342	404	7320642181801812	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	8a187a883da31771
+342	404	7320642181801812	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	8a187a883da31771
+342	404	7320642181801812	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	8a187a883da31771

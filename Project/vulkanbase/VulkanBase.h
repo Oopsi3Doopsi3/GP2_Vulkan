@@ -23,6 +23,7 @@
 #include "GP2CommandPool.h"
 #include "GP2CommandBuffer.h"
 #include "GP2RenderPass.h"
+#include "GP2GraphicsPipeline.h"
 
 const std::vector<const char*> validationLayers = {
 	"VK_LAYER_KHRONOS_validation"
@@ -74,7 +75,7 @@ private:
 		// week 03
 		m_GradientShader.Initialize(device);
 		m_RenderPass.CreateRenderPass(swapChainImageFormat, device);
-		createGraphicsPipeline();
+		m_GraphicsPipeline.CreateGraphicsPipeline(device, m_GradientShader, m_RenderPass);
 		createFrameBuffers();
 		// week 02
 		m_CommandPool.CreateCommandPool(findQueueFamilies(physicalDevice), device);
@@ -108,8 +109,7 @@ private:
 		vkDestroyBuffer(device, vertexBuffer, nullptr);
 		vkFreeMemory(device, vertexBufferMemory, nullptr);
 
-		vkDestroyPipeline(device, graphicsPipeline, nullptr);
-		vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
+		m_GraphicsPipeline.Destroy(device);
 		m_RenderPass.Destroy(device);
 
 		for (auto imageView : swapChainImageViews) {
@@ -148,6 +148,7 @@ private:
 	GP2CommandBuffer m_CommandBuffer{};
 
 	GP2RenderPass m_RenderPass{};
+	GP2GraphicsPipeline m_GraphicsPipeline{};
 
 	// Week 01: 
 	// Actual window
@@ -186,11 +187,8 @@ private:
 	// Graphics pipeline
 
 	std::vector<VkFramebuffer> swapChainFramebuffers;
-	VkPipelineLayout pipelineLayout;
-	VkPipeline graphicsPipeline;
 
 	void createFrameBuffers();
-	void createGraphicsPipeline();
 
 	// Week 04
 	// Swap chain and image view support
