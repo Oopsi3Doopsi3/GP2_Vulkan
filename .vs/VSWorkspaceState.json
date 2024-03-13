@@ -9,7 +9,9 @@
     "",
     "\\Project",
     "\\Project\\labwork",
-    "\\Project\\shaders"
+    "\\Project\\shaders",
+    "\\Project\\vulkanbase"
   ],
+  "SelectedNode": "\\Project\\GP2Shader.h",
   "PreviewInSolutionExplorer": false
 }

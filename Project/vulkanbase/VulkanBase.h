@@ -22,6 +22,7 @@
 #include "Vertex.h"
 #include "GP2CommandPool.h"
 #include "GP2CommandBuffer.h"
+#include "GP2RenderPass.h"
 
 const std::vector<const char*> validationLayers = {
 	"VK_LAYER_KHRONOS_validation"
@@ -72,7 +73,7 @@ private:
 
 		// week 03
 		m_GradientShader.Initialize(device);
-		createRenderPass();
+		m_RenderPass.CreateRenderPass(swapChainImageFormat, device);
 		createGraphicsPipeline();
 		createFrameBuffers();
 		// week 02
@@ -109,7 +110,7 @@ private:
 
 		vkDestroyPipeline(device, graphicsPipeline, nullptr);
 		vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
-		vkDestroyRenderPass(device, renderPass, nullptr);
+		m_RenderPass.Destroy(device);
 
 		for (auto imageView : swapChainImageViews) {
 			vkDestroyImageView(device, imageView, nullptr);
@@ -144,8 +145,9 @@ private:
 	};
 
 	GP2CommandPool m_CommandPool{};
-
 	GP2CommandBuffer m_CommandBuffer{};
+
+	GP2RenderPass m_RenderPass{};
 
 	// Week 01: 
 	// Actual window
@@ -186,10 +188,8 @@ private:
 	std::vector<VkFramebuffer> swapChainFramebuffers;
 	VkPipelineLayout pipelineLayout;
 	VkPipeline graphicsPipeline;
-	VkRenderPass renderPass;
 
 	void createFrameBuffers();
-	void createRenderPass();
 	void createGraphicsPipeline();
 
 	// Week 04

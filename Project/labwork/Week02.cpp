@@ -53,7 +53,7 @@ uint32_t VulkanBase::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags p
 void VulkanBase::drawFrame(uint32_t imageIndex) {
 	VkRenderPassBeginInfo renderPassInfo{};
 	renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-	renderPassInfo.renderPass = renderPass;
+	renderPassInfo.renderPass = m_RenderPass.GetRenderPass();
 	renderPassInfo.framebuffer = swapChainFramebuffers[imageIndex];
 	renderPassInfo.renderArea.offset = { 0, 0 };
 	renderPassInfo.renderArea.extent = swapChainExtent;
