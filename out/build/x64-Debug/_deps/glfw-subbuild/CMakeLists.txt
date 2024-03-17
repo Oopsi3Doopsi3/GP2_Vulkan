@@ -16,18 +16,10 @@ unset(ENV{CMAKE_TOOLCHAIN_FILE})
 project(glfw-populate NONE)
 
 
-# Pass through things we've already detected in the main project to avoid
-# paying the cost of redetecting them again in ExternalProject_Add()
-set(GIT_EXECUTABLE [==[C:/Program Files/Git/cmd/git.exe]==])
-set(GIT_VERSION_STRING [==[2.43.0.windows.1]==])
-set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[C:/Program Files/Git/cmd/git.exe;2.43.0.windows.1]==]
-)
-
 
 include(ExternalProject)
 ExternalProject_Add(glfw-populate
-                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/glfw/glfw.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "3.3.8"
+                     "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "TRUE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/glfw/glfw/releases/download/3.3.8/glfw-3.3.8.zip"
                     SOURCE_DIR          "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-src"
                     BINARY_DIR          "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-build"
                     CONFIGURE_COMMAND   ""

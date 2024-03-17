@@ -17,6 +17,7 @@
 #include <set>
 #include <limits>
 #include <algorithm>
+#include <corecrt_math_defines.h>
 
 #include "GP2Shader.h"
 #include "Vertex.h"
@@ -24,6 +25,7 @@
 #include "GP2CommandBuffer.h"
 #include "GP2RenderPass.h"
 #include "GP2GraphicsPipeline.h"
+#include "GP2Mesh.h"
 
 const std::vector<const char*> validationLayers = {
 	"VK_LAYER_KHRONOS_validation"
@@ -75,12 +77,14 @@ private:
 		// week 03
 		m_GradientShader.Initialize(device);
 		m_RenderPass.CreateRenderPass(swapChainImageFormat, device);
-		m_GraphicsPipeline.CreateGraphicsPipeline(device, m_GradientShader, m_RenderPass);
 		createFrameBuffers();
+		m_GraphicsPipeline.CreateGraphicsPipeline(device, m_GradientShader, m_RenderPass);
 		// week 02
 		m_CommandPool.CreateCommandPool(findQueueFamilies(physicalDevice), device);
-		createVertexBuffer();
 		m_CommandBuffer.SetCommandBuffer(m_CommandPool.CreateCommandBuffer(device));
+
+		MakeCircle(m_CircleMesh, 1000, .8f);
+		MakeTriangle(m_TriangleMesh);
 
 		// week 06
 		createSyncObjects();
@@ -106,8 +110,8 @@ private:
 			vkDestroyFramebuffer(device, framebuffer, nullptr);
 		}
 
-		vkDestroyBuffer(device, vertexBuffer, nullptr);
-		vkFreeMemory(device, vertexBufferMemory, nullptr);
+		m_TriangleMesh.DestroyMesh(device);
+		m_CircleMesh.DestroyMesh(device);
 
 		m_GraphicsPipeline.Destroy(device);
 		m_RenderPass.Destroy(device);
@@ -130,9 +134,6 @@ private:
 	}
 
 
-
-
-
 	void createSurface() {
 		if (glfwCreateWindowSurface(instance, window, nullptr, &surface) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create window surface!");
@@ -147,8 +148,55 @@ private:
 	GP2CommandPool m_CommandPool{};
 	GP2CommandBuffer m_CommandBuffer{};
 
+	GP2Mesh m_TriangleMesh{};
+	GP2Mesh m_CircleMesh{};
+
 	GP2RenderPass m_RenderPass{};
 	GP2GraphicsPipeline m_GraphicsPipeline{};
+
+	void MakeTriangle(GP2Mesh& mesh)
+	{
+		mesh.AddVertex({ 0.0f, -0.5f }, { 1.0f, 0.0f, 0.0f });
+		mesh.AddVertex({ 0.5f, 0.5f }, { 0.0f, 1.0f, 0.0f });
+		mesh.AddVertex({ -0.5f, 0.5f }, { 0.0f, 0.0f, 1.0f });
+
+		mesh.Initialize(physicalDevice, device);
+	}
+
+	void MakeCircle(GP2Mesh& mesh, int nrSegments, float radius)
+	{
+		const double thetaIncrement = (2.0 * M_PI) / static_cast<double>(nrSegments);
+		double theta = 0.0;
+		
+		std::vector<Vertex> circleVertices(nrSegments);
+		for(int i{}; i < nrSegments; ++i)
+		{
+			circleVertices[i].pos.x = static_cast<float>(cos(theta)) * radius;
+			circleVertices[i].pos.y = static_cast<float>(sin(theta)) * radius;
+		
+			circleVertices[i].color = glm::vec3{ 1.f,0.f,0.f };
+			theta += thetaIncrement;
+		}
+
+		constexpr Vertex centerVertex{ {0.f,0.f},{1.f,1.f,1.f} };
+		for(int i{}; i < nrSegments; ++i)
+		{
+			if(i == nrSegments - 1)
+			{
+				mesh.AddVertex(circleVertices[0]);
+				mesh.AddVertex(centerVertex);
+				mesh.AddVertex(circleVertices[i]);
+			}
+			else
+			{
+				mesh.AddVertex(circleVertices[i + 1]);
+				mesh.AddVertex(centerVertex);
+				mesh.AddVertex(circleVertices[i]);
+			}
+		}
+
+		mesh.Initialize(physicalDevice, device);
+	}
 
 	// Week 01: 
 	// Actual window
@@ -159,8 +207,6 @@ private:
 	GLFWwindow* window;
 	void initWindow();
 
-	void drawScene();
-
 	// Week 02
 	// Queue families
 	// CommandBuffer concept
@@ -168,19 +214,7 @@ private:
 	QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
 	void RecordCommandBuffer(uint32_t imageIndex);
 
-	void drawFrame(uint32_t imageIndex);
-
-	const std::vector<Vertex> vertices = {
-	{{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-	{{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
-	{{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
-	};
-
-	VkBuffer vertexBuffer;
-	VkDeviceMemory vertexBufferMemory;
-
-	void createVertexBuffer();
-	uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
+	void drawFrame(uint32_t imageIndex, const VkCommandBuffer& commandBuffer);
 
 	// Week 03
 	// Renderpass concept

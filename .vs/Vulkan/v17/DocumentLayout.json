@@ -7,8 +7,16 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\vulkanbase\\VulkanBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\labwork\\Week03.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\labwork\\Week03.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Mesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Mesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\labwork\\Week02.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\labwork\\Week02.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,19 +36,45 @@
         },
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Week03.cpp",
-              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\labwork\\Week03.cpp",
-              "RelativeDocumentMoniker": "Project\\labwork\\Week03.cpp",
-              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\labwork\\Week03.cpp",
-              "RelativeToolTip": "Project\\labwork\\Week03.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAABAAAA",
+              "DocumentIndex": 3,
+              "Title": "Week02.cpp",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\labwork\\Week02.cpp",
+              "RelativeDocumentMoniker": "Project\\labwork\\Week02.cpp",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\labwork\\Week02.cpp",
+              "RelativeToolTip": "Project\\labwork\\Week02.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-02-28T16:20:38.185Z",
+              "WhenOpened": "2024-03-17T11:30:28.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GP2Mesh.cpp",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Mesh.cpp",
+              "RelativeDocumentMoniker": "Project\\GP2Mesh.cpp",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Mesh.cpp",
+              "RelativeToolTip": "Project\\GP2Mesh.cpp",
+              "ViewState": "AQIAACUAAAAAAAAAAADgvzwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-17T11:03:46.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GP2Mesh.h",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Mesh.h",
+              "RelativeDocumentMoniker": "Project\\GP2Mesh.h",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Mesh.h",
+              "RelativeToolTip": "Project\\GP2Mesh.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-17T12:33:33.069Z",
               "EditorCaption": ""
             },
             {
@@ -51,7 +85,7 @@
               "RelativeDocumentMoniker": "Project\\vulkanbase\\VulkanBase.h",
               "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\vulkanbase\\VulkanBase.h",
               "RelativeToolTip": "Project\\vulkanbase\\VulkanBase.h",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAEIAAAAMAAAA",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAAHsAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-02-28T14:42:01.645Z",
               "EditorCaption": ""
