@@ -18,6 +18,8 @@ public:
 	VkCommandBuffer CreateCommandBuffer(const VkDevice& device);
 	void DestroyCommandPool(const VkDevice& device);
 
+	const VkCommandPool& GetCommandPool() const { return m_CommandPool; }
+
 private:
 	VkCommandPool m_CommandPool;
 };

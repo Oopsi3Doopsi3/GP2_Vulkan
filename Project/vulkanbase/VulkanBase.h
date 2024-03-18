@@ -83,7 +83,7 @@ private:
 		m_CommandPool.CreateCommandPool(findQueueFamilies(physicalDevice), device);
 		m_CommandBuffer.SetCommandBuffer(m_CommandPool.CreateCommandBuffer(device));
 
-		MakeCircle(m_CircleMesh, 1000, .8f);
+		MakeCircle(m_CircleMesh, 100, .8f);
 		MakeTriangle(m_TriangleMesh);
 
 		// week 06
@@ -174,7 +174,7 @@ private:
 			circleVertices[i].pos.x = static_cast<float>(cos(theta)) * radius;
 			circleVertices[i].pos.y = static_cast<float>(sin(theta)) * radius;
 		
-			circleVertices[i].color = glm::vec3{ 1.f,0.f,0.f };
+			circleVertices[i].color = glm::vec3{ 1.f,0.f,0.f};
 			theta += thetaIncrement;
 		}
 
