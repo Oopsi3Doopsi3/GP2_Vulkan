@@ -6,7 +6,7 @@
 
 #include "Vertex.h"
 
-class GP2DataBuffer;
+//class GP2DataBuffer;
 
 class GP2Mesh final
 {
@@ -21,8 +21,8 @@ public:
 private:
 	std::vector<Vertex> m_Vertices;
 	std::vector<uint16_t> m_Indices;
-	std::unique_ptr<GP2DataBuffer> m_VertexBuffer;
-	std::unique_ptr<GP2DataBuffer> m_IndexBuffer;
+	//std::unique_ptr<GP2DataBuffer> m_VertexBuffer;
+	//std::unique_ptr<GP2DataBuffer> m_IndexBuffer;
 
 	uint32_t FindMemoryType(VkPhysicalDevice physicalDevice, uint32_t typeFilter, VkMemoryPropertyFlags properties);
 };

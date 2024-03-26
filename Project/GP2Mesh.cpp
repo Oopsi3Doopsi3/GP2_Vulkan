@@ -8,23 +8,23 @@ void GP2Mesh::Initialize(VkPhysicalDevice physicalDevice, VkDevice device)
 {
 	VkDeviceSize bufferSize = sizeof(m_Vertices[0]) * m_Vertices.size();
 	//Making vertex and index buffer, but not sure how to pass the corresponding vector data
-	m_VertexBuffer = std::make_unique<GP2DataBuffer>(physicalDevice, device, VK_BUFFER_USAGE_TRANSFER_DST_BIT |
-		VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, bufferSize);
-
-	m_IndexBuffer = std::make_unique<GP2DataBuffer>(physicalDevice, device, VK_BUFFER_USAGE_TRANSFER_DST_BIT |
-		VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, bufferSize);
+	//m_VertexBuffer = std::make_unique<GP2DataBuffer>(physicalDevice, device, VK_BUFFER_USAGE_TRANSFER_DST_BIT |
+	//	VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, bufferSize);
+	//
+	//m_IndexBuffer = std::make_unique<GP2DataBuffer>(physicalDevice, device, VK_BUFFER_USAGE_TRANSFER_DST_BIT |
+	//	VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, bufferSize);
 }
 	 
 void GP2Mesh::DestroyMesh(VkDevice device)
 {
-	m_IndexBuffer->Destroy();
-	m_VertexBuffer->Destroy();
+	//m_IndexBuffer->Destroy();
+	//m_VertexBuffer->Destroy();
 }
 
 void GP2Mesh::Draw(VkCommandBuffer commandBuffer)
 {
-	m_VertexBuffer->BindAsVertexBuffer(commandBuffer);
-	m_IndexBuffer->BindAsIndexBuffer(commandBuffer);
+	//m_VertexBuffer->BindAsVertexBuffer(commandBuffer);
+	//m_IndexBuffer->BindAsIndexBuffer(commandBuffer);
 	vkCmdDrawIndexed(commandBuffer, static_cast<uint32_t>(m_Indices.size()), 1, 0, 0, 0);
 }
 
