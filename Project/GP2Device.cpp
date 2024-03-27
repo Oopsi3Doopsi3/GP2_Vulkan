@@ -13,7 +13,8 @@ namespace GP2
         VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
         VkDebugUtilsMessageTypeFlagsEXT messageType,
         const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-        void* pUserData) {
+        void* pUserData) 
+    {
         std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
 
         return VK_FALSE;
@@ -23,7 +24,8 @@ namespace GP2
         VkInstance instance,
         const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
         const VkAllocationCallbacks* pAllocator,
-        VkDebugUtilsMessengerEXT* pDebugMessenger) {
+        VkDebugUtilsMessengerEXT* pDebugMessenger) 
+    {
         auto func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(
             instance,
             "vkCreateDebugUtilsMessengerEXT");
@@ -38,7 +40,8 @@ namespace GP2
     void DestroyDebugUtilsMessengerEXT(
         VkInstance instance,
         VkDebugUtilsMessengerEXT debugMessenger,
-        const VkAllocationCallbacks* pAllocator) {
+        const VkAllocationCallbacks* pAllocator) 
+    {
         auto func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(
             instance,
             "vkDestroyDebugUtilsMessengerEXT");
@@ -94,14 +97,16 @@ namespace GP2
         createInfo.ppEnabledExtensionNames = extensions.data();
 
         VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo;
-        if (enableValidationLayers) {
+        if (enableValidationLayers) 
+        {
             createInfo.enabledLayerCount = static_cast<uint32_t>(m_ValidationLayers.size());
             createInfo.ppEnabledLayerNames = m_ValidationLayers.data();
 
             PopulateDebugMessengerCreateInfo(debugCreateInfo);
             createInfo.pNext = (VkDebugUtilsMessengerCreateInfoEXT*)&debugCreateInfo;
         }
-        else {
+        else 
+        {
             createInfo.enabledLayerCount = 0;
             createInfo.pNext = nullptr;
         }
@@ -124,8 +129,10 @@ namespace GP2
         std::vector<VkPhysicalDevice> devices(deviceCount);
         vkEnumeratePhysicalDevices(m_Instance, &deviceCount, devices.data());
 
-        for (const auto& device : devices) {
-            if (IsDeviceSuitable(device)) {
+        for (const auto& device : devices) 
+        {
+            if (IsDeviceSuitable(device)) 
+            {
                 m_PhysicalDevice = device;
                 break;
             }
@@ -147,7 +154,8 @@ namespace GP2
         std::set<uint32_t> uniqueQueueFamilies = { indices.graphicsFamily, indices.presentFamily };
 
         float queuePriority = 1.0f;
-        for (uint32_t queueFamily : uniqueQueueFamilies) {
+        for (uint32_t queueFamily : uniqueQueueFamilies) 
+        {
             VkDeviceQueueCreateInfo queueCreateInfo = {};
             queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
             queueCreateInfo.queueFamilyIndex = queueFamily;
@@ -171,7 +179,8 @@ namespace GP2
 
         // might not really be necessary anymore because device specific validation layers
         // have been deprecated
-        if (enableValidationLayers) {
+        if (enableValidationLayers) 
+        {
             createInfo.enabledLayerCount = static_cast<uint32_t>(m_ValidationLayers.size());
             createInfo.ppEnabledLayerNames = m_ValidationLayers.data();
         }
@@ -202,8 +211,7 @@ namespace GP2
         }
     }
 
-    void GP2Device::CreateSurface() { //m_Window.CreateWindowSurface(m_Instance, &m_Surface); 
-    }
+    void GP2Device::CreateSurface() { m_Window.CreateWindowSurface(m_Instance, &m_Surface); }
 
     bool GP2Device::IsDeviceSuitable(VkPhysicalDevice device) 
     {
@@ -212,7 +220,8 @@ namespace GP2
         bool extensionsSupported = CheckDeviceExtensionSupport(device);
 
         bool swapChainAdequate = false;
-        if (extensionsSupported) {
+        if (extensionsSupported) 
+        {
             SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(device);
             swapChainAdequate = !swapChainSupport.formats.empty() && !swapChainSupport.presentModes.empty();
         }
@@ -255,11 +264,14 @@ namespace GP2
         std::vector<VkLayerProperties> availableLayers(layerCount);
         vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
 
-        for (const char* layerName : m_ValidationLayers) {
+        for (const char* layerName : m_ValidationLayers) 
+        {
             bool layerFound = false;
 
-            for (const auto& layerProperties : availableLayers) {
-                if (strcmp(layerName, layerProperties.layerName) == 0) {
+            for (const auto& layerProperties : availableLayers) 
+            {
+                if (strcmp(layerName, layerProperties.layerName) == 0)
+                {
                     layerFound = true;
                     break;
                 }
@@ -297,14 +309,16 @@ namespace GP2
 
         std::cout << "available extensions:" << std::endl;
         std::unordered_set<std::string> available;
-        for (const auto& extension : extensions) {
+        for (const auto& extension : extensions) 
+        {
             std::cout << "\t" << extension.extensionName << std::endl;
             available.insert(extension.extensionName);
         }
 
         std::cout << "required extensions:" << std::endl;
         auto requiredExtensions = GetRequiredExtensions();
-        for (const auto& required : requiredExtensions) {
+        for (const auto& required : requiredExtensions)
+        {
             std::cout << "\t" << required << std::endl;
             if (available.find(required) == available.end()) {
                 throw std::runtime_error("Missing required glfw extension");
@@ -344,14 +358,17 @@ namespace GP2
         vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies.data());
 
         int i = 0;
-        for (const auto& queueFamily : queueFamilies) {
-            if (queueFamily.queueCount > 0 && queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+        for (const auto& queueFamily : queueFamilies) 
+        {
+            if (queueFamily.queueCount > 0 && queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) 
+            {
                 indices.graphicsFamily = i;
                 indices.graphicsFamilyHasValue = true;
             }
             VkBool32 presentSupport = false;
             vkGetPhysicalDeviceSurfaceSupportKHR(device, i, m_Surface, &presentSupport);
-            if (queueFamily.queueCount > 0 && presentSupport) {
+            if (queueFamily.queueCount > 0 && presentSupport) 
+            {
                 indices.presentFamily = i;
                 indices.presentFamilyHasValue = true;
             }
@@ -373,7 +390,8 @@ namespace GP2
         uint32_t formatCount;
         vkGetPhysicalDeviceSurfaceFormatsKHR(device, m_Surface, &formatCount, nullptr);
 
-        if (formatCount != 0) {
+        if (formatCount != 0) 
+        {
             details.formats.resize(formatCount);
             vkGetPhysicalDeviceSurfaceFormatsKHR(device, m_Surface, &formatCount, details.formats.data());
         }
@@ -381,7 +399,8 @@ namespace GP2
         uint32_t presentModeCount;
         vkGetPhysicalDeviceSurfacePresentModesKHR(device, m_Surface, &presentModeCount, nullptr);
 
-        if (presentModeCount != 0) {
+        if (presentModeCount != 0) 
+        {
             details.presentModes.resize(presentModeCount);
             vkGetPhysicalDeviceSurfacePresentModesKHR(
                 device,
@@ -394,15 +413,15 @@ namespace GP2
 
     VkFormat GP2Device::FindSupportedFormat(const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features) 
     {
-        for (VkFormat format : candidates) {
+        for (VkFormat format : candidates) 
+        {
             VkFormatProperties props;
             vkGetPhysicalDeviceFormatProperties(m_PhysicalDevice, format, &props);
 
             if (tiling == VK_IMAGE_TILING_LINEAR && (props.linearTilingFeatures & features) == features) {
                 return format;
             }
-            else if (
-                tiling == VK_IMAGE_TILING_OPTIMAL && (props.optimalTilingFeatures & features) == features) {
+            else if (tiling == VK_IMAGE_TILING_OPTIMAL && (props.optimalTilingFeatures & features) == features) {
                 return format;
             }
         }
@@ -413,7 +432,8 @@ namespace GP2
     {
         VkPhysicalDeviceMemoryProperties memProperties;
         vkGetPhysicalDeviceMemoryProperties(m_PhysicalDevice, &memProperties);
-        for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++) {
+        for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++)
+        {
             if ((typeFilter & (1 << i)) &&
                 (memProperties.memoryTypes[i].propertyFlags & properties) == properties) {
                 return i;

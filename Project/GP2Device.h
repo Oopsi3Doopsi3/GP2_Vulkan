@@ -6,15 +6,17 @@
 #include <string>
 #include <vector>
 
-namespace GP2 {
-
-    struct SwapChainSupportDetails {
+namespace GP2 
+{
+    struct SwapChainSupportDetails 
+    {
         VkSurfaceCapabilitiesKHR capabilities;
         std::vector<VkSurfaceFormatKHR> formats;
         std::vector<VkPresentModeKHR> presentModes;
     };
 
-    struct QueueFamilyIndices {
+    struct QueueFamilyIndices 
+    {
         uint32_t graphicsFamily;
         uint32_t presentFamily;
         bool graphicsFamilyHasValue = false;
@@ -22,7 +24,8 @@ namespace GP2 {
         bool IsComplete() { return graphicsFamilyHasValue && presentFamilyHasValue; }
     };
 
-    class GP2Device {
+    class GP2Device 
+    {
     public:
 #ifdef NDEBUG
         const bool enableValidationLayers = false;
@@ -48,8 +51,7 @@ namespace GP2 {
         SwapChainSupportDetails GetSwapChainSupport() { return QuerySwapChainSupport(m_PhysicalDevice); }
         uint32_t FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
         QueueFamilyIndices FindPhysicalQueueFamilies() { return FindQueueFamilies(m_PhysicalDevice); }
-        VkFormat FindSupportedFormat(
-            const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
+        VkFormat FindSupportedFormat(const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
 
         // Buffer Helper Functions
         void CreateBuffer(
@@ -104,5 +106,4 @@ namespace GP2 {
         const std::vector<const char*> m_ValidationLayers = { "VK_LAYER_KHRONOS_validation" };
         const std::vector<const char*> m_DeviceExtensions = { VK_KHR_SWAPCHAIN_EXTENSION_NAME };
     };
-
-}  // namespace lve
+}

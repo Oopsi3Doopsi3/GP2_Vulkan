@@ -32,10 +32,13 @@ namespace GP2
 		//void DrawFrame();
 		//
 		GP2Window m_GP2Window{WIDTH, HEIGHT, "I Vulkan't Anymore"};
-		GP2Pipeline m_GP2Pipeline{ 
+		GP2Device m_GP2Device{ m_GP2Window };
+		GP2Pipeline m_GP2Pipeline{
+			m_GP2Device,
 			"shaders/GP2SimpleShader.vert.spv",
-			"shaders/GP2SimpleShader.frag.spv" };
-		//GP2Device m_GP2Device{ m_GP2Window };
+			"shaders/GP2SimpleShader.frag.spv",
+			GP2Pipeline::DefaultPipelineConfigInfo(WIDTH, HEIGHT)};
+		
 		//GP2SwapChain m_GP2SwapChain{ m_GP2Device, m_GP2Window.GetExtent() };
 		//std::unique_ptr<GP2Pipeline> m_GP2Pipeline;
 		//VkPipelineLayout m_PipelineLayout;
