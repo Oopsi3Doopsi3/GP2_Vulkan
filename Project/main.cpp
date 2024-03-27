@@ -1,18 +1,22 @@
-#include "vulkanbase/VulkanBase.h"
+#include "GP2Base.h"
 
-int main() {
-	// DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1 = 1
-	//DISABLE_LAYER_NV_OPTIMUS_1 = 1
-	//_putenv_s("DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1", "1");
-	//_putenv_s("DISABLE_LAYER_NV_OPTIMUS_1", "1");
-	VulkanBase app;
+//std
+#include <cstdlib>
+#include <iostream>
+#include <stdexcept>
 
-	try {
-		app.run();
+int main() 
+{
+	GP2::GP2Base base;
+
+	try{
+		base.Run();
 	}
-	catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << "\n";
 		return EXIT_FAILURE;
 	}
+
 	return EXIT_SUCCESS;
 }
