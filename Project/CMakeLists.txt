@@ -29,7 +29,6 @@ set(SOURCES
     "vulkanbase/VulkanBase.h" 
     "vulkanbase/VulkanUtil.h"
     
-    #YT tutorial
     "GP2Window.cpp"
     "GP2Base.cpp"
     "GP2Pipeline.cpp"

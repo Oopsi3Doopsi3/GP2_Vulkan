@@ -32,19 +32,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 40,
+				"line" : 39,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 44,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 41,
+				"line" : 40,
 				"parent" : 0
 			},
 			{
@@ -59,7 +59,7 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 43,
+				"line" : 42,
 				"parent" : 0
 			}
 		]

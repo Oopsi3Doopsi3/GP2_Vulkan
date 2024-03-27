@@ -10,8 +10,14 @@ namespace GP2
 {
 	struct PipelineConfigInfo 
 	{
+		PipelineConfigInfo() = default;
+
+		PipelineConfigInfo(const PipelineConfigInfo&) = delete;
+		PipelineConfigInfo& operator=(const PipelineConfigInfo&) = delete;
+
 		VkViewport viewport;
 		VkRect2D scissor;
+		VkPipelineViewportStateCreateInfo viewportInfo;
 		VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo;
 		VkPipelineRasterizationStateCreateInfo rasterizationInfo;
 		VkPipelineMultisampleStateCreateInfo multisampleInfo;
@@ -38,7 +44,7 @@ namespace GP2
 		GP2Pipeline(const GP2Pipeline&) = delete;
 		void operator=(const GP2Pipeline&) = delete;
 
-		static PipelineConfigInfo DefaultPipelineConfigInfo(uint32_t width, uint32_t height);
+		static void DefaultPipelineConfigInfo(PipelineConfigInfo& configInfo, uint32_t width, uint32_t height);
 
 	private:
 		static std::vector<char> ReadFile(const std::string& filePath);

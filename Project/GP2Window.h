@@ -17,7 +17,7 @@ namespace GP2
 		GP2Window& operator=(const GP2Window&) = delete;
 		
 		bool ShouldClose() { return glfwWindowShouldClose(m_Window); }
-		//VkExtent2D GetExtent() const { return { static_cast<uint32_t>(m_Width), static_cast<uint32_t>(m_Height) }; }
+		VkExtent2D GetExtent() { return { static_cast<uint32_t>(m_Width), static_cast<uint32_t>(m_Height) }; }
 		
 		void CreateWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
