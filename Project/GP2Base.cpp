@@ -33,9 +33,9 @@ namespace GP2
 	void GP2Base::LoadModels()
 	{
 		std::vector<GP2Model::Vertex> vertices{
-			{{0.f,-.5f}},
-			{{.5f,.5f}},
-			{{-.5f,.5f}}
+			{{0.f,-.5f}, {1.f, 0.f, 0.f}},
+			{{.5f,.5f}, {0.f, 1.f, 0.f}},
+			{{-.5f,.5f}, {0.f, 0.f, 1.f}}
 		};
 
 		m_GP2Model = std::make_unique<GP2Model>(m_GP2Device, vertices);
