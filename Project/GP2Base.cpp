@@ -9,6 +9,7 @@ namespace GP2
 {
 	GP2Base::GP2Base()
 	{
+		LoadModels();
 		CreatePipelineLayout();
 		CreatePipeline();
 		CreateCommandBuffers();
@@ -29,6 +30,17 @@ namespace GP2
 		vkDeviceWaitIdle(m_GP2Device.Device());
 	}
 	
+	void GP2Base::LoadModels()
+	{
+		std::vector<GP2Model::Vertex> vertices{
+			{{0.f,-.5f}},
+			{{.5f,.5f}},
+			{{-.5f,.5f}}
+		};
+
+		m_GP2Model = std::make_unique<GP2Model>(m_GP2Device, vertices);
+	}
+
 	void GP2Base::CreatePipelineLayout()
 	{
 		VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
@@ -98,7 +110,8 @@ namespace GP2
 			vkCmdBeginRenderPass(m_CommandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			m_GP2Pipeline->Bind(m_CommandBuffers[i]);
-			vkCmdDraw(m_CommandBuffers[i], 3, 1, 0, 0);
+			m_GP2Model->Bind(m_CommandBuffers[i]);
+			m_GP2Model->Draw(m_CommandBuffers[i]);
 
 			vkCmdEndRenderPass(m_CommandBuffers[i]);
 			if (vkEndCommandBuffer(m_CommandBuffers[i]) != VK_SUCCESS) {

@@ -33,7 +33,8 @@ set(SOURCES
     "GP2Base.cpp"
     "GP2Pipeline.cpp"
     "GP2Device.cpp"
-    "GP2SwapChain.cpp")
+    "GP2SwapChain.cpp"
+    "GP2Model.cpp")
 
 # Create the executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${GLSL_SOURCE_FILES})

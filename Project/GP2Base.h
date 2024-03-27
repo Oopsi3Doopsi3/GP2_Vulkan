@@ -4,6 +4,7 @@
 #include "GP2Pipeline.h"
 #include "GP2Device.h"
 #include "GP2SwapChain.h"
+#include "GP2Model.h"
 
 //std
 #include <memory>
@@ -26,6 +27,7 @@ namespace GP2
 		void Run();
 
 	private:
+		void LoadModels();
 		void CreatePipelineLayout();
 		void CreatePipeline();
 		void CreateCommandBuffers();
@@ -37,6 +39,7 @@ namespace GP2
 		std::unique_ptr<GP2Pipeline> m_GP2Pipeline;
 		VkPipelineLayout m_PipelineLayout;
 		std::vector<VkCommandBuffer> m_CommandBuffers;
+		std::unique_ptr<GP2Model> m_GP2Model;
 	};
 }
 
