@@ -44,6 +44,7 @@ namespace GP2
 		GP2Pipeline(const GP2Pipeline&) = delete;
 		void operator=(const GP2Pipeline&) = delete;
 
+		void Bind(VkCommandBuffer commandBuffer);
 		static void DefaultPipelineConfigInfo(PipelineConfigInfo& configInfo, uint32_t width, uint32_t height);
 
 	private:
