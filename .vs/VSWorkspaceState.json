@@ -5,13 +5,6 @@
       "out\\install\\x64-Debug"
     ]
   },
-  "ExpandedNodes": [
-    "",
-    "\\Project",
-    "\\Project\\labwork",
-    "\\Project\\shaders",
-    "\\Project\\vulkanbase"
-  ],
-  "SelectedNode": "\\Project\\GP2Pipeline.h",
+  "ExpandedNodes": [],
   "PreviewInSolutionExplorer": false
 }

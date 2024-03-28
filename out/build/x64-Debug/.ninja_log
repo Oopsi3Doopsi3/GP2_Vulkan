@@ -16,6 +16,7 @@
 22	508	7323733052631164	_deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.obj	fefe235292383f6d
 57	455	7323733052450700	_deps/glfw-build/src/CMakeFiles/glfw.dir/wgl_context.c.obj	bd1d811174c615d7
 78	285	7323733050725123	_deps/glfw-build/examples/CMakeFiles/boing.dir/__/deps/glad_gl.c.obj	d9dd452a39006e01
+7	622	7333541837164745	Project/CMakeFiles/VulkanLab01.dir/GP2Renderer.cpp.obj	57acaad08b7d4b81
 41	1461	7331718776702384	Project/CMakeFiles/VulkanLab01.dir/GP2CommandPool.cpp.obj	f1dad854c7d6c675
 2492	3669	7323733084627689	Project/CMakeFiles/VulkanLab01.dir/vulkanbase/VulkanUtil.cpp.obj	59bc39c3d02218d0
 508	703	7323733054862161	_deps/glfw-build/examples/CMakeFiles/sharing.dir/sharing.c.obj	10cc8bdc0ac72ade
@@ -38,7 +39,7 @@
 543	690	7323733054377235	_deps/glfw-build/src/glfw3.lib	b756da77594aea49
 723	906	7323733056915499	_deps/glfw-build/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj	8615ee5c5ffa95f4
 1594	2121	7323733069015425	_deps/glfw-build/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.obj	38699c131730fd8e
-6	741	7333218376927485	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	ea58a2dc49018648
+6	660	7333538096001538	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	ea58a2dc49018648
 25	812	7333191321551984	Project/CMakeFiles/VulkanLab01.dir/GP2Window.cpp.obj	6107f890acdd9fbe
 25	1508	7331718777209599	Project/CMakeFiles/VulkanLab01.dir/labwork/Week02.cpp.obj	63aefa3bec8e7bd
 521	727	7323733055062691	_deps/glfw-build/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj	28ada2c53e6698da
@@ -51,7 +52,7 @@
 485	585	7323733053732275	_deps/glfw-build/examples/CMakeFiles/particles.dir/glfw.rc.res	a45008117dddaef0
 38	1610	7331718778230363	Project/CMakeFiles/VulkanLab01.dir/labwork/Week06.cpp.obj	bedf01487def7dda
 745	849	7323733056368762	_deps/glfw-build/tests/CMakeFiles/events.dir/__/deps/getopt.c.obj	1d6c2ad32a29fcec
-1045	1184	7333241810767088	Project/VulkanLab01.exe	5b4341b38a9c2977
+622	748	7333541838155551	Project/VulkanLab01.exe	74cfe5bb7dba8a2a
 71	165	7323733049528491	_deps/glfw-build/examples/CMakeFiles/boing.dir/glfw.rc.res	95f411a0f52509f0
 424	552	7323733053306360	_deps/glfw-build/examples/CMakeFiles/heightmap.dir/glfw.rc.res	4ad6fae476e827ab
 611	890	7323733056835296	_deps/glfw-build/examples/CMakeFiles/wave.dir/wave.c.obj	d09e50ec96659f28
@@ -148,29 +149,23 @@
 2484	3001	7323733077945358	Project/CMakeFiles/VulkanLab01.dir/GP2GraphicsPipeline.cpp.obj	eff62823c1a2829b
 13	57	0	clean	21a4d0550fd2b6b1
 224	1120	7325016659063410	Project/CMakeFiles/VulkanLab01.dir/GP2Camera.cpp.obj	ef980dc9b3ffb074
-109	1044	7333241809680988	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
-20	606	7333242256816126	build.ninja	177f3f0dcfcf4a1a
+10	665	7333538096057320	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
+20	606	7333543582176227	build.ninja	177f3f0dcfcf4a1a
 8	105	7333241800288085	Project/shaders/GP2SimpleShader.frag.spv	50f7e68a9d4b484d
 8	105	7333241800288085	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2SimpleShader.frag.spv	50f7e68a9d4b484d
 14	109	7333241800338218	Project/shaders/GP2SimpleShader.vert.spv	ac55d7a47f0a2f86
 14	109	7333241800338218	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2SimpleShader.vert.spv	ac55d7a47f0a2f86
 30	997	7333205352712587	Project/CMakeFiles/VulkanLab01.dir/GP2Pipeline.cpp.obj	c6cf5561daeffb85
 34	1123	7333191324670540	Project/CMakeFiles/VulkanLab01.dir/GP2Device.cpp.obj	350fcfe3e172f1b9
-44	890	7333213525028783	Project/CMakeFiles/VulkanLab01.dir/GP2SwapChain.cpp.obj	eaf27acd372d6fd1
+28	1067	7333537616868342	Project/CMakeFiles/VulkanLab01.dir/GP2SwapChain.cpp.obj	eaf27acd372d6fd1
 42	904	7333191322476353	Project/CMakeFiles/VulkanLab01.dir/GP2Model.cpp.obj	1863778955e72c7f
-46	983	7333258318383173	Project/CMakeFiles/VulkanLab01.dir/GP2GameObject.cpp.obj	6d75683d80676f5f
-42	999	7333258318536546	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
-37	1005	7333258318593427	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	ea58a2dc49018648
-1005	1178	7333258319943328	Project/VulkanLab01.exe	5dbe7327282073ad
-31	661	7333262656765396	Project/CMakeFiles/VulkanLab01.dir/GP2GameObject.cpp.obj	6d75683d80676f5f
-27	679	7333262656926958	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
-22	701	7333262657169799	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	ea58a2dc49018648
-701	908	7333262658811904	Project/VulkanLab01.exe	5dbe7327282073ad
 26	727	7333265216648166	Project/CMakeFiles/VulkanLab01.dir/GP2GameObject.cpp.obj	6d75683d80676f5f
-22	746	7333265216843302	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
-17	759	7333265216977082	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	ea58a2dc49018648
-759	901	7333265218090128	Project/VulkanLab01.exe	5dbe7327282073ad
-18	791	7333266479940877	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
-791	939	7333266481101803	Project/VulkanLab01.exe	5dbe7327282073ad
-19	673	7333267203588477	Project/CMakeFiles/VulkanLab01.dir/GP2SwapChain.cpp.obj	eaf27acd372d6fd1
-674	813	7333267204687334	Project/VulkanLab01.exe	5dbe7327282073ad
+16	914	7333548182491548	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	ea58a2dc49018648
+24	917	7333548182513374	Project/CMakeFiles/VulkanLab01.dir/SimpleRenderSystem.cpp.obj	89abbb92f6fee806
+20	922	7333548182565988	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
+923	1104	7333548183987171	Project/VulkanLab01.exe	60ce2bac93ab4b77
+7	955	7333555135946763	Project/CMakeFiles/VulkanLab01.dir/main.cpp.obj	ea58a2dc49018648
+17	957	7333555135946763	Project/CMakeFiles/VulkanLab01.dir/GP2Renderer.cpp.obj	57acaad08b7d4b81
+11	960	7333555135977691	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	a350de6260fa81ad
+14	980	7333555136223578	Project/CMakeFiles/VulkanLab01.dir/GP2SwapChain.cpp.obj	eaf27acd372d6fd1
+980	1136	7333555137449636	Project/VulkanLab01.exe	60ce2bac93ab4b77

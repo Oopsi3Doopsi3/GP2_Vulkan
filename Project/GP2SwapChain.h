@@ -40,6 +40,12 @@ namespace GP2
         VkResult AcquireNextImage(uint32_t* imageIndex);
         VkResult SubmitCommandBuffers(const VkCommandBuffer* buffers, uint32_t* imageIndex);
 
+        bool CompareSwapFormats(const GP2SwapChain& swapChain) const
+        {
+            return swapChain.m_SwapChainDepthFormat == m_SwapChainDepthFormat &&
+                   swapChain.m_SwapChainImageFormat == m_SwapChainImageFormat;
+        }
+
     private:
         void Init();
         void CreateSwapChain();
@@ -57,6 +63,7 @@ namespace GP2
         VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
 
         VkFormat m_SwapChainImageFormat;
+        VkFormat m_SwapChainDepthFormat;
         VkExtent2D m_SwapChainExtent;
 
         std::vector<VkFramebuffer> m_SwapChainFramebuffers;

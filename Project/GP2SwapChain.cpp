@@ -318,6 +318,7 @@ namespace GP2
     void GP2SwapChain::CreateDepthResources() 
     {
         VkFormat depthFormat = FindDepthFormat();
+        m_SwapChainDepthFormat = depthFormat;
         VkExtent2D swapChainExtent = GetSwapChainExtent();
 
         m_DepthImages.resize(ImageCount());
