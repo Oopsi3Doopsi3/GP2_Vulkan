@@ -18,14 +18,18 @@ namespace GP2
 		
 		bool ShouldClose() { return glfwWindowShouldClose(m_Window); }
 		VkExtent2D GetExtent() { return { static_cast<uint32_t>(m_Width), static_cast<uint32_t>(m_Height) }; }
+		bool WasWindowResized() const { return m_FramebufferResized; }
+		void ResetWindowResizedFlag() { m_FramebufferResized = false; }
 		
 		void CreateWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
 	private:
+		static void FramebufferResizeCallback(GLFWwindow* window, int width, int height);
 		void InitWindow();
 
-		const int m_Width;
-		const int m_Height;
+		int m_Width;
+		int m_Height;
+		bool m_FramebufferResized = false;
 
 		std::string m_WindowName;
 		GLFWwindow* m_Window;

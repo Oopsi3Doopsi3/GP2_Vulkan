@@ -8,6 +8,7 @@
 //std
 #include <string>
 #include <vector>
+#include <memory>
 
 namespace GP2 
 {
@@ -16,10 +17,11 @@ namespace GP2
         static constexpr int MAX_FRAMES_IN_FLIGHT = 2;
 
         GP2SwapChain(GP2Device& deviceRef, VkExtent2D windowExtent);
+        GP2SwapChain(GP2Device& deviceRef, VkExtent2D windowExtent, std::shared_ptr<GP2SwapChain> previous);
         ~GP2SwapChain();
 
         GP2SwapChain(const GP2SwapChain&) = delete;
-        void operator=(const GP2SwapChain&) = delete;
+        GP2SwapChain& operator=(const GP2SwapChain&) = delete;
 
         VkFramebuffer GetFrameBuffer(int index) { return m_SwapChainFramebuffers[index]; }
         VkRenderPass GetRenderPass() { return m_RenderPass; }
@@ -39,6 +41,7 @@ namespace GP2
         VkResult SubmitCommandBuffers(const VkCommandBuffer* buffers, uint32_t* imageIndex);
 
     private:
+        void Init();
         void CreateSwapChain();
         void CreateImageViews();
         void CreateDepthResources();
@@ -69,6 +72,7 @@ namespace GP2
         VkExtent2D m_WindowExtent;
 
         VkSwapchainKHR m_SwapChain;
+        std::shared_ptr<GP2SwapChain> m_OldSwapChain;
 
         std::vector<VkSemaphore> m_ImageAvailableSemaphores;
         std::vector<VkSemaphore> m_RenderFinishedSemaphores;

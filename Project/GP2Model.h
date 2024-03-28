@@ -29,7 +29,7 @@ namespace GP2
 		~GP2Model();
 
 		GP2Model(const GP2Model&) = delete;
-		void operator=(const GP2Model&) = delete;
+		GP2Model& operator=(const GP2Model&) = delete;
 
 		void Bind(VkCommandBuffer commandBuffer);
 		void Draw(VkCommandBuffer commandBuffer);

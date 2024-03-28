@@ -38,7 +38,7 @@ namespace GP2
 
         // Not copyable or movable
         GP2Device(const GP2Device&) = delete;
-        void operator=(const GP2Device&) = delete;
+        GP2Device& operator=(const GP2Device&) = delete;
         GP2Device(GP2Device&&) = delete;
         GP2Device& operator=(GP2Device&&) = delete;
 

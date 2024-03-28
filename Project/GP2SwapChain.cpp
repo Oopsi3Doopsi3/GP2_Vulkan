@@ -15,6 +15,22 @@ namespace GP2
         m_Device{ deviceRef }, 
         m_WindowExtent{ extent } 
     {
+        Init();
+    }
+
+    GP2SwapChain::GP2SwapChain(GP2Device& deviceRef, VkExtent2D extent, std::shared_ptr<GP2SwapChain> previous) :
+        m_Device{ deviceRef },
+        m_WindowExtent{ extent },
+        m_OldSwapChain{ previous }
+    {
+        Init();
+
+        //Clean up old swap chain
+        m_OldSwapChain = nullptr;
+    }
+
+    void GP2SwapChain::Init()
+    {
         CreateSwapChain();
         CreateImageViews();
         CreateRenderPass();
@@ -171,7 +187,7 @@ namespace GP2
         createInfo.presentMode = presentMode;
         createInfo.clipped = VK_TRUE;
 
-        createInfo.oldSwapchain = VK_NULL_HANDLE;
+        createInfo.oldSwapchain = m_OldSwapChain == nullptr ? VK_NULL_HANDLE : m_OldSwapChain->m_SwapChain;
 
         if (vkCreateSwapchainKHR(m_Device.Device(), &createInfo, nullptr, &m_SwapChain) != VK_SUCCESS) {
             throw std::runtime_error("failed to create swap chain!");
@@ -377,7 +393,7 @@ namespace GP2
         const std::vector<VkSurfaceFormatKHR>& availableFormats) 
     {
         for (const auto& availableFormat : availableFormats) {
-            if (availableFormat.format == VK_FORMAT_B8G8R8A8_UNORM &&
+            if (availableFormat.format == VK_FORMAT_B8G8R8A8_SRGB &&
                 availableFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
                 return availableFormat;
             }

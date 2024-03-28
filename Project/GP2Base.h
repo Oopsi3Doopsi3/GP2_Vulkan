@@ -22,7 +22,7 @@ namespace GP2
 		~GP2Base();
 		
 		GP2Base(const GP2Base&) = delete;
-		void operator=(const GP2Base&) = delete;
+		GP2Base& operator=(const GP2Base&) = delete;
 		
 		void Run();
 
@@ -31,11 +31,14 @@ namespace GP2
 		void CreatePipelineLayout();
 		void CreatePipeline();
 		void CreateCommandBuffers();
+		void FreeCommandBuffers();
 		void DrawFrame();
+		void RecreateSwapChain();
+		void RecordCommandBuffer(int imageIndex);
 		
 		GP2Window m_GP2Window{WIDTH, HEIGHT, "I Vulkan't Anymore"};
 		GP2Device m_GP2Device{ m_GP2Window };
-		GP2SwapChain m_GP2SwapChain{ m_GP2Device, m_GP2Window.GetExtent() };
+		std::unique_ptr<GP2SwapChain> m_GP2SwapChain;
 		std::unique_ptr<GP2Pipeline> m_GP2Pipeline;
 		VkPipelineLayout m_PipelineLayout;
 		std::vector<VkCommandBuffer> m_CommandBuffers;

@@ -11,7 +11,7 @@ namespace GP2
 	{
 		LoadModels();
 		CreatePipelineLayout();
-		CreatePipeline();
+		RecreateSwapChain();
 		CreateCommandBuffers();
 	}
 	
@@ -56,9 +56,12 @@ namespace GP2
 	
 	void GP2Base::CreatePipeline()
 	{
+		assert(m_GP2SwapChain != nullptr && "Cannot create pipleine before swap chain");
+		assert(m_PipelineLayout != nullptr && "Cannot create pipleine before pipeline layout");
+
 		PipelineConfigInfo pipelineConfig{};
-		GP2Pipeline::DefaultPipelineConfigInfo(pipelineConfig, m_GP2SwapChain.Width(), m_GP2SwapChain.Height());
-		pipelineConfig.renderPass = m_GP2SwapChain.GetRenderPass();
+		GP2Pipeline::DefaultPipelineConfigInfo(pipelineConfig);
+		pipelineConfig.renderPass = m_GP2SwapChain->GetRenderPass();
 		pipelineConfig.pipelineLayout = m_PipelineLayout;
 	
 		m_GP2Pipeline = std::make_unique<GP2Pipeline>(
@@ -68,10 +71,38 @@ namespace GP2
 			pipelineConfig
 		);
 	}
+
+	void GP2Base::RecreateSwapChain()
+	{
+		auto extent = m_GP2Window.GetExtent();
+		while (extent.width == 0 || extent.height == 0)
+		{
+			extent = m_GP2Window.GetExtent();
+			glfwWaitEvents();
+		}
+
+		vkDeviceWaitIdle(m_GP2Device.Device());
+
+		if(m_GP2SwapChain == nullptr){
+			m_GP2SwapChain = std::make_unique<GP2SwapChain>(m_GP2Device, extent);
+		}
+		else {
+			m_GP2SwapChain = std::make_unique<GP2SwapChain>(m_GP2Device, extent, std::move(m_GP2SwapChain));
+			if (m_GP2SwapChain->ImageCount() != m_CommandBuffers.size())
+			{
+				FreeCommandBuffers();
+				CreateCommandBuffers();
+			}
+		}
+
+
+		//If render pass compatible do nothing
+		CreatePipeline();
+	}
 	
 	void GP2Base::CreateCommandBuffers()
 	{
-		m_CommandBuffers.resize(m_GP2SwapChain.ImageCount());
+		m_CommandBuffers.resize(m_GP2SwapChain->ImageCount());
 
 		VkCommandBufferAllocateInfo allocInfo{};
 		allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
@@ -82,54 +113,85 @@ namespace GP2
 		if (vkAllocateCommandBuffers(m_GP2Device.Device(), &allocInfo, m_CommandBuffers.data()) != VK_SUCCESS) {
 			throw std::runtime_error("Failed to allocate command buffers");
 		}
+	}
 
-		for (int i{}; i < m_CommandBuffers.size(); ++i)
-		{
-			VkCommandBufferBeginInfo beginInfo{};
-			beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+	void GP2Base::FreeCommandBuffers()
+	{
+		vkFreeCommandBuffers(m_GP2Device.Device(), m_GP2Device.GetCommandPool(), static_cast<uint32_t>(m_CommandBuffers.size()), m_CommandBuffers.data());
+		m_CommandBuffers.clear();
+	}
 
-			if (vkBeginCommandBuffer(m_CommandBuffers[i], &beginInfo) != VK_SUCCESS) {
-				throw std::runtime_error("Failed to begin recording command buffer");
-			}
+	void GP2Base::RecordCommandBuffer(int imageIndex)
+	{
+		VkCommandBufferBeginInfo beginInfo{};
+		beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 
-			VkRenderPassBeginInfo renderPassInfo{};
-			renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-			renderPassInfo.renderPass = m_GP2SwapChain.GetRenderPass();
-			renderPassInfo.framebuffer = m_GP2SwapChain.GetFrameBuffer(i);
+		if (vkBeginCommandBuffer(m_CommandBuffers[imageIndex], &beginInfo) != VK_SUCCESS) {
+			throw std::runtime_error("Failed to begin recording command buffer");
+		}
 
-			renderPassInfo.renderArea.offset = { 0,0 };
-			renderPassInfo.renderArea.extent = m_GP2SwapChain.GetSwapChainExtent();
+		VkRenderPassBeginInfo renderPassInfo{};
+		renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+		renderPassInfo.renderPass = m_GP2SwapChain->GetRenderPass();
+		renderPassInfo.framebuffer = m_GP2SwapChain->GetFrameBuffer(imageIndex);
 
-			std::array<VkClearValue, 2> clearValues{};
-			clearValues[0].color = { .1f,.1f,.1f,1.f };
-			clearValues[1].depthStencil = { 1.f, 0 };
+		renderPassInfo.renderArea.offset = { 0,0 };
+		renderPassInfo.renderArea.extent = m_GP2SwapChain->GetSwapChainExtent();
 
-			renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
-			renderPassInfo.pClearValues = clearValues.data();
+		std::array<VkClearValue, 2> clearValues{};
+		clearValues[0].color = { .1f,.1f,.1f,1.f };
+		clearValues[1].depthStencil = { 1.f, 0 };
 
-			vkCmdBeginRenderPass(m_CommandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
+		renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
+		renderPassInfo.pClearValues = clearValues.data();
 
-			m_GP2Pipeline->Bind(m_CommandBuffers[i]);
-			m_GP2Model->Bind(m_CommandBuffers[i]);
-			m_GP2Model->Draw(m_CommandBuffers[i]);
+		vkCmdBeginRenderPass(m_CommandBuffers[imageIndex], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-			vkCmdEndRenderPass(m_CommandBuffers[i]);
-			if (vkEndCommandBuffer(m_CommandBuffers[i]) != VK_SUCCESS) {
-				throw std::runtime_error("Failed to record command buffer");
-			}
+		VkViewport viewport{};
+		viewport.x = 0.f;
+		viewport.y = 0.f;
+		viewport.width = static_cast<float>(m_GP2SwapChain->GetSwapChainExtent().width);
+		viewport.height = static_cast<float>(m_GP2SwapChain->GetSwapChainExtent().height);
+		viewport.minDepth = 0.f;
+		viewport.maxDepth = 1.f;
+		VkRect2D scissor{ {0,0}, m_GP2SwapChain->GetSwapChainExtent() };
+		vkCmdSetViewport(m_CommandBuffers[imageIndex], 0, 1, &viewport);
+		vkCmdSetScissor(m_CommandBuffers[imageIndex], 0, 1, &scissor);
+		
+		m_GP2Pipeline->Bind(m_CommandBuffers[imageIndex]);
+		m_GP2Model->Bind(m_CommandBuffers[imageIndex]);
+		m_GP2Model->Draw(m_CommandBuffers[imageIndex]);
+
+		vkCmdEndRenderPass(m_CommandBuffers[imageIndex]);
+		if (vkEndCommandBuffer(m_CommandBuffers[imageIndex]) != VK_SUCCESS) {
+			throw std::runtime_error("Failed to record command buffer");
 		}
 	}
 	
 	void GP2Base::DrawFrame()
 	{
 		uint32_t imageIndex;
-		auto result = m_GP2SwapChain.AcquireNextImage(&imageIndex);
+		auto result = m_GP2SwapChain->AcquireNextImage(&imageIndex);
+
+		if (result == VK_ERROR_OUT_OF_DATE_KHR)
+		{
+			RecreateSwapChain();
+			return;
+		}
 
 		if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
 			throw std::runtime_error("Failed to acquire swap chain image");
 		}
 
-		result = m_GP2SwapChain.SubmitCommandBuffers(&m_CommandBuffers[imageIndex], &imageIndex);
+		RecordCommandBuffer(imageIndex);
+		result = m_GP2SwapChain->SubmitCommandBuffers(&m_CommandBuffers[imageIndex], &imageIndex);
+		if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || m_GP2Window.WasWindowResized())
+		{
+			m_GP2Window.ResetWindowResizedFlag();
+			RecreateSwapChain();
+			return;
+		}
+
 		if (result != VK_SUCCESS) {
 			throw std::runtime_error("Failed to present swap chain image");
 		}
