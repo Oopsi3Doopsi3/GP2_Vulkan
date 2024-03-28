@@ -1,3 +1,6 @@
+//Made with the help of "Brendan Galea"'s "Vulkan (c++) Game Engine Tutorial" series
+//https://www.youtube.com/playlist?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR
+
 #include "GP2Base.h"
 
 //std
