@@ -4,6 +4,7 @@
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 #include<glm/glm.hpp>
+#include <glm/gtc/constants.hpp>
 
 //std
 #include <stdexcept>
@@ -14,13 +15,14 @@ namespace GP2
 {
 	struct SimplePushConstantData
 	{
+		glm::mat2 transform{ 1.f };
 		glm::vec2 offset;
 		alignas(16) glm::vec3 color;
 	};
 
 	GP2Base::GP2Base()
 	{
-		LoadModels();
+		LoadGameObjects();
 		CreatePipelineLayout();
 		RecreateSwapChain();
 		CreateCommandBuffers();
@@ -41,7 +43,7 @@ namespace GP2
 		vkDeviceWaitIdle(m_GP2Device.Device());
 	}
 	
-	void GP2Base::LoadModels()
+	void GP2Base::LoadGameObjects()
 	{
 		std::vector<GP2Model::Vertex> vertices{
 			{{0.f,-.5f}, {1.f, 0.f, 0.f}},
@@ -49,7 +51,16 @@ namespace GP2
 			{{-.5f,.5f}, {0.f, 0.f, 1.f}}
 		};
 
-		m_GP2Model = std::make_unique<GP2Model>(m_GP2Device, vertices);
+		auto m_GP2Model = std::make_shared<GP2Model>(m_GP2Device, vertices);
+
+		auto triangle = GP2GameObject::CreateGameObject();
+		triangle.m_Model = m_GP2Model;
+		triangle.m_Color = { .1f,.8f,.1f };
+		triangle.m_Transform2d.translation.x = .2f;
+		triangle.m_Transform2d.scale = { 2.f, .5f };
+		triangle.m_Transform2d.rotation = .25 * glm::two_pi<float>();
+
+		m_GameObjects.push_back(std::move(triangle));
 	}
 
 	void GP2Base::CreatePipelineLayout()
@@ -138,9 +149,6 @@ namespace GP2
 
 	void GP2Base::RecordCommandBuffer(int imageIndex)
 	{
-		static int frame = 0;
-		frame = (frame + 1) % 1000;
-
 		VkCommandBufferBeginInfo beginInfo{};
 		beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 
@@ -176,28 +184,36 @@ namespace GP2
 		vkCmdSetViewport(m_CommandBuffers[imageIndex], 0, 1, &viewport);
 		vkCmdSetScissor(m_CommandBuffers[imageIndex], 0, 1, &scissor);
 		
-		m_GP2Pipeline->Bind(m_CommandBuffers[imageIndex]);
-		m_GP2Model->Bind(m_CommandBuffers[imageIndex]);
+		RenderGameObject(m_CommandBuffers[imageIndex]);
 
-		for (int i{}; i < 4; ++i)
+		vkCmdEndRenderPass(m_CommandBuffers[imageIndex]);
+		if (vkEndCommandBuffer(m_CommandBuffers[imageIndex]) != VK_SUCCESS) {
+			throw std::runtime_error("Failed to record command buffer");
+		}
+	}
+
+	void GP2Base::RenderGameObject(VkCommandBuffer commandBuffer)
+	{
+		m_GP2Pipeline->Bind(commandBuffer);
+
+		for (auto& obj : m_GameObjects)
 		{
+			obj.m_Transform2d.rotation = glm::mod(obj.m_Transform2d.rotation + .01f, glm::two_pi<float>());
+
 			SimplePushConstantData push{};
-			push.offset = { -0.5f + frame * 0.002f, -.4f + i * .25f };
-			push.color = { 0.f,0.f,.2f + .2f * i };
+			push.offset = obj.m_Transform2d.translation;
+			push.color = obj.m_Color;
+			push.transform = obj.m_Transform2d.mat2();
 
 			vkCmdPushConstants(
-				m_CommandBuffers[imageIndex],
+				commandBuffer,
 				m_PipelineLayout,
 				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
 				0,
 				sizeof(SimplePushConstantData),
 				&push);
-			m_GP2Model->Draw(m_CommandBuffers[imageIndex]);
-		}
-
-		vkCmdEndRenderPass(m_CommandBuffers[imageIndex]);
-		if (vkEndCommandBuffer(m_CommandBuffers[imageIndex]) != VK_SUCCESS) {
-			throw std::runtime_error("Failed to record command buffer");
+			obj.m_Model->Bind(commandBuffer);
+			obj.m_Model->Draw(commandBuffer);
 		}
 	}
 	

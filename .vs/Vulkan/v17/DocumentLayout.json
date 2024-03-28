@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Graphics Programming 2\\Vulkan\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2SwapChain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2SwapChain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Base.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\shaders\\GP2SimpleShader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\shaders\\GP2SimpleShader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -21,6 +21,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\shaders\\GP2SimpleShader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\shaders\\GP2SimpleShader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,39 +54,91 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "GP2SwapChain.cpp",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2SwapChain.cpp",
+              "RelativeDocumentMoniker": "Project\\GP2SwapChain.cpp",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2SwapChain.cpp",
+              "RelativeToolTip": "Project\\GP2SwapChain.cpp",
+              "ViewState": "AQIAAIkBAAAAAAAAAAAAAJsBAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-28T10:58:08.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GP2GameObject.cpp",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2GameObject.cpp",
+              "RelativeDocumentMoniker": "Project\\GP2GameObject.cpp",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2GameObject.cpp",
+              "RelativeToolTip": "Project\\GP2GameObject.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-28T10:17:10.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GP2GameObject.h",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2GameObject.h",
+              "RelativeDocumentMoniker": "Project\\GP2GameObject.h",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2GameObject.h",
+              "RelativeToolTip": "Project\\GP2GameObject.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-28T10:17:09.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CMakeLists.txt",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\CMakeLists.txt",
+              "RelativeDocumentMoniker": "Project\\CMakeLists.txt",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\CMakeLists.txt",
+              "RelativeToolTip": "Project\\CMakeLists.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-03-28T10:16:53.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "GP2SimpleShader.frag",
               "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.frag",
               "RelativeDocumentMoniker": "Project\\shaders\\GP2SimpleShader.frag",
               "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.frag",
               "RelativeToolTip": "Project\\shaders\\GP2SimpleShader.frag",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-03-28T09:48:17.006Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "GP2SimpleShader.vert",
               "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.vert",
               "RelativeDocumentMoniker": "Project\\shaders\\GP2SimpleShader.vert",
               "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\shaders\\GP2SimpleShader.vert",
               "RelativeToolTip": "Project\\shaders\\GP2SimpleShader.vert",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAHAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-03-28T09:46:40.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GP2Base.cpp",
               "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.cpp",
               "RelativeDocumentMoniker": "Project\\GP2Base.cpp",
               "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.cpp",
               "RelativeToolTip": "Project\\GP2Base.cpp",
-              "ViewState": "AQIAAJ8AAAAAAAAAAAAAALsAAAAWAAAA",
+              "ViewState": "AQIAALEAAAAAAAAAAAAAAMgAAABiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-28T09:40:08.798Z",
               "EditorCaption": ""
@@ -83,7 +151,7 @@
               "RelativeDocumentMoniker": "Project\\GP2Base.h",
               "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.h",
               "RelativeToolTip": "Project\\GP2Base.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACYAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-28T09:39:59.519Z",
               "EditorCaption": ""
@@ -96,7 +164,7 @@
               "RelativeDocumentMoniker": "Project\\GP2Model.h",
               "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Model.h",
               "RelativeToolTip": "Project\\GP2Model.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-28T09:39:49.872Z",
               "EditorCaption": ""

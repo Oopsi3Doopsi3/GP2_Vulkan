@@ -5,6 +5,7 @@
 #include "GP2Device.h"
 #include "GP2SwapChain.h"
 #include "GP2Model.h"
+#include "GP2GameObject.h"
 
 //std
 #include <memory>
@@ -27,7 +28,7 @@ namespace GP2
 		void Run();
 
 	private:
-		void LoadModels();
+		void LoadGameObjects();
 		void CreatePipelineLayout();
 		void CreatePipeline();
 		void CreateCommandBuffers();
@@ -35,6 +36,7 @@ namespace GP2
 		void DrawFrame();
 		void RecreateSwapChain();
 		void RecordCommandBuffer(int imageIndex);
+		void RenderGameObject(VkCommandBuffer commandBuffer);
 		
 		GP2Window m_GP2Window{WIDTH, HEIGHT, "I Vulkan't Anymore"};
 		GP2Device m_GP2Device{ m_GP2Window };
@@ -42,7 +44,7 @@ namespace GP2
 		std::unique_ptr<GP2Pipeline> m_GP2Pipeline;
 		VkPipelineLayout m_PipelineLayout;
 		std::vector<VkCommandBuffer> m_CommandBuffers;
-		std::unique_ptr<GP2Model> m_GP2Model;
+		std::vector<GP2GameObject> m_GameObjects;
 	};
 }
 
