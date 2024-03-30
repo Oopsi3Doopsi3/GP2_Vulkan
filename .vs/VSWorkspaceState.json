@@ -5,6 +5,11 @@
       "out\\install\\x64-Debug"
     ]
   },
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\Project",
+    "\\Project\\shaders"
+  ],
+  "SelectedNode": "\\Project\\GP2SwapChain.cpp",
   "PreviewInSolutionExplorer": false
 }

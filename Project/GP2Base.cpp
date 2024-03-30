@@ -43,24 +43,74 @@ namespace GP2
 
 		vkDeviceWaitIdle(m_GP2Device.Device());
 	}
+
+	std::unique_ptr<GP2Model> GP2Base::createCubeModel(GP2Device& device, glm::vec3 offset)
+	{
+		std::vector<GP2Model::Vertex> vertices{
+
+			// left face (white)
+			{{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+			{{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
+			{{-.5f, -.5f, .5f}, {.9f, .9f, .9f}},
+			{{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+			{{-.5f, .5f, -.5f}, {.9f, .9f, .9f}},
+			{{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
+
+			// right face (yellow)
+			{{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+			{{.5f, .5f, .5f}, {.8f, .8f, .1f}},
+			{{.5f, -.5f, .5f}, {.8f, .8f, .1f}},
+			{{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+			{{.5f, .5f, -.5f}, {.8f, .8f, .1f}},
+			{{.5f, .5f, .5f}, {.8f, .8f, .1f}},
+
+			// top face (orange, remember y axis points down)
+			{{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+			{{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+			{{-.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+			{{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+			{{.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+			{{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+
+			// bottom face (red)
+			{{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+			{{.5f, .5f, .5f}, {.8f, .1f, .1f}},
+			{{-.5f, .5f, .5f}, {.8f, .1f, .1f}},
+			{{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+			{{.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+			{{.5f, .5f, .5f}, {.8f, .1f, .1f}},
+
+			// nose face (blue)
+			{{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+			{{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+			{{-.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+			{{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+			{{.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+			{{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+
+			// tail face (green)
+			{{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+			{{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+			{{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+			{{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+			{{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+			{{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+
+		};
+		for (auto& v : vertices) {
+			v.position += offset;
+		}
+		return std::make_unique<GP2Model>(device, vertices);
+	}
 	
 	void GP2Base::LoadGameObjects()
 	{
-		std::vector<GP2Model::Vertex> vertices{
-			{{0.f,-.5f}, {1.f, 0.f, 0.f}},
-			{{.5f,.5f}, {0.f, 1.f, 0.f}},
-			{{-.5f,.5f}, {0.f, 0.f, 1.f}}
-		};
+		std::shared_ptr<GP2Model> gp2Model = createCubeModel(m_GP2Device, { 0.f,0.f,0.f });
 
-		auto m_GP2Model = std::make_shared<GP2Model>(m_GP2Device, vertices);
-
-		auto triangle = GP2GameObject::CreateGameObject();
-		triangle.m_Model = m_GP2Model;
-		triangle.m_Color = { .1f,.8f,.1f };
-		triangle.m_Transform2d.translation.x = .2f;
-		triangle.m_Transform2d.scale = { 2.f, .5f };
-		triangle.m_Transform2d.rotation = .25 * glm::two_pi<float>();
-
-		m_GameObjects.push_back(std::move(triangle));
+		auto cube = GP2GameObject::CreateGameObject();
+		cube.m_Model = gp2Model;
+		cube.m_Transform.translation = { 0.f,0.f,.5f };
+		cube.m_Transform.scale = { .5f,.5f,.5f };
+		m_GameObjects.push_back(std::move(cube));
 	}
 }

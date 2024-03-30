@@ -27,6 +27,7 @@ namespace GP2
 		void Run();
 
 	private:
+		std::unique_ptr<GP2Model> createCubeModel(GP2Device& device, glm::vec3 offset);
 		void LoadGameObjects();
 		
 		GP2Window m_GP2Window{WIDTH, HEIGHT, "I Vulkan't Anymore"};

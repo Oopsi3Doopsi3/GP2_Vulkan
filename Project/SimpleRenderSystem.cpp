@@ -15,8 +15,7 @@ namespace GP2
 {
 	struct SimplePushConstantData
 	{
-		glm::mat2 transform{ 1.f };
-		glm::vec2 offset;
+		glm::mat4 transform{ 1.f };
 		alignas(16) glm::vec3 color;
 	};
 
@@ -73,12 +72,12 @@ namespace GP2
 
 		for (auto& obj : gameobjects)
 		{
-			obj.m_Transform2d.rotation = glm::mod(obj.m_Transform2d.rotation + .01f, glm::two_pi<float>());
+			obj.m_Transform.rotation.y = glm::mod(obj.m_Transform.rotation.y + .01f, glm::two_pi<float>());
+			obj.m_Transform.rotation.x = glm::mod(obj.m_Transform.rotation.x + .005f, glm::two_pi<float>());
 
 			SimplePushConstantData push{};
-			push.offset = obj.m_Transform2d.translation;
 			push.color = obj.m_Color;
-			push.transform = obj.m_Transform2d.mat2();
+			push.transform = obj.m_Transform.mat4();
 
 			vkCmdPushConstants(
 				commandBuffer,
