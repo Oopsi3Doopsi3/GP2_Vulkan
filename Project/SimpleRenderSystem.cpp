@@ -70,6 +70,8 @@ namespace GP2
 	{
 		m_GP2Pipeline->Bind(commandBuffer);
 
+		auto projectionView = camera.GetProjection() * camera.GetView();
+
 		for (auto& obj : gameobjects)
 		{
 			obj.m_Transform.rotation.y = glm::mod(obj.m_Transform.rotation.y + .01f, glm::two_pi<float>());
@@ -77,7 +79,7 @@ namespace GP2
 
 			SimplePushConstantData push{};
 			push.color = obj.m_Color;
-			push.transform = camera.GetProjection() * obj.m_Transform.mat4();
+			push.transform = projectionView * obj.m_Transform.mat4();
 
 			vkCmdPushConstants(
 				commandBuffer,
