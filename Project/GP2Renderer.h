@@ -22,6 +22,7 @@ namespace GP2
 		GP2Renderer& operator=(const GP2Renderer&) = delete;
 
 		VkRenderPass GetSwapChainRenderPass() const { return m_GP2SwapChain->GetRenderPass(); }
+		float GetAspectRatio() const { return m_GP2SwapChain->ExtentAspectRatio(); }
 		bool IsFrameInProgress() const { return m_IsFrameStarted; }
 		VkCommandBuffer GetCurrentCommandBuffer() const 
 		{ 

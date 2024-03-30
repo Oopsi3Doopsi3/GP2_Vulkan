@@ -37,7 +37,8 @@ set(SOURCES
     "GP2Model.cpp"
     "GP2GameObject.cpp"
     "GP2Renderer.cpp"
-    "SimpleRenderSystem.cpp")
+    "SimpleRenderSystem.cpp"
+    "GP2Camera.cpp")
 
 # Create the executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${GLSL_SOURCE_FILES})

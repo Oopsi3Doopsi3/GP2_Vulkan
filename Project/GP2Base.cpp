@@ -1,6 +1,7 @@
 #include "GP2Base.h"
 
 #include "SimpleRenderSystem.h"
+#include "GP2Camera.h"
 
 //libs
 #define GLM_FORCE_RADIANS
@@ -28,14 +29,19 @@ namespace GP2
 	void GP2Base::Run()
 	{
 		SimpleRenderSystem simpleRenderSystem(m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass());
+		GP2Camera camera{};
 
 		while (!m_GP2Window.ShouldClose()){
 			glfwPollEvents();
+
+			float aspect = m_GP2Renderer.GetAspectRatio();
+			//camera.SetOrthographicProjection(-aspect, aspect, -1, 1, -1, 1);
+			camera.SetPerspectiveProjection(glm::radians(50.f), aspect, .1f, 10.f);
 			
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
 			{
 				m_GP2Renderer.BeginSwapChainRenderPass(commandBuffer);
-				simpleRenderSystem.RenderGameObjects(commandBuffer, m_GameObjects);
+				simpleRenderSystem.RenderGameObjects(commandBuffer, m_GameObjects, camera);
 				m_GP2Renderer.EndSwapChainRenderPass(commandBuffer);
 				m_GP2Renderer.EndFrame();
 			}
@@ -109,7 +115,7 @@ namespace GP2
 
 		auto cube = GP2GameObject::CreateGameObject();
 		cube.m_Model = gp2Model;
-		cube.m_Transform.translation = { 0.f,0.f,.5f };
+		cube.m_Transform.translation = { 0.f,0.f,2.5f };
 		cube.m_Transform.scale = { .5f,.5f,.5f };
 		m_GameObjects.push_back(std::move(cube));
 	}

@@ -66,7 +66,7 @@ namespace GP2
 		);
 	}
 
-	void SimpleRenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<GP2GameObject>& gameobjects)
+	void SimpleRenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<GP2GameObject>& gameobjects, const GP2Camera& camera)
 	{
 		m_GP2Pipeline->Bind(commandBuffer);
 
@@ -77,7 +77,7 @@ namespace GP2
 
 			SimplePushConstantData push{};
 			push.color = obj.m_Color;
-			push.transform = obj.m_Transform.mat4();
+			push.transform = camera.GetProjection() * obj.m_Transform.mat4();
 
 			vkCmdPushConstants(
 				commandBuffer,

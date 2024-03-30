@@ -2,8 +2,8 @@
 
 #include "GP2Pipeline.h"
 #include "GP2Device.h"
-#include "GP2Model.h"
 #include "GP2GameObject.h"
+#include "GP2Camera.h"
 
 //std
 #include <memory>
@@ -20,7 +20,7 @@ namespace GP2
 		SimpleRenderSystem(const SimpleRenderSystem&) = delete;
 		SimpleRenderSystem& operator=(const SimpleRenderSystem&) = delete;
 
-		void RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<GP2GameObject>& gameobjects);
+		void RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<GP2GameObject>& gameobjects, const GP2Camera& camera);
 
 	private:
 		void CreatePipelineLayout();
