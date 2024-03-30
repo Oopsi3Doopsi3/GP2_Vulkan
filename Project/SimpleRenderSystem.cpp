@@ -74,9 +74,6 @@ namespace GP2
 
 		for (auto& obj : gameobjects)
 		{
-			obj.m_Transform.rotation.y = glm::mod(obj.m_Transform.rotation.y + .01f, glm::two_pi<float>());
-			obj.m_Transform.rotation.x = glm::mod(obj.m_Transform.rotation.x + .005f, glm::two_pi<float>());
-
 			SimplePushConstantData push{};
 			push.color = obj.m_Color;
 			push.transform = projectionView * obj.m_Transform.mat4();

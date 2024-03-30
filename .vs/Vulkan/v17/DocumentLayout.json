@@ -7,8 +7,24 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Base.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\KeyboardMovementController.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\KeyboardMovementController.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\KeyboardMovementController.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\KeyboardMovementController.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\SimpleRenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\SimpleRenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Base.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -17,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project\\GP2Base.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,19 +51,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SimpleRenderSystem.cpp",
-              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\SimpleRenderSystem.cpp",
-              "RelativeDocumentMoniker": "Project\\SimpleRenderSystem.cpp",
-              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\SimpleRenderSystem.cpp",
-              "RelativeToolTip": "Project\\SimpleRenderSystem.cpp",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAFMAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-30T11:59:36.504Z",
+              "Title": "GP2Window.h",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Window.h",
+              "RelativeDocumentMoniker": "Project\\GP2Window.h",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Window.h",
+              "RelativeToolTip": "Project\\GP2Window.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-30T15:10:42.879Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "KeyboardMovementController.cpp",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\KeyboardMovementController.cpp",
+              "RelativeDocumentMoniker": "Project\\KeyboardMovementController.cpp",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\KeyboardMovementController.cpp",
+              "RelativeToolTip": "Project\\KeyboardMovementController.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-30T14:42:33.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "KeyboardMovementController.h",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\KeyboardMovementController.h",
+              "RelativeDocumentMoniker": "Project\\KeyboardMovementController.h",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\KeyboardMovementController.h",
+              "RelativeToolTip": "Project\\KeyboardMovementController.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-30T14:42:32.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SimpleRenderSystem.cpp",
+              "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\SimpleRenderSystem.cpp",
+              "RelativeDocumentMoniker": "Project\\SimpleRenderSystem.cpp",
+              "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\SimpleRenderSystem.cpp",
+              "RelativeToolTip": "Project\\SimpleRenderSystem.cpp",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAFsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-30T14:40:37.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "GP2Camera.cpp",
               "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Camera.cpp",
               "RelativeDocumentMoniker": "Project\\GP2Camera.cpp",
@@ -59,12 +110,11 @@
               "RelativeToolTip": "Project\\GP2Camera.cpp",
               "ViewState": "AQIAACEAAAAAAAAAAAAAAEAAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-30T11:35:19.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-30T11:35:19.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "GP2Camera.h",
               "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Camera.h",
               "RelativeDocumentMoniker": "Project\\GP2Camera.h",
@@ -72,8 +122,7 @@
               "RelativeToolTip": "Project\\GP2Camera.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-30T11:35:19.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-30T11:35:19.236Z"
             },
             {
               "$type": "Document",
@@ -83,14 +132,14 @@
               "RelativeDocumentMoniker": "Project\\GP2Base.cpp",
               "ToolTip": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.cpp",
               "RelativeToolTip": "Project\\GP2Base.cpp",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACEAAABOAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADYAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-28T18:11:56.884Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "GP2Base.h",
               "DocumentMoniker": "C:\\Graphics Programming 2\\Vulkan\\Project\\GP2Base.h",
               "RelativeDocumentMoniker": "Project\\GP2Base.h",
@@ -98,8 +147,7 @@
               "RelativeToolTip": "Project\\GP2Base.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-28T09:39:59.519Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-28T09:39:59.519Z"
             }
           ]
         }

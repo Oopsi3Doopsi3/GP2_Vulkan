@@ -20,6 +20,7 @@ namespace GP2
 		VkExtent2D GetExtent() { return { static_cast<uint32_t>(m_Width), static_cast<uint32_t>(m_Height) }; }
 		bool WasWindowResized() const { return m_FramebufferResized; }
 		void ResetWindowResizedFlag() { m_FramebufferResized = false; }
+		GLFWwindow* GetGLFWwindow() const { return m_Window; }
 		
 		void CreateWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 

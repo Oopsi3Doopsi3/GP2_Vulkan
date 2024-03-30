@@ -2,6 +2,7 @@
 
 #include "SimpleRenderSystem.h"
 #include "GP2Camera.h"
+#include "KeyboardMovementController.h"
 
 //libs
 #define GLM_FORCE_RADIANS
@@ -13,6 +14,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <array>
+#include <chrono>
 
 namespace GP2
 {
@@ -30,14 +32,24 @@ namespace GP2
 	{
 		SimpleRenderSystem simpleRenderSystem(m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass());
 		GP2Camera camera{};
-		//camera.SetViewDirection(glm::vec3(0.f), glm::vec3(.5f, 0.f, 1.f));
 		camera.SetViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(0.f, 0.f, 2.5f));
+
+		auto viewerObject = GP2GameObject::CreateGameObject();
+		KeyboardMovementController cameraController{};
+
+		auto currentTime = std::chrono::high_resolution_clock::now();
 
 		while (!m_GP2Window.ShouldClose()){
 			glfwPollEvents();
 
+			auto newTime = std::chrono::high_resolution_clock::now();
+			float frameTime = std::chrono::duration <float, std::chrono::seconds::period>(newTime - currentTime).count();
+			currentTime = newTime;
+
+			cameraController.MoveInPlaneXZ(m_GP2Window.GetGLFWwindow(), frameTime, viewerObject);
+			camera.SetViewYXZ(viewerObject.m_Transform.translation, viewerObject.m_Transform.rotation);
+
 			float aspect = m_GP2Renderer.GetAspectRatio();
-			//camera.SetOrthographicProjection(-aspect, aspect, -1, 1, -1, 1);
 			camera.SetPerspectiveProjection(glm::radians(50.f), aspect, .1f, 10.f);
 			
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
