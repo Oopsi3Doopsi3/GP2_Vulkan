@@ -66,11 +66,11 @@ namespace GP2
 		);
 	}
 
-	void SimpleRenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<GP2GameObject>& gameobjects, const GP2Camera& camera)
+	void SimpleRenderSystem::RenderGameObjects(FrameInfo& frameInfo, std::vector<GP2GameObject>& gameobjects)
 	{
-		m_GP2Pipeline->Bind(commandBuffer);
+		m_GP2Pipeline->Bind(frameInfo.commandBuffer);
 
-		auto projectionView = camera.GetProjection() * camera.GetView();
+		auto projectionView = frameInfo.camera.GetProjection() * frameInfo.camera.GetView();
 
 		for (auto& obj : gameobjects)
 		{
@@ -80,14 +80,14 @@ namespace GP2
 			push.normalMatrix = obj.m_Transform.normalMatrix();
 
 			vkCmdPushConstants(
-				commandBuffer,
+				frameInfo.commandBuffer,
 				m_PipelineLayout,
 				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
 				0,
 				sizeof(SimplePushConstantData),
 				&push);
-			obj.m_Model->Bind(commandBuffer);
-			obj.m_Model->Draw(commandBuffer);
+			obj.m_Model->Bind(frameInfo.commandBuffer);
+			obj.m_Model->Draw(frameInfo.commandBuffer);
 		}
 	}
 }

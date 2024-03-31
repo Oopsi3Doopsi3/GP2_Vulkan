@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GP2Device.h"
+#include "GP2Buffer.h"
 
 //libs
 #define GLM_FORCE_RADIANS
@@ -61,13 +62,11 @@ namespace GP2
 
 		GP2Device& m_GP2Device;
 
-		VkBuffer m_VertexBuffer;
-		VkDeviceMemory m_VertexBufferMemory;
+		std::unique_ptr<GP2Buffer> m_VertexBuffer;
 		uint32_t m_VertexCount;
 
 		bool m_HasIndexBuffer = false;
-		VkBuffer m_IndexBuffer;
-		VkDeviceMemory m_IndexBufferMemory;
+		std::unique_ptr<GP2Buffer> m_IndexBuffer;
 		uint32_t m_IndexCount;
 	};
 }

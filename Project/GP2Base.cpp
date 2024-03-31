@@ -3,6 +3,7 @@
 #include "SimpleRenderSystem.h"
 #include "GP2Camera.h"
 #include "KeyboardMovementController.h"
+#include "GP2Buffer.h"
 
 //libs
 #define GLM_FORCE_RADIANS
@@ -18,6 +19,12 @@
 
 namespace GP2
 {
+	struct GlobalUbo
+	{
+		glm::mat4 projectionView{ 1.f };
+		glm::vec3 lightDirection = glm::normalize(glm::vec3(1.f, -3.f, -1.f));
+	};
+
 	GP2Base::GP2Base()
 	{
 		LoadGameObjects();
@@ -30,6 +37,18 @@ namespace GP2
 	
 	void GP2Base::Run()
 	{
+		std::vector<std::unique_ptr<GP2Buffer>> uboBuffers(GP2SwapChain::MAX_FRAMES_IN_FLIGHT);
+		for (int i{}; i < uboBuffers.size(); ++i)
+		{
+			uboBuffers[i] = std::make_unique<GP2Buffer>(
+				m_GP2Device,
+				sizeof(GlobalUbo),
+				1,
+				VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+				VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
+			uboBuffers[i]->Map();
+		}
+
 		SimpleRenderSystem simpleRenderSystem(m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass());
 		GP2Camera camera{};
 		camera.SetViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(0.f, 0.f, 2.5f));
@@ -54,8 +73,18 @@ namespace GP2
 			
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
 			{
+				int frameIndex = m_GP2Renderer.GetFrameIndex();
+				FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera };
+
+				//update
+				GlobalUbo ubo{};
+				ubo.projectionView = camera.GetProjection() * camera.GetView();
+				uboBuffers[frameIndex]->WriteToBuffer(&ubo);
+				uboBuffers[frameIndex]->Flush();
+
+				//render
 				m_GP2Renderer.BeginSwapChainRenderPass(commandBuffer);
-				simpleRenderSystem.RenderGameObjects(commandBuffer, m_GameObjects, camera);
+				simpleRenderSystem.RenderGameObjects(frameInfo, m_GameObjects);
 				m_GP2Renderer.EndSwapChainRenderPass(commandBuffer);
 				m_GP2Renderer.EndFrame();
 			}
