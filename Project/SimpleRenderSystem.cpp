@@ -16,7 +16,7 @@ namespace GP2
 	struct SimplePushConstantData
 	{
 		glm::mat4 transform{ 1.f };
-		alignas(16) glm::vec3 color;
+		glm::mat4 normalMatrix{ 1.f };
 	};
 
 	SimpleRenderSystem::SimpleRenderSystem(GP2Device& device, VkRenderPass renderPass):
@@ -75,8 +75,9 @@ namespace GP2
 		for (auto& obj : gameobjects)
 		{
 			SimplePushConstantData push{};
-			push.color = obj.m_Color;
-			push.transform = projectionView * obj.m_Transform.mat4();
+			auto modelMatrix = obj.m_Transform.mat4();
+			push.transform = projectionView * modelMatrix;
+			push.normalMatrix = obj.m_Transform.normalMatrix();
 
 			vkCmdPushConstants(
 				commandBuffer,
