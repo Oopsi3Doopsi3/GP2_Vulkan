@@ -13,5 +13,6 @@ namespace GP2
 		float frameTime;
 		VkCommandBuffer commandBuffer;
 		GP2Camera& camera;
+		VkDescriptorSet globalDescriptorSet;
 	};
 }

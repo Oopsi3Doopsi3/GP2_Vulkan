@@ -14,7 +14,7 @@ namespace GP2
 	class SimpleRenderSystem
 	{
 	public:
-		SimpleRenderSystem(GP2Device& device, VkRenderPass renderPass);
+		SimpleRenderSystem(GP2Device& device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout);
 		~SimpleRenderSystem();
 
 		SimpleRenderSystem(const SimpleRenderSystem&) = delete;
@@ -23,7 +23,7 @@ namespace GP2
 		void RenderGameObjects(FrameInfo& frameInfo, std::vector<GP2GameObject>& gameobjects);
 
 	private:
-		void CreatePipelineLayout();
+		void CreatePipelineLayout(VkDescriptorSetLayout globalSetLayout);
 		void CreatePipeline(VkRenderPass renderPass);
 		
 

@@ -40,7 +40,8 @@ set(SOURCES
     "GP2Camera.cpp"
     "KeyboardMovementController.cpp"
     "GP2GameObject.cpp"
-    "GP2Buffer.cpp")
+    "GP2Buffer.cpp"
+    "GP2Descriptors.cpp")
 
 # Create the executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${GLSL_SOURCE_FILES})

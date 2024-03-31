@@ -27,6 +27,11 @@ namespace GP2
 
 	GP2Base::GP2Base()
 	{
+		m_GlobalPool = GP2DescriptorPool::Builder(m_GP2Device)
+			.SetMaxSets(GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
+			.AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
+			.Build();
+
 		LoadGameObjects();
 	}
 	
@@ -49,7 +54,20 @@ namespace GP2
 			uboBuffers[i]->Map();
 		}
 
-		SimpleRenderSystem simpleRenderSystem(m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass());
+		auto globalSetLayout = GP2DescriptorSetLayout::Builder(m_GP2Device)
+			.AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT)
+			.Build();
+
+		std::vector<VkDescriptorSet> globalDescriptorSets(GP2SwapChain::MAX_FRAMES_IN_FLIGHT);
+		for (int i{}; i < globalDescriptorSets.size(); ++i)
+		{
+			auto bufferInfo = uboBuffers[i]->DescriptorInfo();
+			GP2DescriptorWriter(*globalSetLayout, *m_GlobalPool)
+				.WriteBuffer(0, &bufferInfo)
+				.Build(globalDescriptorSets[i]);
+		}
+
+		SimpleRenderSystem simpleRenderSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		GP2Camera camera{};
 		camera.SetViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(0.f, 0.f, 2.5f));
 
@@ -74,7 +92,7 @@ namespace GP2
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
 			{
 				int frameIndex = m_GP2Renderer.GetFrameIndex();
-				FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera };
+				FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera, globalDescriptorSets[frameIndex] };
 
 				//update
 				GlobalUbo ubo{};

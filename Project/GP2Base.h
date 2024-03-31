@@ -5,6 +5,7 @@
 #include "GP2Model.h"
 #include "GP2GameObject.h"
 #include "GP2Renderer.h"
+#include "GP2Descriptors.h"
 
 //std
 #include <memory>
@@ -27,12 +28,13 @@ namespace GP2
 		void Run();
 
 	private:
-		std::unique_ptr<GP2Model> createCubeModel(GP2Device& device, glm::vec3 offset);
 		void LoadGameObjects();
 		
 		GP2Window m_GP2Window{WIDTH, HEIGHT, "I Vulkan't Anymore"};
 		GP2Device m_GP2Device{ m_GP2Window };
 		GP2Renderer m_GP2Renderer{ m_GP2Window, m_GP2Device };
+
+		std::unique_ptr<GP2DescriptorPool> m_GlobalPool{};
 		std::vector<GP2GameObject> m_GameObjects;
 	};
 }
