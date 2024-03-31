@@ -8,6 +8,7 @@
 #include<glm/glm.hpp>
 
 //std
+#include <memory>
 #include <vector>
 
 namespace GP2
@@ -18,17 +19,29 @@ namespace GP2
 
 		struct Vertex
 		{
-			glm::vec3 position;
-			glm::vec3 color;
+			glm::vec3 position{};
+			glm::vec3 color{};
+			glm::vec3 normal{};
+			glm::vec2 uv{};
 
 			static std::vector<VkVertexInputBindingDescription> GetBindingDescriptions();
 			static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();
+
+			bool operator==(const Vertex& other) const
+			{
+				return
+					position == other.position &&
+					color == other.color &&
+					normal == other.normal;
+			}
 		};
 
 		struct Builder
 		{
 			std::vector<Vertex> vertices{};
 			std::vector<uint32_t> indices{};
+
+			void LoadModel(const std::string& filepath);
 		};
 
 		GP2Model(GP2Device& device, const GP2Model::Builder& builder);
@@ -36,6 +49,8 @@ namespace GP2
 
 		GP2Model(const GP2Model&) = delete;
 		GP2Model& operator=(const GP2Model&) = delete;
+
+		static std::unique_ptr<GP2Model> CreateModelFromFile(GP2Device& device, const std::string& filepath);
 
 		void Bind(VkCommandBuffer commandBuffer);
 		void Draw(VkCommandBuffer commandBuffer);

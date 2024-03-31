@@ -5,6 +5,10 @@
       "out\\install\\x64-Debug"
     ]
   },
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\Project"
+  ],
+  "SelectedNode": "\\Project\\GP2Model.h",
   "PreviewInSolutionExplorer": false
 }
