@@ -20,7 +20,7 @@ namespace GP2
 		SimpleRenderSystem(const SimpleRenderSystem&) = delete;
 		SimpleRenderSystem& operator=(const SimpleRenderSystem&) = delete;
 
-		void RenderGameObjects(FrameInfo& frameInfo, std::vector<GP2GameObject>& gameobjects);
+		void RenderGameObjects(FrameInfo& frameInfo);
 
 	private:
 		void CreatePipelineLayout(VkDescriptorSetLayout globalSetLayout);

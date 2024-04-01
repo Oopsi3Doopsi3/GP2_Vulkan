@@ -35,7 +35,7 @@ namespace GP2
 		GP2Renderer m_GP2Renderer{ m_GP2Window, m_GP2Device };
 
 		std::unique_ptr<GP2DescriptorPool> m_GlobalPool{};
-		std::vector<GP2GameObject> m_GameObjects;
+		GP2GameObject::Map m_GameObjects;
 	};
 }
 

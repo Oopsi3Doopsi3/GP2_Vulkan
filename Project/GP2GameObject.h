@@ -7,6 +7,7 @@
 
 //std
 #include <memory>
+#include <unordered_map>
 
 namespace GP2
 {
@@ -27,6 +28,7 @@ namespace GP2
 	{
 	public:
 		using id_t = unsigned int;
+		using Map = std::unordered_map<id_t, GP2GameObject>;
 
 		static GP2GameObject CreateGameObject()
 		{

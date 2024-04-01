@@ -22,7 +22,7 @@ namespace GP2
 	struct GlobalUbo
 	{
 		glm::mat4 projectionView{ 1.f };
-		glm::vec4 ambientLightColor{ 1.f,1.f,1.f,.2f };
+		glm::vec4 ambientLightColor{ 1.f,1.f,1.f,.02f };
 		glm::vec3 lightPosition{ -1.f };
 		alignas(16) glm::vec4 lightColor{ 1.f };
 	};
@@ -57,7 +57,7 @@ namespace GP2
 		}
 
 		auto globalSetLayout = GP2DescriptorSetLayout::Builder(m_GP2Device)
-			.AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT)
+			.AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
 			.Build();
 
 		std::vector<VkDescriptorSet> globalDescriptorSets(GP2SwapChain::MAX_FRAMES_IN_FLIGHT);
@@ -95,7 +95,7 @@ namespace GP2
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
 			{
 				int frameIndex = m_GP2Renderer.GetFrameIndex();
-				FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera, globalDescriptorSets[frameIndex] };
+				FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera, globalDescriptorSets[frameIndex], m_GameObjects };
 
 				//update
 				GlobalUbo ubo{};
@@ -105,7 +105,7 @@ namespace GP2
 
 				//render
 				m_GP2Renderer.BeginSwapChainRenderPass(commandBuffer);
-				simpleRenderSystem.RenderGameObjects(frameInfo, m_GameObjects);
+				simpleRenderSystem.RenderGameObjects(frameInfo);
 				m_GP2Renderer.EndSwapChainRenderPass(commandBuffer);
 				m_GP2Renderer.EndFrame();
 			}
@@ -121,20 +121,20 @@ namespace GP2
 		flatVase.m_Model = gp2Model;
 		flatVase.m_Transform.translation = { -.5f,.5f,0.f };
 		flatVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
-		m_GameObjects.push_back(std::move(flatVase));
+		m_GameObjects.emplace(flatVase.GetId(), std::move(flatVase));
 
 		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\smooth_vase.obj");
 		auto smoothVase = GP2GameObject::CreateGameObject();
 		smoothVase.m_Model = gp2Model;
 		smoothVase.m_Transform.translation = { 0.5f,.5f,0.f };
 		smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
-		m_GameObjects.push_back(std::move(smoothVase));
+		m_GameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
 
 		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\quad.obj");
 		auto floor = GP2GameObject::CreateGameObject();
 		floor.m_Model = gp2Model;
 		floor.m_Transform.translation = { 0.f,.5f,0.f };
 		floor.m_Transform.scale = glm::vec3{ 3.f, 1.f, 3.f };
-		m_GameObjects.push_back(std::move(floor));
+		m_GameObjects.emplace(floor.GetId(), std::move(floor));
 	}
 }

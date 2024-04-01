@@ -68,7 +68,7 @@ namespace GP2
 		);
 	}
 
-	void SimpleRenderSystem::RenderGameObjects(FrameInfo& frameInfo, std::vector<GP2GameObject>& gameobjects)
+	void SimpleRenderSystem::RenderGameObjects(FrameInfo& frameInfo)
 	{
 		m_GP2Pipeline->Bind(frameInfo.commandBuffer);
 
@@ -82,8 +82,10 @@ namespace GP2
 			0,
 			nullptr);
 
-		for (auto& obj : gameobjects)
+		for (auto& kv : frameInfo.gameObjects)
 		{
+			auto& obj = kv.second;
+			if (obj.m_Model == nullptr) continue;
 			SimplePushConstantData push{};
 			push.modelMatrix = obj.m_Transform.mat4();
 			push.normalMatrix = obj.m_Transform.normalMatrix();
