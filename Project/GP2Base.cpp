@@ -145,7 +145,7 @@ namespace GP2
 		{.1f, 1.f, .1f},
 		{1.f, 1.f, .1f},
 		{.1f, 1.f, 1.f},
-		{1.f, 1.f, 1.f}  //
+		{1.f, 1.f, 1.f}
 		};
 
 		for (int i{}; i < lightColors.size(); ++i)

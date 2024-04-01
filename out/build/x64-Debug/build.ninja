@@ -2089,6 +2089,98 @@ build _deps\glfw-build\tests\install\local: phony _deps\glfw-build\tests\CMakeFi
 # C:/Graphics Programming 2/Vulkan/CMakeLists.txt
 # =============================================================================
 
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target tinyobjloader
+
+
+#############################################
+# Order-only phony target for tinyobjloader
+
+build cmake_object_order_depends_target_tinyobjloader: phony || _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir
+
+build _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir\tiny_obj_loader.cc.obj: CXX_COMPILER__tinyobjloader_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src\tiny_obj_loader.cc || cmake_object_order_depends_target_tinyobjloader
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir
+  OBJECT_FILE_DIR = _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir
+  TARGET_COMPILE_PDB = _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir\tinyobjloader.pdb
+  TARGET_PDB = _deps\tinyobjloader-build\tinyobjloader.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target tinyobjloader
+
+
+#############################################
+# Link the static library _deps\tinyobjloader-build\tinyobjloader.lib
+
+build _deps\tinyobjloader-build\tinyobjloader.lib: CXX_STATIC_LIBRARY_LINKER__tinyobjloader_Debug _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir\tiny_obj_loader.cc.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = _deps\tinyobjloader-build\CMakeFiles\tinyobjloader.dir\tinyobjloader.pdb
+  TARGET_FILE = _deps\tinyobjloader-build\tinyobjloader.lib
+  TARGET_PDB = _deps\tinyobjloader-build\tinyobjloader.pdb
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps\tinyobjloader-build\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-build" && "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build _deps\tinyobjloader-build\edit_cache: phony _deps\tinyobjloader-build\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps\tinyobjloader-build\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-build" && "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"C:\Graphics Programming 2\Vulkan" -B"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug""
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps\tinyobjloader-build\rebuild_cache: phony _deps\tinyobjloader-build\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build _deps\tinyobjloader-build\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build _deps\tinyobjloader-build\CMakeFiles\install.util: CUSTOM_COMMAND _deps\tinyobjloader-build\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-build" && "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build _deps\tinyobjloader-build\install: phony _deps\tinyobjloader-build\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build _deps\tinyobjloader-build\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\tinyobjloader-build\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-build" && "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build _deps\tinyobjloader-build\install\local: phony _deps\tinyobjloader-build\CMakeFiles\install\local.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Graphics Programming 2/Vulkan/CMakeLists.txt
+# =============================================================================
+
 
 #############################################
 # Utility command for Shaders
@@ -2102,11 +2194,11 @@ build Project\Shaders: phony Project\CMakeFiles\Shaders Project\shaders\GP2Point
 #############################################
 # Order-only phony target for VulkanLab01
 
-build cmake_object_order_depends_target_VulkanLab01: phony || Project\Shaders cmake_object_order_depends_target_glfw
+build cmake_object_order_depends_target_VulkanLab01: phony || Project\Shaders cmake_object_order_depends_target_glfw cmake_object_order_depends_target_tinyobjloader
 
 build Project\CMakeFiles\VulkanLab01.dir\main.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\main.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2114,7 +2206,7 @@ build Project\CMakeFiles\VulkanLab01.dir\main.cpp.obj: CXX_COMPILER__VulkanLab01
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Window.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Window.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2122,7 +2214,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Window.cpp.obj: CXX_COMPILER__Vulkan
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Base.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Base.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2130,7 +2222,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Base.cpp.obj: CXX_COMPILER__VulkanLa
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Pipeline.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Pipeline.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2138,7 +2230,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Pipeline.cpp.obj: CXX_COMPILER__Vulk
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Device.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Device.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2146,7 +2238,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Device.cpp.obj: CXX_COMPILER__Vulkan
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2SwapChain.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2SwapChain.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2154,7 +2246,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2SwapChain.cpp.obj: CXX_COMPILER__Vul
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Model.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Model.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2162,7 +2254,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Model.cpp.obj: CXX_COMPILER__VulkanL
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Renderer.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Renderer.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2170,7 +2262,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Renderer.cpp.obj: CXX_COMPILER__Vulk
 
 build Project\CMakeFiles\VulkanLab01.dir\systems\SimpleRenderSystem.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\systems\SimpleRenderSystem.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir\systems
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2178,7 +2270,7 @@ build Project\CMakeFiles\VulkanLab01.dir\systems\SimpleRenderSystem.cpp.obj: CXX
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Camera.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Camera.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2186,7 +2278,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Camera.cpp.obj: CXX_COMPILER__Vulkan
 
 build Project\CMakeFiles\VulkanLab01.dir\KeyboardMovementController.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\KeyboardMovementController.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2194,7 +2286,7 @@ build Project\CMakeFiles\VulkanLab01.dir\KeyboardMovementController.cpp.obj: CXX
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2GameObject.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2GameObject.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2202,7 +2294,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2GameObject.cpp.obj: CXX_COMPILER__Vu
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Buffer.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Buffer.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2210,7 +2302,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Buffer.cpp.obj: CXX_COMPILER__Vulkan
 
 build Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\GP2Descriptors.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2218,7 +2310,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj: CXX_COMPILER__V
 
 build Project\CMakeFiles\VulkanLab01.dir\systems\PointLightSystem.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\systems\PointLightSystem.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\tinyobjloader-src"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir\systems
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
@@ -2232,10 +2324,10 @@ build Project\CMakeFiles\VulkanLab01.dir\systems\PointLightSystem.cpp.obj: CXX_C
 #############################################
 # Link the executable Project\VulkanLab01.exe
 
-build Project\VulkanLab01.exe: CXX_EXECUTABLE_LINKER__VulkanLab01_Debug Project\CMakeFiles\VulkanLab01.dir\main.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Window.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Base.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Pipeline.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Device.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2SwapChain.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Model.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Renderer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\systems\SimpleRenderSystem.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Camera.cpp.obj Project\CMakeFiles\VulkanLab01.dir\KeyboardMovementController.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2GameObject.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Buffer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj Project\CMakeFiles\VulkanLab01.dir\systems\PointLightSystem.cpp.obj | C$:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib _deps\glfw-build\src\glfw3.lib || Project\Shaders _deps\glfw-build\src\glfw3.lib
+build Project\VulkanLab01.exe: CXX_EXECUTABLE_LINKER__VulkanLab01_Debug Project\CMakeFiles\VulkanLab01.dir\main.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Window.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Base.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Pipeline.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Device.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2SwapChain.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Model.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Renderer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\systems\SimpleRenderSystem.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Camera.cpp.obj Project\CMakeFiles\VulkanLab01.dir\KeyboardMovementController.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2GameObject.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Buffer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj Project\CMakeFiles\VulkanLab01.dir\systems\PointLightSystem.cpp.obj | C$:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib _deps\glfw-build\src\glfw3.lib C$:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib _deps\tinyobjloader-build\tinyobjloader.lib || Project\Shaders _deps\glfw-build\src\glfw3.lib _deps\tinyobjloader-build\tinyobjloader.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = C:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib  _deps\glfw-build\src\glfw3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_LIBRARIES = C:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib  _deps\glfw-build\src\glfw3.lib  C:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib  _deps\tinyobjloader-build\tinyobjloader.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -2452,6 +2544,10 @@ build timeout: phony _deps\glfw-build\tests\timeout.exe
 
 build timeout.exe: phony _deps\glfw-build\tests\timeout.exe
 
+build tinyobjloader: phony _deps\tinyobjloader-build\tinyobjloader.lib
+
+build tinyobjloader.lib: phony _deps\tinyobjloader-build\tinyobjloader.lib
+
 build title: phony _deps\glfw-build\tests\title.exe
 
 build title.exe: phony _deps\glfw-build\tests\title.exe
@@ -2480,7 +2576,7 @@ build windows.exe: phony _deps\glfw-build\tests\windows.exe
 #############################################
 # Folder: C:/Graphics Programming 2/Vulkan/out/build/x64-Debug
 
-build all: phony _deps\glfw-build\all Project\all
+build all: phony _deps\glfw-build\all _deps\tinyobjloader-build\all Project\all
 
 # =============================================================================
 
@@ -2518,20 +2614,27 @@ build _deps\glfw-build\src\all: phony _deps\glfw-build\src\glfw3.lib
 build _deps\glfw-build\tests\all: phony _deps\glfw-build\tests\clipboard.exe _deps\glfw-build\tests\events.exe _deps\glfw-build\tests\msaa.exe _deps\glfw-build\tests\glfwinfo.exe _deps\glfw-build\tests\iconify.exe _deps\glfw-build\tests\monitors.exe _deps\glfw-build\tests\reopen.exe _deps\glfw-build\tests\cursor.exe _deps\glfw-build\tests\empty.exe _deps\glfw-build\tests\gamma.exe _deps\glfw-build\tests\icon.exe _deps\glfw-build\tests\inputlag.exe _deps\glfw-build\tests\joysticks.exe _deps\glfw-build\tests\opacity.exe _deps\glfw-build\tests\tearing.exe _deps\glfw-build\tests\threads.exe _deps\glfw-build\tests\timeout.exe _deps\glfw-build\tests\title.exe _deps\glfw-build\tests\triangle-vulkan.exe _deps\glfw-build\tests\windows.exe
 
 # =============================================================================
+
+#############################################
+# Folder: C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-build
+
+build _deps\tinyobjloader-build\all: phony _deps\tinyobjloader-build\tinyobjloader.lib
+
+# =============================================================================
 # Built-in targets
 
 
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Graphics$ Programming$ 2\Vulkan\CMakeLists.txt C$:\Graphics$ Programming$ 2\Vulkan\Project\CMakeLists.txt C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindVulkan.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glfw-src\CMakeLists.txt _deps\glfw-src\cmake_uninstall.cmake.in _deps\glfw-src\examples\CMakeLists.txt _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw3.pc.in _deps\glfw-src\src\glfw3Config.cmake.in _deps\glfw-src\src\glfw_config.h.in _deps\glfw-src\tests\CMakeLists.txt
+build build.ninja: RERUN_CMAKE | C$:\Graphics$ Programming$ 2\Vulkan\CMakeLists.txt C$:\Graphics$ Programming$ 2\Vulkan\Project\CMakeLists.txt C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindGit.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindVulkan.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glfw-src\CMakeLists.txt _deps\glfw-src\cmake_uninstall.cmake.in _deps\glfw-src\examples\CMakeLists.txt _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw3.pc.in _deps\glfw-src\src\glfw3Config.cmake.in _deps\glfw-src\src\glfw_config.h.in _deps\glfw-src\tests\CMakeLists.txt _deps\tinyobjloader-src\CMakeLists.txt _deps\tinyobjloader-src\cmake\sanitizers\FindASan.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindMSan.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindSanitizers.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindTSan.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindUBSan.cmake _deps\tinyobjloader-src\cmake\sanitizers\sanitize-helpers.cmake _deps\tinyobjloader-src\tinyobjloader-config.cmake.in _deps\tinyobjloader-src\tinyobjloader.pc.in
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Graphics$ Programming$ 2\Vulkan\CMakeLists.txt C$:\Graphics$ Programming$ 2\Vulkan\Project\CMakeLists.txt C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindVulkan.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glfw-src\CMakeLists.txt _deps\glfw-src\cmake_uninstall.cmake.in _deps\glfw-src\examples\CMakeLists.txt _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw3.pc.in _deps\glfw-src\src\glfw3Config.cmake.in _deps\glfw-src\src\glfw_config.h.in _deps\glfw-src\tests\CMakeLists.txt: phony
+build C$:\Graphics$ Programming$ 2\Vulkan\CMakeLists.txt C$:\Graphics$ Programming$ 2\Vulkan\Project\CMakeLists.txt C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindGit.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindVulkan.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glfw-src\CMakeLists.txt _deps\glfw-src\cmake_uninstall.cmake.in _deps\glfw-src\examples\CMakeLists.txt _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw3.pc.in _deps\glfw-src\src\glfw3Config.cmake.in _deps\glfw-src\src\glfw_config.h.in _deps\glfw-src\tests\CMakeLists.txt _deps\tinyobjloader-src\CMakeLists.txt _deps\tinyobjloader-src\cmake\sanitizers\FindASan.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindMSan.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindSanitizers.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindTSan.cmake _deps\tinyobjloader-src\cmake\sanitizers\FindUBSan.cmake _deps\tinyobjloader-src\cmake\sanitizers\sanitize-helpers.cmake _deps\tinyobjloader-src\tinyobjloader-config.cmake.in _deps\tinyobjloader-src\tinyobjloader.pc.in: phony
 
 
 #############################################

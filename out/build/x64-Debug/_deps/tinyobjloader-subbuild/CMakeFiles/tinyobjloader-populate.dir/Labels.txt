@@ -1,0 +1,14 @@
+# Target labels
+ tinyobjloader-populate
+# Source files and their labels
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/CMakeFiles/tinyobjloader-populate
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/CMakeFiles/tinyobjloader-populate.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/CMakeFiles/tinyobjloader-populate-complete.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-download.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-mkdir.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update.rule

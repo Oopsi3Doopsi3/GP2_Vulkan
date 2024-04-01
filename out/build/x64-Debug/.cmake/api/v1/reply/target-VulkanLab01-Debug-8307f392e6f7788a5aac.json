@@ -42,6 +42,12 @@
 				"parent" : 0
 			},
 			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 53,
+				"parent" : 0
+			},
+			{
 				"command" : 2,
 				"file" : 0,
 				"line" : 49,
@@ -53,19 +59,13 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 26,
-				"parent" : 4
+				"line" : 34,
+				"parent" : 5
 			},
 			{
 				"command" : 4,
 				"file" : 0,
 				"line" : 51,
-				"parent" : 0
-			},
-			{
-				"command" : 4,
-				"file" : 0,
-				"line" : 55,
 				"parent" : 0
 			}
 		]
@@ -82,20 +82,20 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "C:/VulkanSDK/1.3.261.1/Include"
 				},
 				{
-					"backtrace" : 6,
-					"path" : "C:/Graphics Programming 2/Vulkan/Project"
-				},
-				{
 					"backtrace" : 7,
-					"path" : "C:/tinyobjloader"
+					"path" : "C:/Graphics Programming 2/Vulkan/Project"
 				},
 				{
 					"backtrace" : 2,
 					"path" : "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/glfw-src/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-src"
 				}
 			],
 			"language" : "CXX",
@@ -135,6 +135,10 @@
 		},
 		{
 			"backtrace" : 3,
+			"id" : "tinyobjloader::@504dab42fa214d3d2823"
+		},
+		{
+			"backtrace" : 4,
 			"id" : "Shaders::@f0d2a6f44114b7dd8962"
 		}
 	],
@@ -159,6 +163,16 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "_deps\\glfw-build\\src\\glfw3.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "C:\\VulkanSDK\\1.3.261.1\\Lib\\vulkan-1.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\tinyobjloader-build\\tinyobjloader.lib",
 				"role" : "libraries"
 			},
 			{

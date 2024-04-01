@@ -9,7 +9,8 @@
 					"childIndexes" : 
 					[
 						1,
-						5
+						5,
+						6
 					],
 					"hasInstallRule" : true,
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
@@ -39,7 +40,7 @@
 					"source" : "out/build/x64-Debug/_deps/glfw-src",
 					"targetIndexes" : 
 					[
-						30
+						31
 					]
 				},
 				{
@@ -56,7 +57,7 @@
 					"targetIndexes" : 
 					[
 						9,
-						31
+						32
 					]
 				},
 				{
@@ -79,7 +80,7 @@
 						22,
 						23,
 						24,
-						32
+						33
 					]
 				},
 				{
@@ -111,9 +112,25 @@
 						25,
 						26,
 						27,
-						28,
 						29,
-						33
+						30,
+						34
+					]
+				},
+				{
+					"build" : "_deps/tinyobjloader-build",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.tinyobjloader-build-Debug-030e4bf269ba759ed355.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "out/build/x64-Debug/_deps/tinyobjloader-src",
+					"targetIndexes" : 
+					[
+						28
 					]
 				},
 				{
@@ -139,12 +156,13 @@
 				{
 					"childIndexes" : 
 					[
-						1
+						1,
+						2
 					],
 					"directoryIndexes" : 
 					[
 						0,
-						5
+						6
 					],
 					"name" : "VulkanLab01",
 					"targetIndexes" : 
@@ -191,28 +209,40 @@
 						25,
 						26,
 						27,
-						28,
 						29,
 						30,
 						31,
 						32,
-						33
+						33,
+						34
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "tinyobjloader",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						28
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 5,
+					"directoryIndex" : 6,
 					"id" : "Shaders::@f0d2a6f44114b7dd8962",
 					"jsonFile" : "target-Shaders-Debug-74d21aab133b11432a1e.json",
 					"name" : "Shaders",
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 5,
+					"directoryIndex" : 6,
 					"id" : "VulkanLab01::@f0d2a6f44114b7dd8962",
-					"jsonFile" : "target-VulkanLab01-Debug-1bea0a3cf0680c861ae3.json",
+					"jsonFile" : "target-VulkanLab01-Debug-8307f392e6f7788a5aac.json",
 					"name" : "VulkanLab01",
 					"projectIndex" : 0
 				},
@@ -397,6 +427,13 @@
 					"jsonFile" : "target-timeout-Debug-b022a4c88428a0a4b715.json",
 					"name" : "timeout",
 					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "tinyobjloader::@504dab42fa214d3d2823",
+					"jsonFile" : "target-tinyobjloader-Debug-9024e8a0a5c133d806e1.json",
+					"name" : "tinyobjloader",
+					"projectIndex" : 2
 				},
 				{
 					"directoryIndex" : 4,
