@@ -95,6 +95,7 @@ namespace GP2
 				GlobalUbo ubo{};
 				ubo.projection = camera.GetProjection();
 				ubo.view = camera.GetView();
+				ubo.inversView = camera.GetInverseView();
 				pointLightSystem.Update(frameInfo, ubo);
 				uboBuffers[frameIndex]->WriteToBuffer(&ubo);
 				uboBuffers[frameIndex]->Flush();
