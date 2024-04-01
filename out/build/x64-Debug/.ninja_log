@@ -216,3 +216,17 @@
 7	98	7336844848349246	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2SimpleShader.frag.spv	50f7e68a9d4b484d
 7	102	7336845298108260	Project/shaders/GP2SimpleShader.frag.spv	50f7e68a9d4b484d
 7	102	7336845298108260	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2SimpleShader.frag.spv	50f7e68a9d4b484d
+9	107	7336855304043516	Project/shaders/GP2PointLight.frag.spv	bba8551de2e577a8
+9	107	7336855304043516	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2PointLight.frag.spv	bba8551de2e577a8
+114	1127	7336855314205879	Project/CMakeFiles/VulkanLab01.dir/systems/SimpleRenderSystem.cpp.obj	ce44ecb3187a7ee0
+117	1130	7336855314240988	Project/CMakeFiles/VulkanLab01.dir/systems/PointLightSystem.cpp.obj	13c8d7121aca9c47
+111	1140	7336855314356435	Project/CMakeFiles/VulkanLab01.dir/GP2Pipeline.cpp.obj	b8d81ee433bc53bc
+108	1158	7336855314525554	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	6616ceaa46b97956
+1158	1324	7336855315782532	Project/VulkanLab01.exe	60c0b704c0debcc9
+16	461	7336859124291946	Project/CMakeFiles/VulkanLab01.dir/GP2Camera.cpp.obj	7ae9b9e56d02110b
+12	599	7336859125677770	Project/CMakeFiles/VulkanLab01.dir/systems/SimpleRenderSystem.cpp.obj	ce44ecb3187a7ee0
+20	650	7336859126180675	Project/CMakeFiles/VulkanLab01.dir/systems/PointLightSystem.cpp.obj	13c8d7121aca9c47
+8	765	7336859127335319	Project/CMakeFiles/VulkanLab01.dir/GP2Base.cpp.obj	6616ceaa46b97956
+765	927	7336859128601393	Project/VulkanLab01.exe	60c0b704c0debcc9
+8	101	7336860105991608	Project/shaders/GP2PointLight.frag.spv	bba8551de2e577a8
+8	101	7336860105991608	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2PointLight.frag.spv	bba8551de2e577a8

@@ -102,8 +102,12 @@ namespace GP2
 
 				//render
 				m_GP2Renderer.BeginSwapChainRenderPass(commandBuffer);
+
+				//Order matters for transparency
 				simpleRenderSystem.RenderGameObjects(frameInfo);
 				pointLightSystem.Render(frameInfo);
+
+
 				m_GP2Renderer.EndSwapChainRenderPass(commandBuffer);
 				m_GP2Renderer.EndFrame();
 			}

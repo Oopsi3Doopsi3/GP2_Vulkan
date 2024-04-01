@@ -10,6 +10,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <array>
+#include <map>
 
 namespace GP2
 {
@@ -58,6 +59,7 @@ namespace GP2
 
 		PipelineConfigInfo pipelineConfig{};
 		GP2Pipeline::DefaultPipelineConfigInfo(pipelineConfig);
+		GP2Pipeline::EnableAlphaBlending(pipelineConfig);
 		pipelineConfig.attributeDescriptions.clear();
 		pipelineConfig.bindingDescriptions.clear();
 		pipelineConfig.renderPass = renderPass;
@@ -99,6 +101,21 @@ namespace GP2
 
 	void PointLightSystem::Render(FrameInfo& frameInfo)
 	{
+		//sort lights
+		std::map<float, GP2GameObject::id_t> sorted;
+		for (auto& kv : frameInfo.gameObjects)
+		{
+			auto& obj = kv.second;
+			if (obj.m_PointLight == nullptr) {
+				continue;
+			}
+
+			//calculate distance
+			auto offset = frameInfo.camera.GetPosition() - obj.m_Transform.translation;
+			float disSquared = glm::dot(offset, offset);
+			sorted[disSquared] = obj.GetId();
+		}
+
 		m_GP2Pipeline->Bind(frameInfo.commandBuffer);
 
 		vkCmdBindDescriptorSets(
@@ -111,12 +128,10 @@ namespace GP2
 			0,
 			nullptr);
 
-		for (auto& kv : frameInfo.gameObjects)
+		//iterate through sorted lights in reverse order
+		for (auto it = sorted.rbegin(); it != sorted.rend(); ++it)
 		{
-			auto& obj = kv.second;
-			if (obj.m_PointLight == nullptr) {
-				continue;
-			}
+			auto& obj = frameInfo.gameObjects.at(it->second);
 
 			PointLightPushConstants push{};
 			push.position = glm::vec4(obj.m_Transform.translation, 1.f);
