@@ -8,10 +8,9 @@
   "ExpandedNodes": [
     "",
     "\\Project",
-    "\\Project\\models",
     "\\Project\\shaders",
-    "\\Project\\vulkanbase"
+    "\\Project\\systems"
   ],
-  "SelectedNode": "\\Project\\shaders\\GP2SimpleShader.frag",
+  "SelectedNode": "\\Project\\systems\\SimpleRenderSystem.cpp",
   "PreviewInSolutionExplorer": false
 }

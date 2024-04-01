@@ -1,6 +1,7 @@
 #include "GP2Base.h"
 
-#include "SimpleRenderSystem.h"
+#include "systems/SimpleRenderSystem.h"
+#include "systems/PointLightSystem.h"
 #include "GP2Camera.h"
 #include "KeyboardMovementController.h"
 #include "GP2Buffer.h"
@@ -21,7 +22,8 @@ namespace GP2
 {
 	struct GlobalUbo
 	{
-		glm::mat4 projectionView{ 1.f };
+		glm::mat4 projection{ 1.f };
+		glm::mat4 view{ 1.f };
 		glm::vec4 ambientLightColor{ 1.f,1.f,1.f,.02f };
 		glm::vec3 lightPosition{ -1.f };
 		alignas(16) glm::vec4 lightColor{ 1.f };
@@ -70,6 +72,7 @@ namespace GP2
 		}
 
 		SimpleRenderSystem simpleRenderSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
+		PointLightSystem pointLightSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		GP2Camera camera{};
 		camera.SetViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(0.f, 0.f, 2.5f));
 
@@ -99,13 +102,15 @@ namespace GP2
 
 				//update
 				GlobalUbo ubo{};
-				ubo.projectionView = camera.GetProjection() * camera.GetView();
+				ubo.projection = camera.GetProjection();
+				ubo.view = camera.GetView();
 				uboBuffers[frameIndex]->WriteToBuffer(&ubo);
 				uboBuffers[frameIndex]->Flush();
 
 				//render
 				m_GP2Renderer.BeginSwapChainRenderPass(commandBuffer);
 				simpleRenderSystem.RenderGameObjects(frameInfo);
+				pointLightSystem.Render(frameInfo);
 				m_GP2Renderer.EndSwapChainRenderPass(commandBuffer);
 				m_GP2Renderer.EndFrame();
 			}

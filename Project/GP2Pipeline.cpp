@@ -78,8 +78,8 @@ namespace GP2
 		shaderStages[1].pNext = nullptr;
 		shaderStages[1].pSpecializationInfo = nullptr;
 		
-		auto bindingDescriptions = GP2Model::Vertex::GetBindingDescriptions();
-		auto attributeDescriptions = GP2Model::Vertex::GetAttributeDescriptions();
+		auto& bindingDescriptions = configInfo.bindingDescriptions;
+		auto& attributeDescriptions = configInfo.attributeDescriptions;
 		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
 		vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 		vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(attributeDescriptions.size());
@@ -199,5 +199,8 @@ namespace GP2
 		configInfo.dynamicStateInfo.pDynamicStates = configInfo.dynamicStateEnables.data();
 		configInfo.dynamicStateInfo.dynamicStateCount = static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
 		configInfo.dynamicStateInfo.flags = 0;
+
+		configInfo.bindingDescriptions = GP2Model::Vertex::GetBindingDescriptions();
+		configInfo.attributeDescriptions = GP2Model::Vertex::GetAttributeDescriptions();
 	}
 }

@@ -2093,7 +2093,7 @@ build _deps\glfw-build\tests\install\local: phony _deps\glfw-build\tests\CMakeFi
 #############################################
 # Utility command for Shaders
 
-build Project\Shaders: phony Project\CMakeFiles\Shaders Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv
+build Project\Shaders: phony Project\CMakeFiles\Shaders Project\shaders\GP2PointLight.frag.spv Project\shaders\GP2PointLight.vert.spv Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv
 
 # =============================================================================
 # Object build statements for EXECUTABLE target VulkanLab01
@@ -2168,11 +2168,11 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Renderer.cpp.obj: CXX_COMPILER__Vulk
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
   TARGET_PDB = Project\VulkanLab01.pdb
 
-build Project\CMakeFiles\VulkanLab01.dir\SimpleRenderSystem.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\SimpleRenderSystem.cpp || cmake_object_order_depends_target_VulkanLab01
+build Project\CMakeFiles\VulkanLab01.dir\systems\SimpleRenderSystem.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\systems\SimpleRenderSystem.cpp || cmake_object_order_depends_target_VulkanLab01
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
   INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
   OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
-  OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir
+  OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir\systems
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
   TARGET_PDB = Project\VulkanLab01.pdb
 
@@ -2216,6 +2216,14 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj: CXX_COMPILER__V
   TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
   TARGET_PDB = Project\VulkanLab01.pdb
 
+build Project\CMakeFiles\VulkanLab01.dir\systems\PointLightSystem.cpp.obj: CXX_COMPILER__VulkanLab01_unscanned_Debug C$:\Graphics$ Programming$ 2\Vulkan\Project\systems\PointLightSystem.cpp || cmake_object_order_depends_target_VulkanLab01
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
+  INCLUDES = -IC:\VulkanSDK\1.3.261.1\Include -I"C:\Graphics Programming 2\Vulkan\Project" -IC:\tinyobjloader -I"C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\_deps\glfw-src\include"
+  OBJECT_DIR = Project\CMakeFiles\VulkanLab01.dir
+  OBJECT_FILE_DIR = Project\CMakeFiles\VulkanLab01.dir\systems
+  TARGET_COMPILE_PDB = Project\CMakeFiles\VulkanLab01.dir\
+  TARGET_PDB = Project\VulkanLab01.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target VulkanLab01
@@ -2224,7 +2232,7 @@ build Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj: CXX_COMPILER__V
 #############################################
 # Link the executable Project\VulkanLab01.exe
 
-build Project\VulkanLab01.exe: CXX_EXECUTABLE_LINKER__VulkanLab01_Debug Project\CMakeFiles\VulkanLab01.dir\main.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Window.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Base.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Pipeline.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Device.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2SwapChain.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Model.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Renderer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\SimpleRenderSystem.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Camera.cpp.obj Project\CMakeFiles\VulkanLab01.dir\KeyboardMovementController.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2GameObject.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Buffer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj | C$:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib _deps\glfw-build\src\glfw3.lib || Project\Shaders _deps\glfw-build\src\glfw3.lib
+build Project\VulkanLab01.exe: CXX_EXECUTABLE_LINKER__VulkanLab01_Debug Project\CMakeFiles\VulkanLab01.dir\main.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Window.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Base.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Pipeline.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Device.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2SwapChain.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Model.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Renderer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\systems\SimpleRenderSystem.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Camera.cpp.obj Project\CMakeFiles\VulkanLab01.dir\KeyboardMovementController.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2GameObject.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Buffer.cpp.obj Project\CMakeFiles\VulkanLab01.dir\GP2Descriptors.cpp.obj Project\CMakeFiles\VulkanLab01.dir\systems\PointLightSystem.cpp.obj | C$:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib _deps\glfw-build\src\glfw3.lib || Project\Shaders _deps\glfw-build\src\glfw3.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = C:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib  _deps\glfw-build\src\glfw3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -2293,7 +2301,25 @@ build Project\install\local: phony Project\CMakeFiles\install\local.util
 #############################################
 # Phony custom command for Project\CMakeFiles\Shaders
 
-build Project\CMakeFiles\Shaders | ${cmake_ninja_workdir}Project\CMakeFiles\Shaders: phony Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv
+build Project\CMakeFiles\Shaders | ${cmake_ninja_workdir}Project\CMakeFiles\Shaders: phony Project\shaders\GP2PointLight.frag.spv Project\shaders\GP2PointLight.vert.spv Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv
+
+
+#############################################
+# Custom command for Project\shaders\GP2PointLight.frag.spv
+
+build Project\shaders\GP2PointLight.frag.spv | ${cmake_ninja_workdir}Project\shaders\GP2PointLight.frag.spv: CUSTOM_COMMAND C$:\Graphics$ Programming$ 2\Vulkan\Project\shaders\GP2PointLight.frag
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\Project" && C:\VulkanSDK\1.3.261.1\Bin\glslc.exe "C:/Graphics Programming 2/Vulkan/Project/shaders/GP2PointLight.frag" -o "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2PointLight.frag.spv""
+  DESC = Generating shaders/GP2PointLight.frag.spv
+  restat = 1
+
+
+#############################################
+# Custom command for Project\shaders\GP2PointLight.vert.spv
+
+build Project\shaders\GP2PointLight.vert.spv | ${cmake_ninja_workdir}Project\shaders\GP2PointLight.vert.spv: CUSTOM_COMMAND C$:\Graphics$ Programming$ 2\Vulkan\Project\shaders\GP2PointLight.vert
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\Project" && C:\VulkanSDK\1.3.261.1\Bin\glslc.exe "C:/Graphics Programming 2/Vulkan/Project/shaders/GP2PointLight.vert" -o "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2PointLight.vert.spv""
+  DESC = Generating shaders/GP2PointLight.vert.spv
+  restat = 1
 
 
 #############################################
