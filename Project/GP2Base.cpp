@@ -118,21 +118,21 @@ namespace GP2
 	
 	void GP2Base::LoadGameObjects()
 	{
-		std::shared_ptr<GP2Model> gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\flat_vase.obj");
+		std::shared_ptr<GP2Model> gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/flat_vase.obj");
 		auto flatVase = GP2GameObject::CreateGameObject();
 		flatVase.m_Model = gp2Model;
 		flatVase.m_Transform.translation = { -.5f,.5f,0.f };
 		flatVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
 		m_GameObjects.emplace(flatVase.GetId(), std::move(flatVase));
 
-		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\smooth_vase.obj");
+		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/smooth_vase.obj");
 		auto smoothVase = GP2GameObject::CreateGameObject();
 		smoothVase.m_Model = gp2Model;
 		smoothVase.m_Transform.translation = { 0.5f,.5f,0.f };
 		smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
 		m_GameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
 
-		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\quad.obj");
+		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/quad.obj");
 		auto floor = GP2GameObject::CreateGameObject();
 		floor.m_Model = gp2Model;
 		floor.m_Transform.translation = { 0.f,.5f,0.f };

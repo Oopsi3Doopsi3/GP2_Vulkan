@@ -23,12 +23,8 @@ add_custom_target(
     DEPENDS ${SPIRV_BINARY_FILES}
 )
 
-
 set(SOURCES
     "main.cpp"
-    "vulkanbase/VulkanBase.h" 
-    "vulkanbase/VulkanUtil.h"
-    
     "GP2Window.cpp"
     "GP2Base.cpp"
     "GP2Pipeline.cpp"
@@ -51,3 +47,13 @@ add_dependencies(${PROJECT_NAME} Shaders)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${Vulkan_LIBRARIES} glfw)
 target_link_libraries(${PROJECT_NAME} PRIVATE ${Vulkan_LIBRARIES} tinyobjloader)
+
+#Copy models
+set(MODELS_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/models")
+set(MODELS_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/models")
+
+add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${MODELS_SOURCE_DIR} ${MODELS_BINARY_DIR}
+)
