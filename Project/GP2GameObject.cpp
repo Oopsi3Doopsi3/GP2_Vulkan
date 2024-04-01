@@ -63,4 +63,14 @@ namespace GP2
 			}
 		};
 	}
+
+	GP2GameObject GP2GameObject::MakePointLight(float intensity, float radius, glm::vec3 color)
+	{
+		GP2GameObject gameObj = CreateGameObject();
+		gameObj.m_Color = color;
+		gameObj.m_Transform.scale.x = radius;
+		gameObj.m_PointLight = std::make_unique<PointLightComponent>();
+		gameObj.m_PointLight->lightIntensity = intensity;
+		return gameObj;
+	}
 }

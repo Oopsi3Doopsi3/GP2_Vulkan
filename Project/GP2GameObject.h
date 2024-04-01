@@ -24,6 +24,11 @@ namespace GP2
 		glm::mat3 normalMatrix();
 	};
 
+	struct PointLightComponent
+	{
+		float lightIntensity = 1.f;
+	};
+
 	class GP2GameObject
 	{
 	public:
@@ -36,6 +41,8 @@ namespace GP2
 			return GP2GameObject{ currentId++ };
 		}
 
+		static GP2GameObject MakePointLight(float intensity = 10.f, float radius = 0.1f, glm::vec3 color = glm::vec3(1.f));
+
 		GP2GameObject(const GP2GameObject&) = delete;
 		GP2GameObject& operator=(const GP2GameObject&) = delete;
 		GP2GameObject(GP2GameObject&&) = default;
@@ -43,9 +50,12 @@ namespace GP2
 
 		id_t GetId() const { return m_Id; }
 
-		std::shared_ptr<GP2Model> m_Model{};
 		glm::vec3 m_Color{};
 		TransformComponent m_Transform{};
+
+		//Optional components
+		std::shared_ptr<GP2Model> m_Model{};
+		std::unique_ptr<PointLightComponent> m_PointLight = nullptr;
 
 	private:
 		GP2GameObject(id_t objId) : m_Id(objId) {}

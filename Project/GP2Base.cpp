@@ -20,15 +20,6 @@
 
 namespace GP2
 {
-	struct GlobalUbo
-	{
-		glm::mat4 projection{ 1.f };
-		glm::mat4 view{ 1.f };
-		glm::vec4 ambientLightColor{ 1.f,1.f,1.f,.02f };
-		glm::vec3 lightPosition{ -1.f };
-		alignas(16) glm::vec4 lightColor{ 1.f };
-	};
-
 	GP2Base::GP2Base()
 	{
 		m_GlobalPool = GP2DescriptorPool::Builder(m_GP2Device)
@@ -104,6 +95,7 @@ namespace GP2
 				GlobalUbo ubo{};
 				ubo.projection = camera.GetProjection();
 				ubo.view = camera.GetView();
+				pointLightSystem.Update(frameInfo, ubo);
 				uboBuffers[frameIndex]->WriteToBuffer(&ubo);
 				uboBuffers[frameIndex]->Flush();
 
@@ -141,5 +133,26 @@ namespace GP2
 		floor.m_Transform.translation = { 0.f,.5f,0.f };
 		floor.m_Transform.scale = glm::vec3{ 3.f, 1.f, 3.f };
 		m_GameObjects.emplace(floor.GetId(), std::move(floor));
+
+		std::vector<glm::vec3> lightColors{
+		{1.f, .1f, .1f},
+		{.1f, .1f, 1.f},
+		{.1f, 1.f, .1f},
+		{1.f, 1.f, .1f},
+		{.1f, 1.f, 1.f},
+		{1.f, 1.f, 1.f}  //
+		};
+
+		for (int i{}; i < lightColors.size(); ++i)
+		{
+			auto pointLight = GP2GameObject::MakePointLight(.2f);
+			pointLight.m_Color = lightColors[i];
+			auto rotateLight = glm::rotate(
+				glm::mat4(1.f),
+				(i * glm::two_pi<float>()) / lightColors.size(),
+				{ 0.f, -1.f, 0.f });
+			pointLight.m_Transform.translation = glm::vec3(rotateLight * glm::vec4(-1.f, -1.f, -1.f, 1.f));
+			m_GameObjects.emplace(pointLight.GetId(), std::move(pointLight));
+		}
 	}
 }

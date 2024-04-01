@@ -13,6 +13,13 @@
 
 namespace GP2
 {
+	struct PointLightPushConstants
+	{
+		glm::vec4 position{};
+		glm::vec4 color{};
+		float radius;
+	};
+
 	PointLightSystem::PointLightSystem(GP2Device& device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout):
 		m_GP2Device(device)
 	{
@@ -27,10 +34,10 @@ namespace GP2
 
 	void PointLightSystem::CreatePipelineLayout(VkDescriptorSetLayout globalSetLayout)
 	{
-		//VkPushConstantRange pushConstantRange{};
-		//pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
-		//pushConstantRange.offset = 0;
-		//pushConstantRange.size = sizeof(SimplePushConstantData);
+		VkPushConstantRange pushConstantRange{};
+		pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
+		pushConstantRange.offset = 0;
+		pushConstantRange.size = sizeof(PointLightPushConstants);
 
 		std::vector<VkDescriptorSetLayout> descriptorSetLayouts{ globalSetLayout };
 
@@ -38,8 +45,8 @@ namespace GP2
 		pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 		pipelineLayoutInfo.setLayoutCount = static_cast<uint32_t>(descriptorSetLayouts.size());
 		pipelineLayoutInfo.pSetLayouts = descriptorSetLayouts.data();
-		pipelineLayoutInfo.pushConstantRangeCount = 0;
-		pipelineLayoutInfo.pPushConstantRanges = nullptr;
+		pipelineLayoutInfo.pushConstantRangeCount = 1;
+		pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 		if (vkCreatePipelineLayout(m_GP2Device.Device(), &pipelineLayoutInfo, nullptr, &m_PipelineLayout) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create pipeline layout");
 		}
@@ -64,6 +71,32 @@ namespace GP2
 		);
 	}
 
+	void PointLightSystem::Update(FrameInfo& frameInfo, GlobalUbo& ubo)
+	{
+		auto rotateLight = glm::rotate(glm::mat4(1.f), frameInfo.frameTime, { 0.f, -1.f, 0.f });
+
+		int lightIndex = 0;
+		for (auto& kv : frameInfo.gameObjects)
+		{
+			auto& obj = kv.second;
+			if (obj.m_PointLight == nullptr) {
+				continue;
+			}
+
+			assert(lightIndex < MAX_LIGHTS && "Point lights exceed maximum specified");
+
+			//update light position
+			obj.m_Transform.translation = glm::vec3(rotateLight * glm::vec4(obj.m_Transform.translation, 1.f));
+
+			//copy lights to ubo
+			ubo.pointlights[lightIndex].position = glm::vec4(obj.m_Transform.translation, 1.f);
+			ubo.pointlights[lightIndex].color = glm::vec4(obj.m_Color, obj.m_PointLight->lightIntensity);
+
+			++lightIndex;
+		}
+		ubo.numLights = lightIndex;
+	}
+
 	void PointLightSystem::Render(FrameInfo& frameInfo)
 	{
 		m_GP2Pipeline->Bind(frameInfo.commandBuffer);
@@ -78,6 +111,27 @@ namespace GP2
 			0,
 			nullptr);
 
-		vkCmdDraw(frameInfo.commandBuffer, 6, 1, 0, 0);
+		for (auto& kv : frameInfo.gameObjects)
+		{
+			auto& obj = kv.second;
+			if (obj.m_PointLight == nullptr) {
+				continue;
+			}
+
+			PointLightPushConstants push{};
+			push.position = glm::vec4(obj.m_Transform.translation, 1.f);
+			push.color = glm::vec4(obj.m_Color, obj.m_PointLight->lightIntensity);
+			push.radius = obj.m_Transform.scale.x;
+
+			vkCmdPushConstants(
+				frameInfo.commandBuffer,
+				m_PipelineLayout,
+				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+				0,
+				sizeof(PointLightPushConstants),
+				&push
+			);
+			vkCmdDraw(frameInfo.commandBuffer, 6, 1, 0, 0);
+		}
 	}
 }
