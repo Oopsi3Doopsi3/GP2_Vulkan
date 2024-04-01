@@ -7,8 +7,11 @@
   },
   "ExpandedNodes": [
     "",
-    "\\Project"
+    "\\Project",
+    "\\Project\\models",
+    "\\Project\\shaders",
+    "\\Project\\vulkanbase"
   ],
-  "SelectedNode": "\\Project\\GP2Model.h",
+  "SelectedNode": "\\Project\\shaders\\GP2SimpleShader.frag",
   "PreviewInSolutionExplorer": false
 }

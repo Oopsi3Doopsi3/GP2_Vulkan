@@ -22,7 +22,9 @@ namespace GP2
 	struct GlobalUbo
 	{
 		glm::mat4 projectionView{ 1.f };
-		glm::vec3 lightDirection = glm::normalize(glm::vec3(1.f, -3.f, -1.f));
+		glm::vec4 ambientLightColor{ 1.f,1.f,1.f,.2f };
+		glm::vec3 lightPosition{ -1.f };
+		alignas(16) glm::vec4 lightColor{ 1.f };
 	};
 
 	GP2Base::GP2Base()
@@ -72,6 +74,7 @@ namespace GP2
 		camera.SetViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(0.f, 0.f, 2.5f));
 
 		auto viewerObject = GP2GameObject::CreateGameObject();
+		viewerObject.m_Transform.translation.z = -2.5f;
 		KeyboardMovementController cameraController{};
 
 		auto currentTime = std::chrono::high_resolution_clock::now();
@@ -87,7 +90,7 @@ namespace GP2
 			camera.SetViewYXZ(viewerObject.m_Transform.translation, viewerObject.m_Transform.rotation);
 
 			float aspect = m_GP2Renderer.GetAspectRatio();
-			camera.SetPerspectiveProjection(glm::radians(50.f), aspect, .1f, 10.f);
+			camera.SetPerspectiveProjection(glm::radians(50.f), aspect, .1f, 100.f);
 			
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
 			{
@@ -116,15 +119,22 @@ namespace GP2
 		std::shared_ptr<GP2Model> gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\flat_vase.obj");
 		auto flatVase = GP2GameObject::CreateGameObject();
 		flatVase.m_Model = gp2Model;
-		flatVase.m_Transform.translation = { -.5f,.5f,2.5f };
+		flatVase.m_Transform.translation = { -.5f,.5f,0.f };
 		flatVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
 		m_GameObjects.push_back(std::move(flatVase));
 
 		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\smooth_vase.obj");
 		auto smoothVase = GP2GameObject::CreateGameObject();
 		smoothVase.m_Model = gp2Model;
-		smoothVase.m_Transform.translation = { 0.5f,.5f,2.5f };
+		smoothVase.m_Transform.translation = { 0.5f,.5f,0.f };
 		smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
 		m_GameObjects.push_back(std::move(smoothVase));
+
+		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "C:\\Graphics Programming 2\\Vulkan\\Project\\models\\quad.obj");
+		auto floor = GP2GameObject::CreateGameObject();
+		floor.m_Model = gp2Model;
+		floor.m_Transform.translation = { 0.f,.5f,0.f };
+		floor.m_Transform.scale = glm::vec3{ 3.f, 1.f, 3.f };
+		m_GameObjects.push_back(std::move(floor));
 	}
 }
