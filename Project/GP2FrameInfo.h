@@ -33,6 +33,5 @@ namespace GP2
 		VkCommandBuffer commandBuffer;
 		GP2Camera& camera;
 		VkDescriptorSet globalDescriptorSet;
-		GP2GameObject::Map& gameObjects;
 	};
 }

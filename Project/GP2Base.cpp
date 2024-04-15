@@ -2,6 +2,7 @@
 
 #include "systems/SimpleRenderSystem.h"
 #include "systems/PointLightSystem.h"
+#include "systems/SimpleRenderSystem2D.h"
 #include "GP2Camera.h"
 #include "KeyboardMovementController.h"
 #include "GP2Buffer.h"
@@ -62,6 +63,7 @@ namespace GP2
 				.Build(globalDescriptorSets[i]);
 		}
 
+		SimpleRenderSystem2D simpleRenderSystem2D{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		SimpleRenderSystem simpleRenderSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		PointLightSystem pointLightSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		GP2Camera camera{};
@@ -89,14 +91,14 @@ namespace GP2
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
 			{
 				int frameIndex = m_GP2Renderer.GetFrameIndex();
-				FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera, globalDescriptorSets[frameIndex], m_GameObjects };
+				FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera, globalDescriptorSets[frameIndex]};
 
 				//update
 				GlobalUbo ubo{};
 				ubo.projection = camera.GetProjection();
 				ubo.view = camera.GetView();
 				ubo.inversView = camera.GetInverseView();
-				pointLightSystem.Update(frameInfo, ubo);
+				pointLightSystem.Update(frameInfo, ubo, m_GameObjects);
 				uboBuffers[frameIndex]->WriteToBuffer(&ubo);
 				uboBuffers[frameIndex]->Flush();
 
@@ -104,8 +106,9 @@ namespace GP2
 				m_GP2Renderer.BeginSwapChainRenderPass(commandBuffer);
 
 				//Order matters for transparency
-				simpleRenderSystem.RenderGameObjects(frameInfo);
-				pointLightSystem.Render(frameInfo);
+				simpleRenderSystem2D.RenderGameObjects(frameInfo, m_2DGameObjects);
+				simpleRenderSystem.RenderGameObjects(frameInfo, m_GameObjects);
+				pointLightSystem.Render(frameInfo, m_GameObjects);
 
 
 				m_GP2Renderer.EndSwapChainRenderPass(commandBuffer);
@@ -118,26 +121,86 @@ namespace GP2
 	
 	void GP2Base::LoadGameObjects()
 	{
-		std::shared_ptr<GP2Model> gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/flat_vase.obj");
+		//2D
+		const GP2Model::Builder rectangleModel{
+		{
+			{{-0.95f, -0.95f, 0.f}, {1.0f, 0.0f, 0.0f}},
+			{{-0.70f, -0.95f, 0.f}, {0.0f, 1.0f, 0.0f}},
+			{{-0.70f, -0.70f, 0.f}, {0.0f, 0.0f, 1.0f}},
+			{{-0.95f, -0.70f, 0.f}, {1.0f, 1.0f, 1.0f}},
+		},
+			{
+				0, 1, 2, 2, 3, 0
+			}
+		};
+		auto mesh = std::make_unique<GP2Model>(m_GP2Device, rectangleModel);
+		auto rectangle = GP2GameObject::CreateGameObject();
+		rectangle.m_Model = std::move(mesh);
+		m_2DGameObjects.emplace(rectangle.GetId(), std::move(rectangle));
+
+		//circle
+		constexpr int nrSegments = 100;
+		constexpr float radius = .25f;
+		constexpr double pi = 3.14159;
+		const double thetaIncrement = (2.0 * pi) / static_cast<double>(nrSegments);
+		double theta = 0.0;
+		
+		std::vector<GP2Model::Vertex> circleVertices(nrSegments);
+		for (int i{}; i < nrSegments; ++i)
+		{
+			circleVertices[i].position.x = static_cast<float>(cos(theta)) * radius + 0.6f;
+			circleVertices[i].position.y = static_cast<float>(sin(theta)) * radius - 0.6f;
+		
+			circleVertices[i].color = glm::vec3{ sin(theta),cos(theta),tan(theta)};
+			theta += thetaIncrement;
+		}
+		circleVertices.push_back(GP2Model::Vertex{ {.6f,-0.6f,0.f},{1.f,1.f,1.f} });
+		
+		std::vector<uint32_t> circleIndices;
+		for (int i{}; i < nrSegments; ++i)
+		{
+			if (i < nrSegments - 1)
+			{
+				circleIndices.push_back(i);
+				circleIndices.push_back(nrSegments);
+				circleIndices.push_back(i + 1);
+			}
+			else
+			{
+				circleIndices.push_back(i);
+				circleIndices.push_back(nrSegments);
+				circleIndices.push_back(0);
+			}
+		}
+		const GP2Model::Builder circleModel{ circleVertices, circleIndices };
+		mesh = std::make_unique<GP2Model>(m_GP2Device, circleModel);
+		auto circle = GP2GameObject::CreateGameObject();
+		circle.m_Model = std::move(mesh);
+		m_2DGameObjects.emplace(circle.GetId(), std::move(circle));
+
+
+		//3D
+		auto gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/flat_vase.obj");
 		auto flatVase = GP2GameObject::CreateGameObject();
-		flatVase.m_Model = gp2Model;
+		flatVase.m_Model = std::move(gp2Model);
 		flatVase.m_Transform.translation = { -.5f,.5f,0.f };
 		flatVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
 		m_GameObjects.emplace(flatVase.GetId(), std::move(flatVase));
 
 		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/smooth_vase.obj");
 		auto smoothVase = GP2GameObject::CreateGameObject();
-		smoothVase.m_Model = gp2Model;
+		smoothVase.m_Model = std::move(gp2Model);
 		smoothVase.m_Transform.translation = { 0.5f,.5f,0.f };
 		smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
 		m_GameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
 
 		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/quad.obj");
 		auto floor = GP2GameObject::CreateGameObject();
-		floor.m_Model = gp2Model;
+		floor.m_Model = std::move(gp2Model);
 		floor.m_Transform.translation = { 0.f,.5f,0.f };
 		floor.m_Transform.scale = glm::vec3{ 3.f, 1.f, 3.f };
 		m_GameObjects.emplace(floor.GetId(), std::move(floor));
+
 
 		std::vector<glm::vec3> lightColors{
 		{1.f, .1f, .1f},

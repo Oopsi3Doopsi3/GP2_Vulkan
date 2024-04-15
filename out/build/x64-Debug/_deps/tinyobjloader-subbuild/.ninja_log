@@ -1,37 +1,37 @@
 # ninja log v5
-1504	1561	7337028397736037	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607
+1323	1378	7348886553209765	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607
 2	56	7336988202953114	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-mkdir	152c89da2797ff65
 57	2561	7336988228004342	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-download	795ecb5a1330de61
-1388	1428	7337028396392716	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
+1201	1242	7348886551845523	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
 2	56	7336988202953114	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-mkdir	152c89da2797ff65
-1307	1347	7337028395590166	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
+1122	1161	7348886551037637	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
 57	2561	7336988228004342	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-download	795ecb5a1330de61
-3	1307	0	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
-1307	1347	7337028395590166	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
-3	1307	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
-1347	1388	7337028396002067	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
-1347	1388	7337028396002067	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
-1388	1428	7337028396392716	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
-1428	1466	7337028396784438	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
-1428	1466	7337028396784438	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
-1504	1561	7337028397736037	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607
-1466	1504	7337028397160402	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
-1466	1504	7337028397160402	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
-1504	1561	7337028397736037	CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
-1504	1561	7337028397736037	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
-6	1307	0	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
-6	1307	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
-1307	1348	7337028423795704	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
-1307	1348	7337028423795704	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
-1348	1390	7337028424210860	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
-1348	1390	7337028424210860	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
-1390	1429	7337028424604245	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
-1390	1429	7337028424604245	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
-1429	1469	7337028425006073	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
-1429	1469	7337028425006073	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
-1469	1509	7337028425412514	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
-1469	1509	7337028425412514	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
-1510	1566	7337028425978053	CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
-1510	1566	7337028425978053	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607
-1510	1566	7337028425978053	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
-1510	1566	7337028425978053	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607
+6	1122	0	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
+1122	1161	7348886551037637	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
+6	1122	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
+1161	1201	7348886551431953	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
+1161	1201	7348886551431953	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
+1201	1242	7348886551845523	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
+1242	1282	7348886552241186	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
+1242	1282	7348886552241186	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
+1323	1378	7348886553209765	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607
+1282	1323	7348886552655899	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
+1282	1323	7348886552655899	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
+1323	1378	7348886553209765	CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
+1323	1378	7348886553209765	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
+8	1553	0	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
+8	1553	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-update	f46aeedbe9bb5095
+1553	1595	7349066367116723	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
+1553	1595	7349066367116723	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-patch	d294746f602843f4
+1596	1637	7349066367525596	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
+1596	1637	7349066367525596	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-configure	a5912c7095363888
+1637	1679	7349066367952087	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
+1637	1679	7349066367952087	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-build	8283b0792728ec2d
+1679	1721	7349066368369231	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
+1679	1721	7349066368369231	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-install	ae7afe3e746f04d3
+1721	1764	7349066368795907	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
+1721	1764	7349066368795907	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-test	bbff89494b6f677c
+1764	1826	7349066369427256	CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
+1764	1826	7349066369427256	tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607
+1764	1826	7349066369427256	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/CMakeFiles/tinyobjloader-populate-complete	1e5d5c70b3eaa607
+1764	1826	7349066369427256	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/tinyobjloader-populate-done	1e5d5c70b3eaa607

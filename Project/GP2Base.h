@@ -36,6 +36,7 @@ namespace GP2
 
 		std::unique_ptr<GP2DescriptorPool> m_GlobalPool{};
 		GP2GameObject::Map m_GameObjects;
+		GP2GameObject::Map m_2DGameObjects;
 	};
 }
 

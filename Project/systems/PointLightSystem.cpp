@@ -73,43 +73,43 @@ namespace GP2
 		);
 	}
 
-	void PointLightSystem::Update(FrameInfo& frameInfo, GlobalUbo& ubo)
+	void PointLightSystem::Update(FrameInfo& frameInfo, GlobalUbo& ubo, GP2GameObject::Map& gameObjects)
 	{
 		auto rotateLight = glm::rotate(glm::mat4(1.f), frameInfo.frameTime, { 0.f, -1.f, 0.f });
 
 		int lightIndex = 0;
-		for (auto& kv : frameInfo.gameObjects)
+		for (auto& kv : gameObjects)
 		{
 			auto& obj = kv.second;
 			if (obj.m_PointLight == nullptr) {
 				continue;
 			}
-
+		
 			assert(lightIndex < MAX_LIGHTS && "Point lights exceed maximum specified");
-
+		
 			//update light position
 			obj.m_Transform.translation = glm::vec3(rotateLight * glm::vec4(obj.m_Transform.translation, 1.f));
-
+		
 			//copy lights to ubo
 			ubo.pointlights[lightIndex].position = glm::vec4(obj.m_Transform.translation, 1.f);
 			ubo.pointlights[lightIndex].color = glm::vec4(obj.m_Color, obj.m_PointLight->lightIntensity);
-
+		
 			++lightIndex;
 		}
 		ubo.numLights = lightIndex;
 	}
 
-	void PointLightSystem::Render(FrameInfo& frameInfo)
+	void PointLightSystem::Render(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects)
 	{
 		//sort lights
 		std::map<float, GP2GameObject::id_t> sorted;
-		for (auto& kv : frameInfo.gameObjects)
+		for (auto& kv : gameObjects)
 		{
 			auto& obj = kv.second;
 			if (obj.m_PointLight == nullptr) {
 				continue;
 			}
-
+		
 			//calculate distance
 			auto offset = frameInfo.camera.GetPosition() - obj.m_Transform.translation;
 			float disSquared = glm::dot(offset, offset);
@@ -131,7 +131,7 @@ namespace GP2
 		//iterate through sorted lights in reverse order
 		for (auto it = sorted.rbegin(); it != sorted.rend(); ++it)
 		{
-			auto& obj = frameInfo.gameObjects.at(it->second);
+			auto& obj = gameObjects.at(it->second);
 
 			PointLightPushConstants push{};
 			push.position = glm::vec4(obj.m_Transform.translation, 1.f);

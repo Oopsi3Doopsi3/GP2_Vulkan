@@ -54,7 +54,7 @@ namespace GP2
 		TransformComponent m_Transform{};
 
 		//Optional components
-		std::shared_ptr<GP2Model> m_Model{};
+		std::unique_ptr<GP2Model> m_Model{};
 		std::unique_ptr<PointLightComponent> m_PointLight = nullptr;
 
 	private:

@@ -20,8 +20,8 @@ namespace GP2
 		PointLightSystem(const PointLightSystem&) = delete;
 		PointLightSystem& operator=(const PointLightSystem&) = delete;
 
-		void Update(FrameInfo& frameInfo, GlobalUbo& ubo);
-		void Render(FrameInfo& frameInfo);
+		void Update(FrameInfo& frameInfo, GlobalUbo& ubo, GP2GameObject::Map& gameObjects);
+		void Render(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects);
 
 	private:
 		void CreatePipelineLayout(VkDescriptorSetLayout globalSetLayout);
