@@ -26,6 +26,7 @@ namespace GP2
 		VkPipelineDepthStencilStateCreateInfo depthStencilInfo;
 		std::vector<VkDynamicState> dynamicStateEnables;
 		VkPipelineDynamicStateCreateInfo dynamicStateInfo;
+		VkPipelineTessellationStateCreateInfo tessellationInfo;
 		VkPipelineLayout pipelineLayout = nullptr;
 		VkRenderPass renderPass = nullptr;
 		uint32_t subpass = 0;
@@ -48,6 +49,7 @@ namespace GP2
 
 		void Bind(VkCommandBuffer commandBuffer);
 		static void DefaultPipelineConfigInfo(PipelineConfigInfo& configInfo);
+		static void TessellationPipelineConfigInfo(PipelineConfigInfo& configInfo);
 		static void EnableAlphaBlending(PipelineConfigInfo& configInfo);
 
 	private:

@@ -204,6 +204,54 @@ namespace GP2
 		configInfo.attributeDescriptions = GP2Model::Vertex::GetAttributeDescriptions();
 	}
 
+	void GP2Pipeline::TessellationPipelineConfigInfo(PipelineConfigInfo& configInfo)
+	{
+		configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
+		configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_PATCH_LIST;
+		configInfo.inputAssemblyInfo.flags = 0;
+		configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;
+
+		configInfo.rasterizationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
+		configInfo.rasterizationInfo.polygonMode = VK_POLYGON_MODE_FILL;
+		configInfo.rasterizationInfo.cullMode = VK_CULL_MODE_BACK_BIT;
+		configInfo.rasterizationInfo.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE; //Watch out for this, maybe cw not sure yet
+		configInfo.rasterizationInfo.flags = 0;
+		configInfo.rasterizationInfo.depthClampEnable = VK_FALSE;
+		configInfo.rasterizationInfo.lineWidth = 1.f; //Why set this when ignoring in dynamic state anyway?
+														//Need to call vkCmdSetLineWidth in BeginSwapChainRenderPass in Renderer
+		configInfo.colorBlendAttachment.colorWriteMask = 0xf;
+		configInfo.colorBlendAttachment.blendEnable = VK_FALSE;
+
+		configInfo.colorBlendInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
+		configInfo.colorBlendInfo.attachmentCount = 1;
+		configInfo.colorBlendInfo.pAttachments = &configInfo.colorBlendAttachment;
+
+		configInfo.depthStencilInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+		configInfo.depthStencilInfo.depthTestEnable = VK_TRUE;
+		configInfo.depthStencilInfo.depthWriteEnable = VK_TRUE;
+		configInfo.depthStencilInfo.depthCompareOp = VK_COMPARE_OP_LESS_OR_EQUAL;
+		configInfo.depthStencilInfo.back.compareOp = VK_COMPARE_OP_ALWAYS;
+
+		configInfo.viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
+		configInfo.viewportInfo.viewportCount = 1;
+		configInfo.viewportInfo.scissorCount = 1;
+		configInfo.viewportInfo.flags = 0;
+
+		configInfo.multisampleInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
+		configInfo.multisampleInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
+		configInfo.multisampleInfo.flags = 0;
+
+		configInfo.dynamicStateEnables = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR, VK_DYNAMIC_STATE_LINE_WIDTH }; //How I undestand this: allows window resizing, and line width is to toggle wireframe?
+		configInfo.dynamicStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
+		configInfo.dynamicStateInfo.pDynamicStates = configInfo.dynamicStateEnables.data();
+		configInfo.dynamicStateInfo.dynamicStateCount = static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
+		configInfo.dynamicStateInfo.flags = 0;
+
+		configInfo.tessellationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO;
+		configInfo.tessellationInfo.patchControlPoints = 3;
+
+	}
+
 	void GP2Pipeline::EnableAlphaBlending(PipelineConfigInfo& configInfo)
 	{
 		configInfo.colorBlendAttachment.colorWriteMask =

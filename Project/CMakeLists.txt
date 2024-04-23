@@ -39,7 +39,8 @@ set(SOURCES
     "GP2Buffer.cpp"
     "GP2Descriptors.cpp"
     "systems/PointLightSystem.cpp"
-    "systems/SimpleRenderSystem2D.cpp")
+    "systems/SimpleRenderSystem2D.cpp"
+    "systems/TessellationSystem.cpp")
 
 # Create the executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${GLSL_SOURCE_FILES})

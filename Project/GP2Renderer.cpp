@@ -150,7 +150,7 @@ namespace GP2
 		viewport.maxDepth = 1.f;
 		VkRect2D scissor{ {0,0}, m_GP2SwapChain->GetSwapChainExtent() };
 		vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
-		vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
+		vkCmdSetScissor(commandBuffer, 0, 1, &scissor); //Need to call vkCmdSetLineWidth bcs dynamicStateInfo in tessellation
 	}
 
 	void GP2Renderer::EndSwapChainRenderPass(VkCommandBuffer commandBuffer)
