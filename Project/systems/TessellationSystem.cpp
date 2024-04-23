@@ -56,27 +56,23 @@ namespace GP2
 		assert(m_PipelineLayout != nullptr && "Cannot create pipleine before pipeline layout");
 
 		PipelineConfigInfo pipelineConfig{};
-		GP2Pipeline::DefaultPipelineConfigInfo(pipelineConfig);
-		pipelineConfig.renderPass = renderPass;
-		pipelineConfig.pipelineLayout = m_PipelineLayout;
-
-
+		//GP2Pipeline::DefaultPipelineConfigInfo(pipelineConfig);
+		//pipelineConfig.renderPass = renderPass;
+		//pipelineConfig.pipelineLayout = m_PipelineLayout;
 
 		GP2Pipeline::TessellationPipelineConfigInfo(pipelineConfig);
 
+		std::vector<ShaderConfigInfo> shaderConfiginfo{};
+		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_VERTEX_BIT });
+		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_FRAGMENT_BIT });
+		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT });
+		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT });
 
-
-
-
-
-
-
-		m_GP2Pipeline = std::make_unique<GP2Pipeline>(
-			m_GP2Device,
-			"shaders/GP2SimpleShader.vert.spv",
-			"shaders/GP2SimpleShader.frag.spv",
-			pipelineConfig
-		);
+		//m_GP2Pipeline = std::make_unique<GP2Pipeline>(
+		//	m_GP2Device,
+		//	shaderConfiginfo,
+		//	pipelineConfig
+		//);
 	}
 
 	void TessellationSystem::RenderGameObjects(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects)

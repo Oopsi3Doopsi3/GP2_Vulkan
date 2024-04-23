@@ -32,15 +32,20 @@ namespace GP2
 		uint32_t subpass = 0;
 	};
 
+	struct ShaderConfigInfo
+	{
+		const std::string& filePath;
+		VkShaderStageFlagBits shaderStage;
+	};
+
 	class GP2Pipeline
 	{
 	public:
 		GP2Pipeline(
-			GP2Device& device, 
-			const std::string& vertFilePath,
-			const std::string& fragFilePath,
+			GP2Device& device,
+			std::vector<ShaderConfigInfo> shaderConfigInfo,
 			const PipelineConfigInfo& configInfo
-			);
+		);
 
 		~GP2Pipeline();
 
@@ -53,19 +58,15 @@ namespace GP2
 		static void EnableAlphaBlending(PipelineConfigInfo& configInfo);
 
 	private:
-		static std::vector<char> ReadFile(const std::string& filePath);
-
 		void CreateGraphicsPipeline(
-			const std::string& vertFilePath, 
-			const std::string& fragFilePath,
+			std::vector<ShaderConfigInfo> shaderConfigInfo,
 			const PipelineConfigInfo& configInfo
 		);
 
-		void CreateShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule);
+		VkShaderModule CreateShaderModule(const std::string& filePath);
 
 		GP2Device& m_GP2Device;
 		VkPipeline m_GraphicsPipeline;
-		VkShaderModule m_VertShaderModule;
-		VkShaderModule m_FragShaderModule;
+		std::vector<VkShaderModule> m_ShaderModules;
 	};
 }

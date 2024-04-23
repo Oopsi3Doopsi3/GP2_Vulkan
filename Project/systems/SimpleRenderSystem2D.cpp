@@ -40,10 +40,13 @@ namespace GP2
 		pipelineConfig.renderPass = renderPass;
 		pipelineConfig.pipelineLayout = m_PipelineLayout;
 
+		std::vector<ShaderConfigInfo> shaderConfiginfo{};
+		shaderConfiginfo.push_back(ShaderConfigInfo{ "shaders/GP2Shader2D.vert.spv", VK_SHADER_STAGE_VERTEX_BIT });
+		shaderConfiginfo.push_back(ShaderConfigInfo{ "shaders/GP2Shader2D.frag.spv", VK_SHADER_STAGE_FRAGMENT_BIT });
+
 		m_GP2Pipeline = std::make_unique<GP2Pipeline>(
 			m_GP2Device,
-			"shaders/GP2Shader2D.vert.spv",
-			"shaders/GP2Shader2D.frag.spv",
+			shaderConfiginfo,
 			pipelineConfig
 		);
 	}
