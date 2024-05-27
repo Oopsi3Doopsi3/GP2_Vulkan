@@ -18,6 +18,14 @@ namespace GP2
 	{
 	public:
 
+		enum class VertexComponent
+		{
+			Position,
+			Color,
+			Normal,
+			UV
+		};
+
 		struct Vertex
 		{
 			glm::vec3 position{};
@@ -26,7 +34,11 @@ namespace GP2
 			glm::vec2 uv{};
 
 			static std::vector<VkVertexInputBindingDescription> GetBindingDescriptions();
+			static VkVertexInputBindingDescription InputBindingDescription(uint32_t binding);
 			static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();
+			static VkVertexInputAttributeDescription InputAttributeDescription(uint32_t binding, uint32_t location, VertexComponent component);
+			static std::vector<VkVertexInputAttributeDescription> InputAttributeDescriptions(uint32_t binding, const std::vector<VertexComponent> components);
+			static VkPipelineVertexInputStateCreateInfo GetVertexInputState(const std::vector<VertexComponent> components);
 
 			bool operator==(const Vertex& other) const
 			{

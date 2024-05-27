@@ -3,6 +3,8 @@
 #include "systems/SimpleRenderSystem.h"
 #include "systems/PointLightSystem.h"
 #include "systems/SimpleRenderSystem2D.h"
+#include "systems/TessellationSystem.h"
+
 #include "GP2Camera.h"
 #include "KeyboardMovementController.h"
 #include "GP2Buffer.h"
@@ -65,6 +67,9 @@ namespace GP2
 
 		SimpleRenderSystem2D simpleRenderSystem2D{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		SimpleRenderSystem simpleRenderSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
+
+		//TessellationSystem tessellationSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
+
 		PointLightSystem pointLightSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		GP2Camera camera{};
 		camera.SetViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(0.f, 0.f, 2.5f));
@@ -106,8 +111,11 @@ namespace GP2
 				m_GP2Renderer.BeginSwapChainRenderPass(commandBuffer);
 
 				//Order matters for transparency
-				simpleRenderSystem2D.RenderGameObjects(frameInfo, m_2DGameObjects);
+				//simpleRenderSystem2D.RenderGameObjects(frameInfo, m_2DGameObjects);
 				simpleRenderSystem.RenderGameObjects(frameInfo, m_GameObjects);
+
+				//tessellationSystem.RenderGameObjects(frameInfo, m_TesGameObjects);
+
 				pointLightSystem.Render(frameInfo, m_GameObjects);
 
 
@@ -180,19 +188,27 @@ namespace GP2
 
 
 		//3D
-		auto gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/flat_vase.obj");
+		auto gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/vehicle.obj");
 		auto flatVase = GP2GameObject::CreateGameObject();
 		flatVase.m_Model = std::move(gp2Model);
-		flatVase.m_Transform.translation = { -.5f,.5f,0.f };
-		flatVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
+		flatVase.m_Transform.translation = { 0.f,.5f, 10.f };
+		flatVase.m_Transform.scale = glm::vec3{ .5f, .5f, .5f };
+		flatVase.m_Transform.rotation = glm::vec3{ glm::radians(180.f),0.f,0.f};
 		m_GameObjects.emplace(flatVase.GetId(), std::move(flatVase));
 
-		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/smooth_vase.obj");
-		auto smoothVase = GP2GameObject::CreateGameObject();
-		smoothVase.m_Model = std::move(gp2Model);
-		smoothVase.m_Transform.translation = { 0.5f,.5f,0.f };
-		smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
-		m_GameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
+		//gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/flat_vase.obj");
+		//auto flatVaseTes = GP2GameObject::CreateGameObject();
+		//flatVaseTes.m_Model = std::move(gp2Model);
+		//flatVaseTes.m_Transform.translation = { 0.5f,.5f,0.f };
+		//flatVaseTes.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
+		//m_TesGameObjects.emplace(flatVaseTes.GetId(), std::move(flatVaseTes));
+
+		//gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/smooth_vase.obj");
+		//auto smoothVase = GP2GameObject::CreateGameObject();
+		//smoothVase.m_Model = std::move(gp2Model);
+		//smoothVase.m_Transform.translation = { 0.5f,.5f,0.f };
+		//smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
+		//m_GameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
 
 		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/quad.obj");
 		auto floor = GP2GameObject::CreateGameObject();

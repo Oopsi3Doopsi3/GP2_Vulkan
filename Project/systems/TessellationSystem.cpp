@@ -1,5 +1,7 @@
 #include "TessellationSystem.h"
 
+#include "GP2SwapChain.h"
+
 //libs
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
@@ -17,6 +19,8 @@ namespace GP2
 	{
 		glm::mat4 modelMatrix{ 1.f };
 		glm::mat4 normalMatrix{ 1.f };
+		float tessAlpha = 1.0f;
+		float tessLevel = 3.0f;
 	};
 
 	TessellationSystem::TessellationSystem(GP2Device& device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout) :
@@ -34,11 +38,11 @@ namespace GP2
 	void TessellationSystem::CreatePipelineLayout(VkDescriptorSetLayout globalSetLayout)
 	{
 		VkPushConstantRange pushConstantRange{};
-		pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
+		pushConstantRange.stageFlags = VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT | VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT;
 		pushConstantRange.offset = 0;
-		pushConstantRange.size = sizeof(SimplePushConstantData);
+		pushConstantRange.size = sizeof(SimplePushConstantData); //Use push constant or ubo?
 
-		std::vector<VkDescriptorSetLayout> descriptorSetLayouts{ globalSetLayout };
+		std::vector<VkDescriptorSetLayout> descriptorSetLayouts{ globalSetLayout }; //Check descriptorSetLayoutImage, for textures?
 
 		VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
 		pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
@@ -46,6 +50,7 @@ namespace GP2
 		pipelineLayoutInfo.pSetLayouts = descriptorSetLayouts.data();
 		pipelineLayoutInfo.pushConstantRangeCount = 1;
 		pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
+
 		if (vkCreatePipelineLayout(m_GP2Device.Device(), &pipelineLayoutInfo, nullptr, &m_PipelineLayout) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create pipeline layout");
 		}
@@ -56,23 +61,28 @@ namespace GP2
 		assert(m_PipelineLayout != nullptr && "Cannot create pipleine before pipeline layout");
 
 		PipelineConfigInfo pipelineConfig{};
-		//GP2Pipeline::DefaultPipelineConfigInfo(pipelineConfig);
-		//pipelineConfig.renderPass = renderPass;
-		//pipelineConfig.pipelineLayout = m_PipelineLayout;
-
 		GP2Pipeline::TessellationPipelineConfigInfo(pipelineConfig);
+		pipelineConfig.renderPass = renderPass;
+		pipelineConfig.pipelineLayout = m_PipelineLayout;
 
 		std::vector<ShaderConfigInfo> shaderConfiginfo{};
-		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_VERTEX_BIT });
-		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_FRAGMENT_BIT });
-		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT });
-		//shaderConfiginfo.push_back(ShaderConfigInfo{ "CHANGE TO CORRECT SHADERS", VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT });
+		shaderConfiginfo.push_back(ShaderConfigInfo{ "shaders/Tessellation.vert.spv", VK_SHADER_STAGE_VERTEX_BIT });
+		shaderConfiginfo.push_back(ShaderConfigInfo{ "shaders/Tessellation.tesc.spv", VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT });
+		shaderConfiginfo.push_back(ShaderConfigInfo{ "shaders/Tessellation.tese.spv", VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT });
+		shaderConfiginfo.push_back(ShaderConfigInfo{ "shaders/Tessellation.frag.spv", VK_SHADER_STAGE_FRAGMENT_BIT });
 
-		//m_GP2Pipeline = std::make_unique<GP2Pipeline>(
-		//	m_GP2Device,
-		//	shaderConfiginfo,
-		//	pipelineConfig
-		//);
+		std::vector<GP2Model::VertexComponent> vertexComponents{};
+		vertexComponents.push_back(GP2Model::VertexComponent::Position);
+		vertexComponents.push_back(GP2Model::VertexComponent::Color);
+		vertexComponents.push_back(GP2Model::VertexComponent::Normal);
+		vertexComponents.push_back(GP2Model::VertexComponent::UV);
+
+		m_GP2Pipeline = std::make_unique<GP2Pipeline>(
+			m_GP2Device,
+			shaderConfiginfo,
+			vertexComponents,
+			pipelineConfig
+		);
 	}
 
 	void TessellationSystem::RenderGameObjects(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects)
@@ -100,7 +110,7 @@ namespace GP2
 			vkCmdPushConstants(
 				frameInfo.commandBuffer,
 				m_PipelineLayout,
-				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+				VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT | VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT,
 				0,
 				sizeof(SimplePushConstantData),
 				&push);

@@ -137,20 +137,71 @@ namespace GP2
 		bindingDescriptions[0].binding = 0;
 		bindingDescriptions[0].stride = sizeof(Vertex);
 		bindingDescriptions[0].inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
-
+	
 		return bindingDescriptions;
+	}
+
+	VkVertexInputBindingDescription GP2Model::Vertex::InputBindingDescription(uint32_t binding)
+	{
+		return VkVertexInputBindingDescription({ binding, sizeof(Vertex), VK_VERTEX_INPUT_RATE_VERTEX });
 	}
 
 	std::vector<VkVertexInputAttributeDescription> GP2Model::Vertex::GetAttributeDescriptions()
 	{
 		std::vector<VkVertexInputAttributeDescription> attributeDescriptions{};
-
+	
 		attributeDescriptions.push_back({ 0,0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, position) });
 		attributeDescriptions.push_back({ 1,0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color) });
 		attributeDescriptions.push_back({ 2,0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, normal) });
 		attributeDescriptions.push_back({ 3,0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, uv) });
-
+	
 		return attributeDescriptions;
+	}
+
+	VkVertexInputAttributeDescription GP2Model::Vertex::InputAttributeDescription(uint32_t binding, uint32_t location, VertexComponent component)
+	{
+		switch (component)
+		{
+		case VertexComponent::Position:
+			return VkVertexInputAttributeDescription({ location, binding, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, position) });
+		case VertexComponent::Color:
+			return VkVertexInputAttributeDescription({ location, binding, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color) });
+		case VertexComponent::Normal:
+			return VkVertexInputAttributeDescription({ location, binding, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, normal) });
+		case VertexComponent::UV:
+			return VkVertexInputAttributeDescription({ location, binding, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, uv) });
+		default:
+			return VkVertexInputAttributeDescription({});
+		}
+	}
+
+	std::vector<VkVertexInputAttributeDescription> GP2Model::Vertex::InputAttributeDescriptions(uint32_t binding, const std::vector<VertexComponent> components)
+	{
+		std::vector<VkVertexInputAttributeDescription> attributeDescriptions{};
+		uint32_t location = 0;
+
+		for (auto component : components)
+		{
+			attributeDescriptions.push_back(InputAttributeDescription(binding, location, component));
+			++location;
+		}
+		
+		return attributeDescriptions;
+	}
+
+	VkPipelineVertexInputStateCreateInfo GP2Model::Vertex::GetVertexInputState(const std::vector<VertexComponent> components)
+	{
+		VkVertexInputBindingDescription inputBindingDescription = InputBindingDescription(0);
+		std::vector<VkVertexInputAttributeDescription> vertexInputAttributeDescriptions = InputAttributeDescriptions(0, components);
+
+		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
+		vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
+		vertexInputInfo.vertexBindingDescriptionCount = 1;
+		vertexInputInfo.pVertexBindingDescriptions = &inputBindingDescription;
+		vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(vertexInputAttributeDescriptions.size());
+		vertexInputInfo.pVertexAttributeDescriptions = vertexInputAttributeDescriptions.data();
+
+		return vertexInputInfo;
 	}
 
 	void GP2Model::Builder::LoadModel(const std::string& filepath)

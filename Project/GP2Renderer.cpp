@@ -133,7 +133,7 @@ namespace GP2
 		renderPassInfo.renderArea.extent = m_GP2SwapChain->GetSwapChainExtent();
 
 		std::array<VkClearValue, 2> clearValues{};
-		clearValues[0].color = { .01f,.01f,.01f,1.f };
+		clearValues[0].color = { .4f,.4f,.4f,1.f };
 		clearValues[1].depthStencil = { 1.f, 0 };
 
 		renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
@@ -150,7 +150,8 @@ namespace GP2
 		viewport.maxDepth = 1.f;
 		VkRect2D scissor{ {0,0}, m_GP2SwapChain->GetSwapChainExtent() };
 		vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
-		vkCmdSetScissor(commandBuffer, 0, 1, &scissor); //Need to call vkCmdSetLineWidth bcs dynamicStateInfo in tessellation
+		vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
+		vkCmdSetLineWidth(commandBuffer, 1.f); //Need to call vkCmdSetLineWidth bcs dynamicStateInfo in tessellation
 	}
 
 	void GP2Renderer::EndSwapChainRenderPass(VkCommandBuffer commandBuffer)

@@ -5,6 +5,8 @@ set(SHADER_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/shaders")
 file(GLOB_RECURSE GLSL_SOURCE_FILES
     "${SHADER_SOURCE_DIR}/*.frag"
     "${SHADER_SOURCE_DIR}/*.vert"
+    "${SHADER_SOURCE_DIR}/*.tesc"
+    "${SHADER_SOURCE_DIR}/*.tese"
 )
 
 foreach(GLSL ${GLSL_SOURCE_FILES})

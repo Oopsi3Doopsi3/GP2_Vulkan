@@ -2185,7 +2185,7 @@ build _deps\tinyobjloader-build\install\local: phony _deps\tinyobjloader-build\C
 #############################################
 # Utility command for Shaders
 
-build Project\Shaders: phony Project\CMakeFiles\Shaders Project\shaders\GP2PointLight.frag.spv Project\shaders\GP2PointLight.vert.spv Project\shaders\GP2Shader2D.frag.spv Project\shaders\GP2Shader2D.vert.spv Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv
+build Project\Shaders: phony Project\CMakeFiles\Shaders Project\shaders\GP2PointLight.frag.spv Project\shaders\GP2PointLight.vert.spv Project\shaders\GP2Shader2D.frag.spv Project\shaders\GP2Shader2D.vert.spv Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv Project\shaders\Tessellation.frag.spv Project\shaders\Tessellation.tesc.spv Project\shaders\Tessellation.tese.spv Project\shaders\Tessellation.vert.spv
 
 # =============================================================================
 # Object build statements for EXECUTABLE target VulkanLab01
@@ -2409,7 +2409,7 @@ build Project\install\local: phony Project\CMakeFiles\install\local.util
 #############################################
 # Phony custom command for Project\CMakeFiles\Shaders
 
-build Project\CMakeFiles\Shaders | ${cmake_ninja_workdir}Project\CMakeFiles\Shaders: phony Project\shaders\GP2PointLight.frag.spv Project\shaders\GP2PointLight.vert.spv Project\shaders\GP2Shader2D.frag.spv Project\shaders\GP2Shader2D.vert.spv Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv
+build Project\CMakeFiles\Shaders | ${cmake_ninja_workdir}Project\CMakeFiles\Shaders: phony Project\shaders\GP2PointLight.frag.spv Project\shaders\GP2PointLight.vert.spv Project\shaders\GP2Shader2D.frag.spv Project\shaders\GP2Shader2D.vert.spv Project\shaders\GP2SimpleShader.frag.spv Project\shaders\GP2SimpleShader.vert.spv Project\shaders\Tessellation.frag.spv Project\shaders\Tessellation.tesc.spv Project\shaders\Tessellation.tese.spv Project\shaders\Tessellation.vert.spv
 
 
 #############################################
@@ -2463,6 +2463,42 @@ build Project\shaders\GP2SimpleShader.frag.spv | ${cmake_ninja_workdir}Project\s
 build Project\shaders\GP2SimpleShader.vert.spv | ${cmake_ninja_workdir}Project\shaders\GP2SimpleShader.vert.spv: CUSTOM_COMMAND C$:\Graphics$ Programming$ 2\Vulkan\Project\shaders\GP2SimpleShader.vert
   COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\Project" && C:\VulkanSDK\1.3.261.1\Bin\glslc.exe "C:/Graphics Programming 2/Vulkan/Project/shaders/GP2SimpleShader.vert" -o "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/GP2SimpleShader.vert.spv""
   DESC = Generating shaders/GP2SimpleShader.vert.spv
+  restat = 1
+
+
+#############################################
+# Custom command for Project\shaders\Tessellation.frag.spv
+
+build Project\shaders\Tessellation.frag.spv | ${cmake_ninja_workdir}Project\shaders\Tessellation.frag.spv: CUSTOM_COMMAND C$:\Graphics$ Programming$ 2\Vulkan\Project\shaders\Tessellation.frag
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\Project" && C:\VulkanSDK\1.3.261.1\Bin\glslc.exe "C:/Graphics Programming 2/Vulkan/Project/shaders/Tessellation.frag" -o "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/Tessellation.frag.spv""
+  DESC = Generating shaders/Tessellation.frag.spv
+  restat = 1
+
+
+#############################################
+# Custom command for Project\shaders\Tessellation.tesc.spv
+
+build Project\shaders\Tessellation.tesc.spv | ${cmake_ninja_workdir}Project\shaders\Tessellation.tesc.spv: CUSTOM_COMMAND C$:\Graphics$ Programming$ 2\Vulkan\Project\shaders\Tessellation.tesc
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\Project" && C:\VulkanSDK\1.3.261.1\Bin\glslc.exe "C:/Graphics Programming 2/Vulkan/Project/shaders/Tessellation.tesc" -o "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/Tessellation.tesc.spv""
+  DESC = Generating shaders/Tessellation.tesc.spv
+  restat = 1
+
+
+#############################################
+# Custom command for Project\shaders\Tessellation.tese.spv
+
+build Project\shaders\Tessellation.tese.spv | ${cmake_ninja_workdir}Project\shaders\Tessellation.tese.spv: CUSTOM_COMMAND C$:\Graphics$ Programming$ 2\Vulkan\Project\shaders\Tessellation.tese
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\Project" && C:\VulkanSDK\1.3.261.1\Bin\glslc.exe "C:/Graphics Programming 2/Vulkan/Project/shaders/Tessellation.tese" -o "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/Tessellation.tese.spv""
+  DESC = Generating shaders/Tessellation.tese.spv
+  restat = 1
+
+
+#############################################
+# Custom command for Project\shaders\Tessellation.vert.spv
+
+build Project\shaders\Tessellation.vert.spv | ${cmake_ninja_workdir}Project\shaders\Tessellation.vert.spv: CUSTOM_COMMAND C$:\Graphics$ Programming$ 2\Vulkan\Project\shaders\Tessellation.vert
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Graphics Programming 2\Vulkan\out\build\x64-Debug\Project" && C:\VulkanSDK\1.3.261.1\Bin\glslc.exe "C:/Graphics Programming 2/Vulkan/Project/shaders/Tessellation.vert" -o "C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/Project/shaders/Tessellation.vert.spv""
+  DESC = Generating shaders/Tessellation.vert.spv
   restat = 1
 
 # =============================================================================

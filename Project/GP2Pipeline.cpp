@@ -1,7 +1,5 @@
 #include "GP2Pipeline.h"
 
-#include "GP2Model.h"
-
 //std
 #include <fstream>
 #include <stdexcept>
@@ -12,11 +10,12 @@ namespace GP2
 {
 	GP2Pipeline::GP2Pipeline(
 		GP2Device& device,
-		std::vector<ShaderConfigInfo> shaderConfigInfo,
+		const std::vector<ShaderConfigInfo> shaderConfigInfo,
+		const std::vector<GP2Model::VertexComponent> vertexComponents,
 		const PipelineConfigInfo& configInfo):
 		m_GP2Device(device)
 	{
-		CreateGraphicsPipeline(shaderConfigInfo, configInfo);
+		CreateGraphicsPipeline(shaderConfigInfo, vertexComponents,  configInfo);
 	}
 
 	GP2Pipeline::~GP2Pipeline()
@@ -30,6 +29,7 @@ namespace GP2
 
 	void GP2Pipeline::CreateGraphicsPipeline(
 		std::vector<ShaderConfigInfo> shaderConfigInfo,
+		const std::vector<GP2Model::VertexComponent> vertexComponents,
 		const PipelineConfigInfo& configInfo)
 	{
 		assert(configInfo.pipelineLayout != VK_NULL_HANDLE &&
@@ -57,13 +57,13 @@ namespace GP2
 		vertexInputInfo.vertexBindingDescriptionCount = static_cast<uint32_t>(bindingDescriptions.size());
 		vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 		vertexInputInfo.pVertexBindingDescriptions = bindingDescriptions.data();
-	
-		
+
 		VkGraphicsPipelineCreateInfo pipelineInfo{};
 		pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 		pipelineInfo.stageCount = static_cast<uint32_t>(shaderStages.size());
 		pipelineInfo.pStages = shaderStages.data();
 		pipelineInfo.pVertexInputState = &vertexInputInfo;
+		//pipelineInfo.pVertexInputState = &GP2Model::Vertex::GetVertexInputState(vertexComponents); //Ask about this
 		pipelineInfo.pInputAssemblyState = &configInfo.inputAssemblyInfo;
 		pipelineInfo.pViewportState = &configInfo.viewportInfo;
 		pipelineInfo.pRasterizationState = &configInfo.rasterizationInfo;
@@ -136,6 +136,7 @@ namespace GP2
 		configInfo.rasterizationInfo.depthClampEnable = VK_FALSE;
 		configInfo.rasterizationInfo.rasterizerDiscardEnable = VK_FALSE;
 		configInfo.rasterizationInfo.polygonMode = VK_POLYGON_MODE_FILL;
+		//configInfo.rasterizationInfo.polygonMode = VK_POLYGON_MODE_LINE;
 		configInfo.rasterizationInfo.lineWidth = 1.0f;
 		configInfo.rasterizationInfo.cullMode = VK_CULL_MODE_NONE;
 		configInfo.rasterizationInfo.frontFace = VK_FRONT_FACE_CLOCKWISE;
@@ -184,7 +185,8 @@ namespace GP2
 		configInfo.depthStencilInfo.front = {};  // Optional
 		configInfo.depthStencilInfo.back = {};   // Optional
 
-		configInfo.dynamicStateEnables = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
+		//configInfo.dynamicStateEnables = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
+		configInfo.dynamicStateEnables = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR, VK_DYNAMIC_STATE_LINE_WIDTH };
 		configInfo.dynamicStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
 		configInfo.dynamicStateInfo.pDynamicStates = configInfo.dynamicStateEnables.data();
 		configInfo.dynamicStateInfo.dynamicStateCount = static_cast<uint32_t>(configInfo.dynamicStateEnables.size());

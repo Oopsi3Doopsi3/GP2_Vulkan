@@ -35,6 +35,7 @@ namespace GP2
 		const glm::vec3 forwardDir{ sin(yaw), 0.f, cos(yaw) };
 		const glm::vec3 rightDir{ forwardDir.z, 0.f, -forwardDir.x };
 		const glm::vec3 upDir{ 0.f,-1.f,0.f };
+		int speed = m_MoveSpeed;
 
 		glm::vec3 moveDir{ 0.f };
 		if (glfwGetKey(window, m_Keys.moveForward) == GLFW_PRESS) moveDir += forwardDir;
@@ -43,9 +44,10 @@ namespace GP2
 		if (glfwGetKey(window, m_Keys.moveLeft) == GLFW_PRESS) moveDir -= rightDir;
 		if (glfwGetKey(window, m_Keys.moveUp) == GLFW_PRESS) moveDir += upDir;
 		if (glfwGetKey(window, m_Keys.moveDown) == GLFW_PRESS) moveDir -= upDir;
+		if (glfwGetKey(window, m_Keys.speedUp) == GLFW_PRESS) speed *= 2;
 
 		if (glm::dot(moveDir, moveDir) > std::numeric_limits<float>::epsilon()) {
-			gameObject.m_Transform.translation += m_MoveSpeed * dt * glm::normalize(moveDir);
+			gameObject.m_Transform.translation += speed * dt * glm::normalize(moveDir);
 		}
 	}
 }

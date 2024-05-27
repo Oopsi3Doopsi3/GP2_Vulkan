@@ -166,6 +166,10 @@ namespace GP2
 
         VkPhysicalDeviceFeatures deviceFeatures = {};
         deviceFeatures.samplerAnisotropy = VK_TRUE;
+        //For Tessellation
+        deviceFeatures.fillModeNonSolid = VK_TRUE;
+        deviceFeatures.wideLines = VK_TRUE;
+        deviceFeatures.tessellationShader = VK_TRUE;
 
         VkDeviceCreateInfo createInfo = {};
         createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;

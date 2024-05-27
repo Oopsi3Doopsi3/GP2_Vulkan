@@ -17,13 +17,14 @@ namespace GP2
 			int moveUp = GLFW_KEY_E;
 			int moveDown = GLFW_KEY_Q;
 			int rotate = GLFW_MOUSE_BUTTON_1;
+			int speedUp = GLFW_KEY_LEFT_SHIFT;
 		};
 
 		void MoveInPlaneXZ(GLFWwindow* window, float dt, GP2GameObject& gameObject);
 		
 	private:
 		keyMappings m_Keys{};
-		float m_MoveSpeed{ 3.f };
+		float m_MoveSpeed{ 5.f };
 		float m_LookSpeed{ .5f };
 
 		glm::vec2 m_MousePos{ 0.0f, 0.0f };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GP2Device.h"
+#include "GP2Model.h"
 
 //std
 #include <string>
@@ -43,7 +44,8 @@ namespace GP2
 	public:
 		GP2Pipeline(
 			GP2Device& device,
-			std::vector<ShaderConfigInfo> shaderConfigInfo,
+			const std::vector<ShaderConfigInfo> shaderConfigInfo,
+			const std::vector<GP2Model::VertexComponent> vertexComponents,
 			const PipelineConfigInfo& configInfo
 		);
 
@@ -59,7 +61,8 @@ namespace GP2
 
 	private:
 		void CreateGraphicsPipeline(
-			std::vector<ShaderConfigInfo> shaderConfigInfo,
+			const std::vector<ShaderConfigInfo> shaderConfigInfo,
+			const std::vector<GP2Model::VertexComponent> vertexComponents,
 			const PipelineConfigInfo& configInfo
 		);
 
