@@ -10,6 +10,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <array>
+#include <iostream>
 
 namespace GP2
 {
@@ -17,6 +18,8 @@ namespace GP2
 	{
 		glm::mat4 modelMatrix{ 1.f };
 		glm::mat4 normalMatrix{ 1.f };
+		int renderMode;
+		bool useNormalMap;
 	};
 
 	SimpleRenderSystem::SimpleRenderSystem(GP2Device& device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout):
@@ -81,15 +84,18 @@ namespace GP2
 
 	void SimpleRenderSystem::Update(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects)
 	{
-		for (auto& kv : gameObjects)
+		if(m_ShouldRotate)
 		{
-			auto& obj = kv.second;
-			if (obj.m_PointLight != nullptr) {
-				continue;
-			}
+			for (auto& kv : gameObjects)
+			{
+				auto& obj = kv.second;
+				if (obj.m_PointLight != nullptr) {
+					continue;
+				}
 
-			constexpr float rotSpeed{ glm::radians(45.f) };
-			obj.m_Transform.rotation.y += rotSpeed * frameInfo.frameTime;
+				constexpr float rotSpeed{ glm::radians(45.f) };
+				obj.m_Transform.rotation.y += rotSpeed * frameInfo.frameTime;
+			}
 		}
 	}
 
@@ -114,6 +120,8 @@ namespace GP2
 			SimplePushConstantData push{};
 			push.modelMatrix = obj.m_Transform.mat4();
 			push.normalMatrix = obj.m_Transform.normalMatrix();
+			push.renderMode = static_cast<int>(m_RenderMode);
+			push.useNormalMap = m_UseNormalMap;
 		
 			vkCmdPushConstants(
 				frameInfo.commandBuffer,
@@ -125,5 +133,35 @@ namespace GP2
 			obj.m_Model->Bind(frameInfo.commandBuffer);
 			obj.m_Model->Draw(frameInfo.commandBuffer);
 		}
+	}
+
+	void SimpleRenderSystem::CycleRenderMode()
+	{
+		switch (m_RenderMode)
+		{
+		case RenderMode::observedArea:
+			m_RenderMode = RenderMode::diffuseColor;
+			break;
+		case RenderMode::diffuseColor:
+			m_RenderMode = RenderMode::specular;
+			break;
+		case RenderMode::specular:
+			m_RenderMode = RenderMode::combined;
+			break;
+		case RenderMode::combined:
+			m_RenderMode = RenderMode::observedArea;
+			break;
+		}
+	}
+
+	void SimpleRenderSystem::ToggleRotation()
+	{
+		m_ShouldRotate = !m_ShouldRotate;
+	}
+
+	void SimpleRenderSystem::ToggleNormalMap()
+	{
+		m_UseNormalMap = !m_UseNormalMap;
+		std::cout << "Using normal map: " << m_UseNormalMap << std::endl;
 	}
 }

@@ -50,4 +50,52 @@ namespace GP2
 			gameObject.m_Transform.translation += speed * dt * glm::normalize(moveDir);
 		}
 	}
+
+	bool KeyboardMovementController::CycleRenderMode(GLFWwindow* window)
+	{
+		if(glfwGetKey(window, GLFW_KEY_F7) == GLFW_PRESS) 
+		{
+			if(!m_F7Pressed)
+			{
+				m_F7Pressed = true;
+				return true;
+			}
+			
+			return false;
+		}
+		m_F7Pressed = false;
+		return false;
+	}
+
+	bool KeyboardMovementController::ToggleRotation(GLFWwindow* window)
+	{
+		if (glfwGetKey(window, GLFW_KEY_F5) == GLFW_PRESS)
+		{
+			if (!m_F5Pressed)
+			{
+				m_F5Pressed = true;
+				return true;
+			}
+
+			return false;
+		}
+		m_F5Pressed = false;
+		return false;
+	}
+
+	bool KeyboardMovementController::ToggleNormalMap(GLFWwindow* window)
+	{
+		if (glfwGetKey(window, GLFW_KEY_F6) == GLFW_PRESS)
+		{
+			if (!m_F6Pressed)
+			{
+				m_F6Pressed = true;
+				return true;
+			}
+
+			return false;
+		}
+		m_F6Pressed = false;
+		return false;
+	}
 }

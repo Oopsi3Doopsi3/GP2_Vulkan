@@ -34,6 +34,8 @@ layout(push_constant) uniform Push
 {
 	mat4 modelMatrix;
 	mat4 normalMatrix;
+	int outputMode;
+	bool useNormalMap;
 } push;
 
 float PI = 3.14159265358979323846f;
@@ -64,9 +66,18 @@ void main()
 	vec3 lambertDiffuse = diffuseColor * diffuseReflectance / PI;
 
 	//Normal
-	vec3 normalMapSample = texture(normalMap, fragUV).rgb;
-	normalMapSample = normalize(normalMapSample * 2.0 - 1.0);
-	vec3 surfaceNormal = normalize(fragTBN * normalMapSample);
+	vec3 surfaceNormal = vec3(0.0);
+
+	if(push.useNormalMap)
+	{
+		vec3 normalMapSample = texture(normalMap, fragUV).rgb;
+		normalMapSample = normalize(normalMapSample * 2.0 - 1.0);
+		surfaceNormal = normalize(fragTBN * normalMapSample);
+	}
+	else
+	{
+		surfaceNormal = normalize(fragNormalWorld);
+	}
 
 	//Specularity values
     float specularColor = texture(specularMap, fragUV).r;
@@ -99,12 +110,23 @@ void main()
 		totalSpecularValue += specularValue(directionToLight, surfaceNormal, viewDirection, specularColor, phongExponent) * intensity;
 	}
 	
-	//observedArea
-	//outColor = vec4(vec3(1.0) * totalObservedArea, 1.0);
-	//diffuseColor
-	//outColor = vec4(diffuseColor * totalObservedArea, 1.0);
-	//specular
-	//outColor = vec4(vec3(1.0) * totalSpecularValue * totalObservedArea, 1.0);
-	//combined
-	outColor = vec4((vec3(1.0) * totalSpecularValue + lambertDiffuse) * totalObservedArea + ubo.ambientLightColor.xyz * ubo.ambientLightColor.w, 1.0);
+	switch(push.outputMode)
+	{
+	case 0:
+		//observedArea
+		outColor = vec4(vec3(1.0) * totalObservedArea, 1.0);
+		break;
+	case 1:
+		//diffuseColor
+		outColor = vec4(diffuseColor * totalObservedArea, 1.0);
+		break;
+	case 2:
+		//specular
+		outColor = vec4(vec3(1.0) * totalSpecularValue * totalObservedArea, 1.0);
+		break;
+	case 3:
+		//combined
+		outColor = vec4((vec3(1.0) * totalSpecularValue + lambertDiffuse) * totalObservedArea + ubo.ambientLightColor.xyz * ubo.ambientLightColor.w, 1.0);
+		break;
+	}
 }

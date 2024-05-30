@@ -128,6 +128,10 @@ namespace GP2
 
 			float aspect = m_GP2Renderer.GetAspectRatio();
 			camera.SetPerspectiveProjection(glm::radians(50.f), aspect, .1f, 100.f);
+
+			if (cameraController.CycleRenderMode(m_GP2Window.GetGLFWwindow())) simpleRenderSystem.CycleRenderMode();
+			if (cameraController.ToggleRotation(m_GP2Window.GetGLFWwindow())) simpleRenderSystem.ToggleRotation();
+			if (cameraController.ToggleNormalMap(m_GP2Window.GetGLFWwindow())) simpleRenderSystem.ToggleNormalMap();
 			
 			if (auto commandBuffer = m_GP2Renderer.BeginFrame())
 			{
@@ -139,7 +143,7 @@ namespace GP2
 				ubo.projection = camera.GetProjection();
 				ubo.view = camera.GetView();
 				ubo.inversView = camera.GetInverseView();
-				//simpleRenderSystem.Update(frameInfo, m_GameObjects);
+				simpleRenderSystem.Update(frameInfo, m_GameObjects);
 				pointLightSystem.Update(frameInfo, ubo, m_GameObjects);
 				uboBuffers[frameIndex]->WriteToBuffer(&ubo);
 				uboBuffers[frameIndex]->Flush();

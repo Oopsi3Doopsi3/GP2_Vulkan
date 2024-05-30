@@ -11,6 +11,14 @@
 
 namespace GP2
 {
+	enum class RenderMode
+	{
+		observedArea,
+		diffuseColor,
+		specular,
+		combined
+	};
+
 	class SimpleRenderSystem
 	{
 	public:
@@ -23,6 +31,10 @@ namespace GP2
 		void Update(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects);
 		void RenderGameObjects(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects);
 
+		void CycleRenderMode();
+		void ToggleRotation();
+		void ToggleNormalMap();
+
 	private:
 		void CreatePipelineLayout(VkDescriptorSetLayout globalSetLayout);
 		void CreatePipeline(VkRenderPass renderPass);
@@ -31,6 +43,10 @@ namespace GP2
 		GP2Device& m_GP2Device;
 		std::unique_ptr<GP2Pipeline> m_GP2Pipeline;
 		VkPipelineLayout m_PipelineLayout;
+
+		RenderMode m_RenderMode = RenderMode::observedArea;
+		bool m_ShouldRotate{ false };
+		bool m_UseNormalMap{ true };
 	};
 }
 

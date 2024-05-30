@@ -33,6 +33,8 @@ layout (push_constant) uniform Push
 {
 	mat4 modelMatrix;
 	mat4 normalMatrix;
+	int outputMode;
+	bool useNormalMap;
 } push;
 
 void main() 
