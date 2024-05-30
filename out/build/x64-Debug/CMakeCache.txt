@@ -279,6 +279,10 @@ FETCHCONTENT_QUIET:BOOL=ON
 FETCHCONTENT_SOURCE_DIR_GLFW:PATH=
 
 //When not empty, overrides where to find pre-populated content
+// for stb
+FETCHCONTENT_SOURCE_DIR_STB:PATH=
+
+//When not empty, overrides where to find pre-populated content
 // for tinyobjloader
 FETCHCONTENT_SOURCE_DIR_TINYOBJLOADER:PATH=
 
@@ -287,6 +291,9 @@ FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of glfw
 FETCHCONTENT_UPDATES_DISCONNECTED_GLFW:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of stb
+FETCHCONTENT_UPDATES_DISCONNECTED_STB:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of tinyobjloader
 FETCHCONTENT_UPDATES_DISCONNECTED_TINYOBJLOADER:BOOL=OFF

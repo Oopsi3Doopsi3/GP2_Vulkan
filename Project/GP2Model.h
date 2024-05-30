@@ -23,7 +23,8 @@ namespace GP2
 			Position,
 			Color,
 			Normal,
-			UV
+			UV,
+			Tangent
 		};
 
 		struct Vertex
@@ -32,6 +33,7 @@ namespace GP2
 			glm::vec3 color{};
 			glm::vec3 normal{};
 			glm::vec2 uv{};
+			glm::vec3 tangent{};
 
 			static std::vector<VkVertexInputBindingDescription> GetBindingDescriptions();
 			static VkVertexInputBindingDescription InputBindingDescription(uint32_t binding);
@@ -46,6 +48,8 @@ namespace GP2
 					position == other.position &&
 					color == other.color &&
 					normal == other.normal;
+					uv == other.uv;
+					tangent == other.tangent;
 			}
 		};
 

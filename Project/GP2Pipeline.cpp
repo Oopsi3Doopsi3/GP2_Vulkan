@@ -63,7 +63,7 @@ namespace GP2
 		pipelineInfo.stageCount = static_cast<uint32_t>(shaderStages.size());
 		pipelineInfo.pStages = shaderStages.data();
 		pipelineInfo.pVertexInputState = &vertexInputInfo;
-		//pipelineInfo.pVertexInputState = &GP2Model::Vertex::GetVertexInputState(vertexComponents); //Ask about this
+		//pipelineInfo.pVertexInputState = &GP2Model::Vertex::GetVertexInputState(vertexComponents);
 		pipelineInfo.pInputAssemblyState = &configInfo.inputAssemblyInfo;
 		pipelineInfo.pViewportState = &configInfo.viewportInfo;
 		pipelineInfo.pRasterizationState = &configInfo.rasterizationInfo;

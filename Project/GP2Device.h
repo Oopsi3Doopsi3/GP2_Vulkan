@@ -44,6 +44,7 @@ namespace GP2
 
         VkCommandPool GetCommandPool() { return m_CommandPool; }
         VkDevice Device() { return m_Device; }
+        VkPhysicalDevice GetPhysicalDevice() { return m_PhysicalDevice; }
         VkSurfaceKHR Surface() { return m_Surface; }
         VkQueue GraphicsQueue() { return m_GraphicsQueue; }
         VkQueue PresentQueue() { return m_PresentQueue; }

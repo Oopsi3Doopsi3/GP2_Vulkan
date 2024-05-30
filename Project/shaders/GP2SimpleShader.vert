@@ -4,10 +4,13 @@ layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 color;
 layout (location = 2) in vec3 normal;
 layout (location = 3) in vec2 uv;
+layout (location = 4) in vec3 inTangent;
 
 layout (location = 0) out vec3 fragColor;
 layout (location = 1) out vec3 fragPosWorld;
 layout (location = 2) out vec3 fragNormalWorld;
+layout (location = 3) out vec2 fragUV;
+layout (location = 4) out mat3 fragTBN;
 
 struct PointLight
 {
@@ -21,6 +24,7 @@ layout (set = 0, binding = 0) uniform GlobalUbo
 	mat4 view;
 	mat4 invView;
 	vec4 ambientLightColor;
+	vec4 lightDirection;
 	PointLight pointLights[10];
 	int numLights;
 } ubo;
@@ -38,4 +42,10 @@ void main()
 	fragNormalWorld = normalize(mat3(push.normalMatrix) * normal);
 	fragPosWorld = positionWorld.xyz;
 	fragColor = color;
+	fragUV = uv;
+
+	vec3 T = normalize(mat3(push.modelMatrix) * inTangent);
+    vec3 N = normalize(fragNormalWorld);
+    vec3 B = normalize(cross(N, T));
+    fragTBN = mat3(T, B, N);
 }

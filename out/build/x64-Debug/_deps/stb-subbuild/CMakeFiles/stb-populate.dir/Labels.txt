@@ -1,0 +1,14 @@
+# Target labels
+ stb-populate
+# Source files and their labels
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/CMakeFiles/stb-populate
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/CMakeFiles/stb-populate.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/CMakeFiles/stb-populate-complete.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-build.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-download.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-install.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-mkdir.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-test.rule
+C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-update.rule

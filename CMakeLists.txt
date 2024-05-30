@@ -29,11 +29,26 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(tinyobjloader)
 
+FetchContent_Declare(
+  stb
+  GIT_REPOSITORY https://github.com/nothings/stb.git
+  GIT_TAG master
+)
+
+FetchContent_MakeAvailable(stb)
+
 # Find the required packages
 find_package(Vulkan REQUIRED)
 
 # Include Directories
 include_directories(${Vulkan_INCLUDE_DIRS})
+
+# Include stb directory (header-only)
+FetchContent_GetProperties(stb)
+if(NOT stb_POPULATED)
+  FetchContent_Populate(stb)
+endif()
+include_directories(${stb_SOURCE_DIR})
 
 add_subdirectory(Project)
 

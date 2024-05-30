@@ -69,6 +69,7 @@ namespace GP2
 		vertexComponents.push_back(GP2Model::VertexComponent::Color);
 		vertexComponents.push_back(GP2Model::VertexComponent::Normal);
 		vertexComponents.push_back(GP2Model::VertexComponent::UV);
+		vertexComponents.push_back(GP2Model::VertexComponent::Tangent);
 
 		m_GP2Pipeline = std::make_unique<GP2Pipeline>(
 			m_GP2Device,
@@ -76,6 +77,20 @@ namespace GP2
 			vertexComponents,
 			pipelineConfig
 		);
+	}
+
+	void SimpleRenderSystem::Update(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects)
+	{
+		for (auto& kv : gameObjects)
+		{
+			auto& obj = kv.second;
+			if (obj.m_PointLight != nullptr) {
+				continue;
+			}
+
+			constexpr float rotSpeed{ glm::radians(45.f) };
+			obj.m_Transform.rotation.y += rotSpeed * frameInfo.frameTime;
+		}
 	}
 
 	void SimpleRenderSystem::RenderGameObjects(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects)

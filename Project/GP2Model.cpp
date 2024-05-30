@@ -20,7 +20,7 @@ namespace std
 		size_t operator()(GP2::GP2Model::Vertex const& vertex) const
 		{
 			size_t seed = 0;
-			GP2::HashCombine(seed, vertex.position, vertex.color, vertex.normal, vertex.uv);
+			GP2::HashCombine(seed, vertex.position, vertex.color, vertex.normal, vertex.uv, vertex.tangent);
 			return seed;
 		}
 	};
@@ -154,6 +154,7 @@ namespace GP2
 		attributeDescriptions.push_back({ 1,0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color) });
 		attributeDescriptions.push_back({ 2,0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, normal) });
 		attributeDescriptions.push_back({ 3,0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, uv) });
+		attributeDescriptions.push_back({ 4,0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, tangent) });
 	
 		return attributeDescriptions;
 	}
@@ -170,6 +171,8 @@ namespace GP2
 			return VkVertexInputAttributeDescription({ location, binding, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, normal) });
 		case VertexComponent::UV:
 			return VkVertexInputAttributeDescription({ location, binding, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, uv) });
+		case VertexComponent::Tangent:
+			return VkVertexInputAttributeDescription({ location, binding, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, tangent) });
 		default:
 			return VkVertexInputAttributeDescription({});
 		}
@@ -264,6 +267,39 @@ namespace GP2
 				}
 				indices.push_back(uniqueVertices[vertex]);
 			}
+		}
+
+		// Calculate tangents
+		std::vector<glm::vec3> tan1(vertices.size(), glm::vec3(0.0f));
+		std::vector<glm::vec3> tan2(vertices.size(), glm::vec3(0.0f));
+
+		for (size_t i = 0; i < indices.size(); i += 3)
+		{
+			Vertex& v0 = vertices[indices[i]];
+			Vertex& v1 = vertices[indices[i + 1]];
+			Vertex& v2 = vertices[indices[i + 2]];
+
+			glm::vec3 edge1 = v1.position - v0.position;
+			glm::vec3 edge2 = v2.position - v0.position;
+
+			glm::vec2 deltaUV1 = v1.uv - v0.uv;
+			glm::vec2 deltaUV2 = v2.uv - v0.uv;
+
+			float f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
+
+			glm::vec3 tangent;
+			tangent.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
+			tangent.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
+			tangent.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
+
+			tan1[indices[i]] += tangent;
+			tan1[indices[i + 1]] += tangent;
+			tan1[indices[i + 2]] += tangent;
+		}
+
+		for (size_t i = 0; i < vertices.size(); ++i)
+		{
+			vertices[i].tangent = glm::normalize(tan1[i]);
 		}
 	}
 }

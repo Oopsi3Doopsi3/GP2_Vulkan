@@ -20,6 +20,7 @@ namespace GP2
 		SimpleRenderSystem(const SimpleRenderSystem&) = delete;
 		SimpleRenderSystem& operator=(const SimpleRenderSystem&) = delete;
 
+		void Update(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects);
 		void RenderGameObjects(FrameInfo& frameInfo, GP2GameObject::Map& gameObjects);
 
 	private:

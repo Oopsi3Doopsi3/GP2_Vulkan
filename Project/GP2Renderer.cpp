@@ -133,7 +133,7 @@ namespace GP2
 		renderPassInfo.renderArea.extent = m_GP2SwapChain->GetSwapChainExtent();
 
 		std::array<VkClearValue, 2> clearValues{};
-		clearValues[0].color = { .4f,.4f,.4f,1.f };
+		clearValues[0].color = { .53f,.81f,.92f,1.f };
 		clearValues[1].depthStencil = { 1.f, 0 };
 
 		renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());

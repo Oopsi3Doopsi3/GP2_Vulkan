@@ -9,6 +9,8 @@
 #include "KeyboardMovementController.h"
 #include "GP2Buffer.h"
 
+#include "GP2Texture.h"
+
 //libs
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
@@ -28,6 +30,7 @@ namespace GP2
 		m_GlobalPool = GP2DescriptorPool::Builder(m_GP2Device)
 			.SetMaxSets(GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
 			.AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
+			.AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
 			.Build();
 
 		LoadGameObjects();
@@ -54,7 +57,36 @@ namespace GP2
 
 		auto globalSetLayout = GP2DescriptorSetLayout::Builder(m_GP2Device)
 			.AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
+			.AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+			.AddBinding(2, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+			.AddBinding(3, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+			.AddBinding(4, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
 			.Build();
+
+		GP2Texture diffuseMap = GP2Texture(m_GP2Device, "textures/vehicle_diffuse.png");
+		GP2Texture normalMap = GP2Texture(m_GP2Device, "textures/vehicle_normal.png");
+		GP2Texture glossinessMap = GP2Texture(m_GP2Device, "textures/vehicle_gloss.png");
+		GP2Texture specularMap = GP2Texture(m_GP2Device, "textures/vehicle_specular.png");
+
+		VkDescriptorImageInfo diffuseMapInfo{};
+		diffuseMapInfo.sampler = diffuseMap.GetSampler();
+		diffuseMapInfo.imageView = diffuseMap.GetImageView();
+		diffuseMapInfo.imageLayout = diffuseMap.GetImageLayout();
+
+		VkDescriptorImageInfo normalMapInfo{};
+		normalMapInfo.sampler = normalMap.GetSampler();
+		normalMapInfo.imageView = normalMap.GetImageView();
+		normalMapInfo.imageLayout = normalMap.GetImageLayout();
+
+		VkDescriptorImageInfo glossinessMapInfo{};
+		glossinessMapInfo.sampler = glossinessMap.GetSampler();
+		glossinessMapInfo.imageView = glossinessMap.GetImageView();
+		glossinessMapInfo.imageLayout = glossinessMap.GetImageLayout();
+
+		VkDescriptorImageInfo specularMapInfo{};
+		specularMapInfo.sampler = specularMap.GetSampler();
+		specularMapInfo.imageView = specularMap.GetImageView();
+		specularMapInfo.imageLayout = specularMap.GetImageLayout();
 
 		std::vector<VkDescriptorSet> globalDescriptorSets(GP2SwapChain::MAX_FRAMES_IN_FLIGHT);
 		for (int i{}; i < globalDescriptorSets.size(); ++i)
@@ -62,10 +94,14 @@ namespace GP2
 			auto bufferInfo = uboBuffers[i]->DescriptorInfo();
 			GP2DescriptorWriter(*globalSetLayout, *m_GlobalPool)
 				.WriteBuffer(0, &bufferInfo)
+				.WriteImage(1, &diffuseMapInfo)
+				.WriteImage(2, &normalMapInfo)
+				.WriteImage(3, &glossinessMapInfo)
+				.WriteImage(4, &specularMapInfo)
 				.Build(globalDescriptorSets[i]);
 		}
 
-		SimpleRenderSystem2D simpleRenderSystem2D{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
+		//SimpleRenderSystem2D simpleRenderSystem2D{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 		SimpleRenderSystem simpleRenderSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
 
 		//TessellationSystem tessellationSystem{ m_GP2Device, m_GP2Renderer.GetSwapChainRenderPass(), globalSetLayout->GetDescriptorSetLayout() };
@@ -103,6 +139,7 @@ namespace GP2
 				ubo.projection = camera.GetProjection();
 				ubo.view = camera.GetView();
 				ubo.inversView = camera.GetInverseView();
+				//simpleRenderSystem.Update(frameInfo, m_GameObjects);
 				pointLightSystem.Update(frameInfo, ubo, m_GameObjects);
 				uboBuffers[frameIndex]->WriteToBuffer(&ubo);
 				uboBuffers[frameIndex]->Flush();
@@ -191,9 +228,11 @@ namespace GP2
 		auto gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/vehicle.obj");
 		auto flatVase = GP2GameObject::CreateGameObject();
 		flatVase.m_Model = std::move(gp2Model);
-		flatVase.m_Transform.translation = { 0.f,.5f, 10.f };
+		//flatVase.m_Transform.translation = { 0.f,.5f, 10.f };
+		flatVase.m_Transform.translation = { 0.f,-2.f, 5.f };
 		flatVase.m_Transform.scale = glm::vec3{ .5f, .5f, .5f };
-		flatVase.m_Transform.rotation = glm::vec3{ glm::radians(180.f),0.f,0.f};
+		flatVase.m_Transform.rotation = glm::vec3{ glm::radians(180.f),0.f,0.f };
+		//flatVase.m_Transform.rotation = glm::vec3{ glm::radians(180.f),glm::radians(90.f),0.f};
 		m_GameObjects.emplace(flatVase.GetId(), std::move(flatVase));
 
 		//gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/flat_vase.obj");
@@ -210,12 +249,12 @@ namespace GP2
 		//smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
 		//m_GameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
 
-		gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/quad.obj");
-		auto floor = GP2GameObject::CreateGameObject();
-		floor.m_Model = std::move(gp2Model);
-		floor.m_Transform.translation = { 0.f,.5f,0.f };
-		floor.m_Transform.scale = glm::vec3{ 3.f, 1.f, 3.f };
-		m_GameObjects.emplace(floor.GetId(), std::move(floor));
+		//gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/quad.obj");
+		//auto floor = GP2GameObject::CreateGameObject();
+		//floor.m_Model = std::move(gp2Model);
+		//floor.m_Transform.translation = { 0.f,.5f,0.f };
+		//floor.m_Transform.scale = glm::vec3{ 3.f, 1.f, 3.f };
+		//m_GameObjects.emplace(floor.GetId(), std::move(floor));
 
 
 		std::vector<glm::vec3> lightColors{

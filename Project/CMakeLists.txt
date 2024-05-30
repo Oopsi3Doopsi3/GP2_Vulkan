@@ -40,6 +40,7 @@ set(SOURCES
     "GP2GameObject.cpp"
     "GP2Buffer.cpp"
     "GP2Descriptors.cpp"
+    "GP2Texture.cpp"
     "systems/PointLightSystem.cpp"
     "systems/SimpleRenderSystem2D.cpp"
     "systems/TessellationSystem.cpp")
@@ -56,8 +57,17 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${Vulkan_LIBRARIES} tinyobjloader)
 set(MODELS_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/models")
 set(MODELS_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/models")
 
+set(TEXTURES_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/textures")
+set(TEXTURES_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/textures")
+
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${MODELS_SOURCE_DIR} ${MODELS_BINARY_DIR}
+)
+
+add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${TEXTURES_SOURCE_DIR} ${TEXTURES_BINARY_DIR}
 )
