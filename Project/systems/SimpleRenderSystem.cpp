@@ -17,8 +17,8 @@ namespace GP2
 	struct SimplePushConstantData
 	{
 		glm::mat4 modelMatrix{ 1.f };
-		glm::mat4 normalMatrix{ 1.f };
-		int renderMode;
+		glm::mat3 normalMatrix{ 1.f };
+		alignas(16)int renderMode;
 		bool useNormalMap;
 	};
 

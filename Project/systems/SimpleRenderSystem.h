@@ -44,7 +44,7 @@ namespace GP2
 		std::unique_ptr<GP2Pipeline> m_GP2Pipeline;
 		VkPipelineLayout m_PipelineLayout;
 
-		RenderMode m_RenderMode = RenderMode::observedArea;
+		RenderMode m_RenderMode = RenderMode::combined;
 		bool m_ShouldRotate{ false };
 		bool m_UseNormalMap{ true };
 	};

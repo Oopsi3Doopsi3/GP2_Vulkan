@@ -32,7 +32,7 @@ layout (set = 0, binding = 0) uniform GlobalUbo
 layout (push_constant) uniform Push
 {
 	mat4 modelMatrix;
-	mat4 normalMatrix;
+	mat3 normalMatrix;
 	int outputMode;
 	bool useNormalMap;
 } push;
