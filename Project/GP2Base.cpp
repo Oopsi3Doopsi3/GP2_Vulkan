@@ -22,6 +22,7 @@
 #include <cassert>
 #include <array>
 #include <chrono>
+#include <iostream>
 
 namespace GP2
 {
@@ -38,11 +39,14 @@ namespace GP2
 	
 	GP2Base::~GP2Base()
 	{
-		
+		GP2Model::DestroyTextureSetLayout();
 	}
 	
 	void GP2Base::Run()
 	{
+		std::cout << "F5 to toggle rotation\nF6 to toggle normal map\nF7 to cycle rendermode\n";
+		std::cout << "WASD to move camera\nQ/E to go down/up\nLMB to rotate\nLSHIFT to speed up\n";
+
 		std::vector<std::unique_ptr<GP2Buffer>> uboBuffers(GP2SwapChain::MAX_FRAMES_IN_FLIGHT);
 		for (int i{}; i < uboBuffers.size(); ++i)
 		{
@@ -62,31 +66,16 @@ namespace GP2
 			.AddBinding(3, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
 			.AddBinding(4, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
 			.Build();
-
+		
 		GP2Texture diffuseMap = GP2Texture(m_GP2Device, "textures/vehicle_diffuse.png");
 		GP2Texture normalMap = GP2Texture(m_GP2Device, "textures/vehicle_normal.png");
 		GP2Texture glossinessMap = GP2Texture(m_GP2Device, "textures/vehicle_gloss.png");
 		GP2Texture specularMap = GP2Texture(m_GP2Device, "textures/vehicle_specular.png");
 
-		VkDescriptorImageInfo diffuseMapInfo{};
-		diffuseMapInfo.sampler = diffuseMap.GetSampler();
-		diffuseMapInfo.imageView = diffuseMap.GetImageView();
-		diffuseMapInfo.imageLayout = diffuseMap.GetImageLayout();
-
-		VkDescriptorImageInfo normalMapInfo{};
-		normalMapInfo.sampler = normalMap.GetSampler();
-		normalMapInfo.imageView = normalMap.GetImageView();
-		normalMapInfo.imageLayout = normalMap.GetImageLayout();
-
-		VkDescriptorImageInfo glossinessMapInfo{};
-		glossinessMapInfo.sampler = glossinessMap.GetSampler();
-		glossinessMapInfo.imageView = glossinessMap.GetImageView();
-		glossinessMapInfo.imageLayout = glossinessMap.GetImageLayout();
-
-		VkDescriptorImageInfo specularMapInfo{};
-		specularMapInfo.sampler = specularMap.GetSampler();
-		specularMapInfo.imageView = specularMap.GetImageView();
-		specularMapInfo.imageLayout = specularMap.GetImageLayout();
+		VkDescriptorImageInfo diffuseMapInfo = diffuseMap.DescriptorImageInfo();
+		VkDescriptorImageInfo normalMapInfo = normalMap.DescriptorImageInfo();
+		VkDescriptorImageInfo glossinessMapInfo = glossinessMap.DescriptorImageInfo();
+		VkDescriptorImageInfo specularMapInfo = specularMap.DescriptorImageInfo();
 
 		std::vector<VkDescriptorSet> globalDescriptorSets(GP2SwapChain::MAX_FRAMES_IN_FLIGHT);
 		for (int i{}; i < globalDescriptorSets.size(); ++i)
@@ -170,66 +159,77 @@ namespace GP2
 	
 	void GP2Base::LoadGameObjects()
 	{
-		//2D
-		const GP2Model::Builder rectangleModel{
-		{
-			{{-0.95f, -0.95f, 0.f}, {1.0f, 0.0f, 0.0f}},
-			{{-0.70f, -0.95f, 0.f}, {0.0f, 1.0f, 0.0f}},
-			{{-0.70f, -0.70f, 0.f}, {0.0f, 0.0f, 1.0f}},
-			{{-0.95f, -0.70f, 0.f}, {1.0f, 1.0f, 1.0f}},
-		},
-			{
-				0, 1, 2, 2, 3, 0
-			}
-		};
-		auto mesh = std::make_unique<GP2Model>(m_GP2Device, rectangleModel);
-		auto rectangle = GP2GameObject::CreateGameObject();
-		rectangle.m_Model = std::move(mesh);
-		m_2DGameObjects.emplace(rectangle.GetId(), std::move(rectangle));
+		GP2Model::InitTextureSetLayout(m_GP2Device);
 
-		//circle
-		constexpr int nrSegments = 100;
-		constexpr float radius = .25f;
-		constexpr double pi = 3.14159;
-		const double thetaIncrement = (2.0 * pi) / static_cast<double>(nrSegments);
-		double theta = 0.0;
-		
-		std::vector<GP2Model::Vertex> circleVertices(nrSegments);
-		for (int i{}; i < nrSegments; ++i)
-		{
-			circleVertices[i].position.x = static_cast<float>(cos(theta)) * radius + 0.6f;
-			circleVertices[i].position.y = static_cast<float>(sin(theta)) * radius - 0.6f;
-		
-			circleVertices[i].color = glm::vec3{ sin(theta),cos(theta),tan(theta)};
-			theta += thetaIncrement;
-		}
-		circleVertices.push_back(GP2Model::Vertex{ {.6f,-0.6f,0.f},{1.f,1.f,1.f} });
-		
-		std::vector<uint32_t> circleIndices;
-		for (int i{}; i < nrSegments; ++i)
-		{
-			if (i < nrSegments - 1)
-			{
-				circleIndices.push_back(i);
-				circleIndices.push_back(nrSegments);
-				circleIndices.push_back(i + 1);
-			}
-			else
-			{
-				circleIndices.push_back(i);
-				circleIndices.push_back(nrSegments);
-				circleIndices.push_back(0);
-			}
-		}
-		const GP2Model::Builder circleModel{ circleVertices, circleIndices };
-		mesh = std::make_unique<GP2Model>(m_GP2Device, circleModel);
-		auto circle = GP2GameObject::CreateGameObject();
-		circle.m_Model = std::move(mesh);
-		m_2DGameObjects.emplace(circle.GetId(), std::move(circle));
+		//2D
+		//const GP2Model::Builder rectangleModel{
+		//{
+		//	{{-0.95f, -0.95f, 0.f}, {1.0f, 0.0f, 0.0f}},
+		//	{{-0.70f, -0.95f, 0.f}, {0.0f, 1.0f, 0.0f}},
+		//	{{-0.70f, -0.70f, 0.f}, {0.0f, 0.0f, 1.0f}},
+		//	{{-0.95f, -0.70f, 0.f}, {1.0f, 1.0f, 1.0f}},
+		//},
+		//	{
+		//		0, 1, 2, 2, 3, 0
+		//	}
+		//};
+		//auto mesh = std::make_unique<GP2Model>(m_GP2Device, rectangleModel);
+		//auto rectangle = GP2GameObject::CreateGameObject();
+		//rectangle.m_Model = std::move(mesh);
+		//m_2DGameObjects.emplace(rectangle.GetId(), std::move(rectangle));
+		//
+		////circle
+		//constexpr int nrSegments = 100;
+		//constexpr float radius = .25f;
+		//constexpr double pi = 3.14159;
+		//const double thetaIncrement = (2.0 * pi) / static_cast<double>(nrSegments);
+		//double theta = 0.0;
+		//
+		//std::vector<GP2Model::Vertex> circleVertices(nrSegments);
+		//for (int i{}; i < nrSegments; ++i)
+		//{
+		//	circleVertices[i].position.x = static_cast<float>(cos(theta)) * radius + 0.6f;
+		//	circleVertices[i].position.y = static_cast<float>(sin(theta)) * radius - 0.6f;
+		//
+		//	circleVertices[i].color = glm::vec3{ sin(theta),cos(theta),tan(theta)};
+		//	theta += thetaIncrement;
+		//}
+		//circleVertices.push_back(GP2Model::Vertex{ {.6f,-0.6f,0.f},{1.f,1.f,1.f} });
+		//
+		//std::vector<uint32_t> circleIndices;
+		//for (int i{}; i < nrSegments; ++i)
+		//{
+		//	if (i < nrSegments - 1)
+		//	{
+		//		circleIndices.push_back(i);
+		//		circleIndices.push_back(nrSegments);
+		//		circleIndices.push_back(i + 1);
+		//	}
+		//	else
+		//	{
+		//		circleIndices.push_back(i);
+		//		circleIndices.push_back(nrSegments);
+		//		circleIndices.push_back(0);
+		//	}
+		//}
+		//const GP2Model::Builder circleModel{ circleVertices, circleIndices };
+		//mesh = std::make_unique<GP2Model>(m_GP2Device, circleModel);
+		//auto circle = GP2GameObject::CreateGameObject();
+		//circle.m_Model = std::move(mesh);
+		//m_2DGameObjects.emplace(circle.GetId(), std::move(circle));
 
 
 		//3D
+		GP2Texture diffuseMap = GP2Texture(m_GP2Device, "textures/vehicle_diffuse.png");
+		GP2Texture normalMap = GP2Texture(m_GP2Device, "textures/vehicle_normal.png");
+		GP2Texture glossinessMap = GP2Texture(m_GP2Device, "textures/vehicle_gloss.png");
+		GP2Texture specularMap = GP2Texture(m_GP2Device, "textures/vehicle_specular.png");
+
+
 		auto gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/vehicle.obj");
+
+		//gp2Model->InitDescriptorSet(&diffuseMap, &normalMap, &glossinessMap, &specularMap);
+
 		auto flatVase = GP2GameObject::CreateGameObject();
 		flatVase.m_Model = std::move(gp2Model);
 		//flatVase.m_Transform.translation = { 0.f,.5f, 10.f };
@@ -238,20 +238,6 @@ namespace GP2
 		flatVase.m_Transform.rotation = glm::vec3{ glm::radians(180.f),0.f,0.f };
 		//flatVase.m_Transform.rotation = glm::vec3{ glm::radians(180.f),glm::radians(90.f),0.f};
 		m_GameObjects.emplace(flatVase.GetId(), std::move(flatVase));
-
-		//gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/flat_vase.obj");
-		//auto flatVaseTes = GP2GameObject::CreateGameObject();
-		//flatVaseTes.m_Model = std::move(gp2Model);
-		//flatVaseTes.m_Transform.translation = { 0.5f,.5f,0.f };
-		//flatVaseTes.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
-		//m_TesGameObjects.emplace(flatVaseTes.GetId(), std::move(flatVaseTes));
-
-		//gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/smooth_vase.obj");
-		//auto smoothVase = GP2GameObject::CreateGameObject();
-		//smoothVase.m_Model = std::move(gp2Model);
-		//smoothVase.m_Transform.translation = { 0.5f,.5f,0.f };
-		//smoothVase.m_Transform.scale = glm::vec3{ 3.f, 1.5f, 3.f };
-		//m_GameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
 
 		//gp2Model = GP2Model::CreateModelFromFile(m_GP2Device, "models/quad.obj");
 		//auto floor = GP2GameObject::CreateGameObject();

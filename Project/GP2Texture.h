@@ -16,7 +16,8 @@ namespace GP2
 		GP2Texture& operator=(const GP2Texture&) = delete;
 		GP2Texture(GP2Texture&&) = delete;
 		GP2Texture& operator=(GP2Texture&&) = delete;
-
+		
+		VkDescriptorImageInfo DescriptorImageInfo() const;
 		VkSampler GetSampler() const { return m_Sampler; }
 		VkImageView GetImageView() const { return m_ImageView; }
 		VkImageLayout GetImageLayout() const { return m_ImageLayout; }

@@ -3,6 +3,9 @@
 #include "GP2Device.h"
 #include "GP2Buffer.h"
 
+#include "GP2Texture.h"
+#include "GP2Descriptors.h"
+
 //libs
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
@@ -68,9 +71,17 @@ namespace GP2
 		GP2Model& operator=(const GP2Model&) = delete;
 
 		static std::unique_ptr<GP2Model> CreateModelFromFile(GP2Device& device, const std::string& filepath);
+		void InitDescriptorSet(const GP2Texture* diffuseMap, const GP2Texture* normalMap, const GP2Texture* glossinessMap, const GP2Texture* specularMap);
+
+		std::vector<VkDescriptorSet> GetDescriptorSets() const { return m_DescriptorSets; }
 
 		void Bind(VkCommandBuffer commandBuffer);
 		void Draw(VkCommandBuffer commandBuffer);
+
+		
+		static void InitTextureSetLayout(GP2Device& device);
+		static void DestroyTextureSetLayout() { textureSetLayout.reset(); }
+		static GP2DescriptorSetLayout* GetTextureSetLayout() { return textureSetLayout.get(); }
 
 	private:
 		void CreateVertexBuffers(const std::vector<Vertex>& vertices);
@@ -84,5 +95,11 @@ namespace GP2
 		bool m_HasIndexBuffer = false;
 		std::unique_ptr<GP2Buffer> m_IndexBuffer;
 		uint32_t m_IndexCount;
+
+
+		std::vector<VkDescriptorSet> m_DescriptorSets;
+		std::unique_ptr<GP2DescriptorPool> m_Pool{};
+
+		static std::unique_ptr<GP2DescriptorSetLayout> textureSetLayout;
 	};
 }

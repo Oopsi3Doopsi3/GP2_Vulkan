@@ -117,6 +117,15 @@ namespace GP2
 		vkDestroySampler(m_GP2Device.Device(), m_Sampler, nullptr);
 	}
 
+	VkDescriptorImageInfo GP2Texture::DescriptorImageInfo() const
+	{
+		VkDescriptorImageInfo descriptorImageInfo{};
+		descriptorImageInfo.sampler = m_Sampler;
+		descriptorImageInfo.imageView = m_ImageView;
+		descriptorImageInfo.imageLayout = m_ImageLayout;
+		return descriptorImageInfo;
+	}
+
 	void GP2Texture::TransitionImageLayout(VkImageLayout oldLayout, VkImageLayout newLayout)
 	{
 		VkCommandBuffer commanBuffer = m_GP2Device.BeginSingleTimeCommands();

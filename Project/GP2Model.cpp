@@ -2,6 +2,9 @@
 
 #include "GP2Utils.h"
 
+#include "GP2Descriptors.h"
+#include "GP2SwapChain.h"
+
 //libs
 #define TINYOBJLOADER_IMPLEMENTATION
 #include <tiny_obj_loader.h>
@@ -11,6 +14,8 @@
 //std
 #include <cassert>
 #include <unordered_map>
+
+#include <iostream>
 
 namespace std
 {
@@ -28,15 +33,28 @@ namespace std
 
 namespace GP2
 {
+	std::unique_ptr<GP2DescriptorSetLayout> GP2::GP2Model::textureSetLayout = nullptr;
+
 	GP2Model::GP2Model(GP2Device& device, const GP2Model::Builder& builder):
 		m_GP2Device(device)
 	{
 		CreateVertexBuffers(builder.vertices);
 		CreateIndexBuffers(builder.indices);
+		InitDescriptorSet(VK_NULL_HANDLE, VK_NULL_HANDLE, VK_NULL_HANDLE, VK_NULL_HANDLE);
 	}
 
 	GP2Model::~GP2Model()
 	{
+	}
+
+	void GP2Model::InitTextureSetLayout(GP2Device& device)
+	{
+		textureSetLayout = GP2DescriptorSetLayout::Builder(device)
+			.AddBinding(0, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+			.AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+			.AddBinding(2, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+			.AddBinding(3, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+			.Build();
 	}
 
 	void GP2Model::CreateVertexBuffers(const std::vector<Vertex>& vertices)
@@ -100,6 +118,47 @@ namespace GP2
 		);
 
 		m_GP2Device.CopyBuffer(stagingBuffer.GetBuffer(), m_IndexBuffer->GetBuffer(), bufferSize);
+	}
+
+	void GP2Model::InitDescriptorSet(const GP2Texture* diffuseMap, const GP2Texture* normalMap, const GP2Texture* glossinessMap, const GP2Texture* specularMap)
+	{
+		m_Pool = GP2DescriptorPool::Builder(m_GP2Device)
+			.SetMaxSets(GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
+			.AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
+			.AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, GP2SwapChain::MAX_FRAMES_IN_FLIGHT)
+			.Build();
+
+		m_DescriptorSets.resize(GP2SwapChain::MAX_FRAMES_IN_FLIGHT);
+
+		VkDescriptorImageInfo defaultImageInfo{};
+		defaultImageInfo.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
+		defaultImageInfo.imageView = VK_NULL_HANDLE;
+		defaultImageInfo.sampler = VK_NULL_HANDLE;
+
+		GP2Texture diffuse = GP2Texture(m_GP2Device, "textures/vehicle_diffuse.png");
+		GP2Texture normal = GP2Texture(m_GP2Device, "textures/vehicle_normal.png");
+		GP2Texture glossiness = GP2Texture(m_GP2Device, "textures/vehicle_gloss.png");
+		GP2Texture specular = GP2Texture(m_GP2Device, "textures/vehicle_specular.png");
+
+		for (int i{}; i < m_DescriptorSets.size(); ++i)
+		{
+			GP2DescriptorWriter(*textureSetLayout, *m_Pool)
+				.WriteImage(0, &diffuse.DescriptorImageInfo())
+				.WriteImage(1, &normal.DescriptorImageInfo() )
+				.WriteImage(2, &glossiness.DescriptorImageInfo())
+				.WriteImage(3, &specular.DescriptorImageInfo())
+				.Build(m_DescriptorSets[i]);
+		}
+
+		//for (int i{}; i < m_DescriptorSets.size(); ++i)
+		//{
+		//	GP2DescriptorWriter(*textureSetLayout, *globalPool)
+		//		.WriteImage(0, diffuseMap ? &diffuseMap->DescriptorImageInfo() : &defaultImageInfo)
+		//		.WriteImage(1, normalMap  ? &normalMap->DescriptorImageInfo() : &defaultImageInfo)
+		//		.WriteImage(2, glossinessMap ? &glossinessMap->DescriptorImageInfo() : &defaultImageInfo)
+		//		.WriteImage(3, specularMap ? &specularMap->DescriptorImageInfo() : &defaultImageInfo)
+		//		.Build(m_DescriptorSets[i]);
+		//}
 	}
 
 	std::unique_ptr<GP2Model> GP2Model::CreateModelFromFile(GP2Device& device, const std::string& filepath)

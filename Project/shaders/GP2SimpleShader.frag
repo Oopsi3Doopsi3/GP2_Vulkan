@@ -30,6 +30,11 @@ layout (set = 0, binding = 2) uniform sampler2D normalMap;
 layout (set = 0, binding = 3) uniform sampler2D glossinessMap;
 layout (set = 0, binding = 4) uniform sampler2D specularMap;
 
+//layout (set = 1, binding = 0) uniform sampler2D diffuseMap;
+//layout (set = 1, binding = 1) uniform sampler2D normalMap;
+//layout (set = 1, binding = 2) uniform sampler2D glossinessMap;
+//layout (set = 1, binding = 3) uniform sampler2D specularMap;
+
 layout(push_constant) uniform Push
 {
 	mat4 modelMatrix;

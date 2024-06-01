@@ -42,6 +42,9 @@ namespace GP2
 		pushConstantRange.size = sizeof(SimplePushConstantData);
 
 		std::vector<VkDescriptorSetLayout> descriptorSetLayouts{ globalSetLayout };
+		//std::vector<VkDescriptorSetLayout> descriptorSetLayouts{ globalSetLayout, GP2Model::GetTextureSetLayout()->GetDescriptorSetLayout() };
+
+		
 
 		VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
 		pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
@@ -117,6 +120,17 @@ namespace GP2
 		{
 			auto& obj = kv.second;
 			if (obj.m_Model == nullptr) continue;
+
+			//vkCmdBindDescriptorSets(
+			//	frameInfo.commandBuffer,
+			//	VK_PIPELINE_BIND_POINT_GRAPHICS,
+			//	m_PipelineLayout,
+			//	1,
+			//	1,
+			//	&obj.m_Model->GetDescriptorSets()[frameInfo.frameIndex],
+			//	0,
+			//	nullptr);
+
 			SimplePushConstantData push{};
 			push.modelMatrix = obj.m_Transform.mat4();
 			push.normalMatrix = obj.m_Transform.normalMatrix();

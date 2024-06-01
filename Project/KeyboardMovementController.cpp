@@ -35,7 +35,7 @@ namespace GP2
 		const glm::vec3 forwardDir{ sin(yaw), 0.f, cos(yaw) };
 		const glm::vec3 rightDir{ forwardDir.z, 0.f, -forwardDir.x };
 		const glm::vec3 upDir{ 0.f,-1.f,0.f };
-		int speed = m_MoveSpeed;
+		float speed = m_MoveSpeed;
 
 		glm::vec3 moveDir{ 0.f };
 		if (glfwGetKey(window, m_Keys.moveForward) == GLFW_PRESS) moveDir += forwardDir;

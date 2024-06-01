@@ -3,35 +3,35 @@
 3	2409	7385289378265593	stb-populate-prefix/src/stb-populate-stamp/stb-populate-download	d4d3e88ae2772850
 2	51	7385287504037460	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-mkdir	9f9537344f04cb30
 3	2409	7385289378265593	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-download	d4d3e88ae2772850
-9	1620	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
-9	1620	0	stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
-1621	1673	7387679897423496	stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
-1621	1673	7387679897423496	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
-1673	1726	7387679897964514	stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
-1886	1965	7387679900343561	stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
-1673	1726	7387679897964514	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
-1727	1782	7387679898524561	stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
-1727	1782	7387679898524561	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
-1782	1835	7387679899048319	stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
-1782	1835	7387679899048319	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
-1835	1886	7387679899547717	stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
-1886	1965	7387679900343561	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/CMakeFiles/stb-populate-complete	1d9d1511b562787c
-1835	1886	7387679899547717	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
-1886	1965	7387679900343561	CMakeFiles/stb-populate-complete	1d9d1511b562787c
-1886	1965	7387679900343561	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
-9	1351	0	stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
-9	1351	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
-1352	1400	7388610760525484	stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
-1352	1400	7388610760525484	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
-1400	1448	7388610760989599	stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
-1400	1448	7388610760989599	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
-1448	1495	7388610761470251	stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
-1448	1495	7388610761470251	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
-1495	1544	7388610761961011	stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
-1495	1544	7388610761961011	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
-1545	1593	7388610762443677	stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
-1545	1593	7388610762443677	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
-1593	1665	7388610763159067	CMakeFiles/stb-populate-complete	1d9d1511b562787c
-1593	1665	7388610763159067	stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
-1593	1665	7388610763159067	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/CMakeFiles/stb-populate-complete	1d9d1511b562787c
-1593	1665	7388610763159067	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
+8	1330	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
+8	1330	0	stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
+1330	1378	7388688113454458	stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
+1330	1378	7388688113454458	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
+1378	1426	7388688113943173	stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
+1576	1643	7388688116115844	stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
+1378	1426	7388688113943173	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
+1426	1478	7388688114452215	stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
+1426	1478	7388688114452215	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
+1478	1527	7388688114941504	stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
+1478	1527	7388688114941504	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
+1527	1576	7388688115438986	stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
+1576	1643	7388688116115844	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/CMakeFiles/stb-populate-complete	1d9d1511b562787c
+1527	1576	7388688115438986	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
+1576	1643	7388688116115844	CMakeFiles/stb-populate-complete	1d9d1511b562787c
+1576	1643	7388688116115844	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
+8	1597	0	stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
+8	1597	0	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-update	f2f05aa65dea57ee
+1598	1644	7389460674637055	stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
+1598	1644	7389460674637055	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-patch	a5f9e1f92664d70c
+1644	1691	7389460675116530	stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
+1644	1691	7389460675116530	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-configure	8ccded4f9542c6af
+1691	1738	7389460675580290	stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
+1691	1738	7389460675580290	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-build	c6a2c2519ab64f95
+1738	1784	7389460676040095	stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
+1738	1784	7389460676040095	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-install	c6896fc1f3eed5df
+1784	1833	7389460676523007	stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
+1784	1833	7389460676523007	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-test	1641197a19f1331d
+1833	1898	7389460677180683	CMakeFiles/stb-populate-complete	1d9d1511b562787c
+1833	1898	7389460677180683	stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
+1833	1898	7389460677180683	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/CMakeFiles/stb-populate-complete	1d9d1511b562787c
+1833	1898	7389460677180683	C:/Graphics Programming 2/Vulkan/out/build/x64-Debug/_deps/stb-subbuild/stb-populate-prefix/src/stb-populate-stamp/stb-populate-done	1d9d1511b562787c
